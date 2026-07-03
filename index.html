@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiloLab - Milo's Portfolio</title>
+  
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- 全局样式 -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <!-- Logo -->
+      <a href="#" class="navbar-logo" onclick="showSection('home')">
+        <div class="logo-icon">
+          <span class="logo-m">M</span>
+          <span class="logo-ring"></span>
+        </div>
+        <span>MiloLab</span>
+      </a>
+      
+      <!-- 导航链接 -->
+      <ul class="navbar-center">
+        <li class="nav-item">
+          <a href="#" class="active" onclick="showSection('home')">
+            <i class="fas fa-home"></i>
+            首页
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" onclick="showSection('toolbox')">
+            <i class="fas fa-wrench"></i>
+            工具箱
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" onclick="showSection('projects')">
+            <i class="fas fa-project-diagram"></i>
+            项目
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" onclick="showSection('blog')">
+            <i class="fas fa-book"></i>
+            博客
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" onclick="showSection('quotes')">
+            <i class="fas fa-quote-right"></i>
+            语录
+          </a>
+        </li>
+      </ul>
+      
+      <!-- 右侧按钮区 -->
+      <div class="navbar-right">
+        <!-- 主题切换按钮 -->
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- ========== Home 首页模块 ========== -->
+      <section id="home" class="section">
+        <!-- Hero卡片 -->
+        <div class="card hero-card mb-8">
+          <div class="hero-avatar">
+            <div class="avatar-circle">
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+          <div class="hero-content">
+            <h1>你好，我是 <span>Milo</span></h1>
+            <p>
+              全栈开发者，热爱技术，专注于构建高质量的Web应用。
+              熟悉多种编程语言和框架，致力于创造优雅的代码和用户体验。
+            </p>
+            
+            <!-- 标签信息 -->
+            <div class="hero-tags">
+              <div class="hero-tag">
+                <span class="hero-tag-label">📍</span>
+                <span class="hero-tag-value">Shanghai, China</span>
+              </div>
+              <div class="hero-tag">
+                <span class="hero-tag-label">💼</span>
+                <span class="hero-tag-value">Full Stack Engineer</span>
+              </div>
+              <div class="hero-tag">
+                <span class="hero-tag-label">📧</span>
+                <div class="hero-tag-values">
+                  <span class="hero-tag-value">zhang.miao@sjtu.edu.cn</span>
+                  <span class="hero-tag-value">jensonzhang@126.com</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- CTA按钮 -->
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="showSection('toolbox')">
+                <i class="fas fa-wrench"></i>
+                打开工具箱
+              </button>
+              <button class="btn btn-secondary" onclick="showSection('projects')">
+                <i class="fas fa-project-diagram"></i>
+                查看项目
+              </button>
+              <button class="btn btn-outline" onclick="showSection('contact')">
+                <i class="fas fa-envelope"></i>
+                联系我
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Tech Stack 技能标签 -->
+        <h2 class="section-title">Tech Stack</h2>
+        <div class="card mb-8">
+          <div class="tech-stack-list">
+            <span class="tech-tag js">
+              <i class="fab fa-js"></i> JavaScript
+            </span>
+            <span class="tech-tag ts">
+              <i class="fab fa-typescript"></i> TypeScript
+            </span>
+            <span class="tech-tag py">
+              <i class="fab fa-python"></i> Python
+            </span>
+            <span class="tech-tag go">
+              <i class="fab fa-golang"></i> Go
+            </span>
+            <span class="tech-tag vue">
+              <i class="fab fa-vuejs"></i> Vue.js
+            </span>
+            <span class="tech-tag react">
+              <i class="fab fa-react"></i> React
+            </span>
+            <span class="tech-tag node">
+              <i class="fab fa-node-js"></i> Node.js
+            </span>
+            <span class="tech-tag docker">
+              <i class="fab fa-docker"></i> Docker
+            </span>
+            <span class="tech-tag k8s">
+              <i class="fab fa-kubernetes"></i> Kubernetes
+            </span>
+            <span class="tech-tag git">
+              <i class="fab fa-git"></i> Git
+            </span>
+            <span class="tech-tag aws">
+              <i class="fab fa-aws"></i> AWS
+            </span>
+            <span class="tech-tag linux">
+              <i class="fab fa-linux"></i> Linux
+            </span>
+          </div>
+        </div>
+        
+        <!-- Modules 模块入口 (Bento Grid) -->
+        <h2 class="section-title">Modules</h2>
+        <div class="bento-grid">
+          <!-- 工具箱 (大卡片) -->
+          <div class="bento-card large blue" onclick="showSection('toolbox')">
+            <div class="bento-card-icon blue">
+              <i class="fas fa-wrench"></i>
+            </div>
+            <div class="bento-card-title">工具箱</div>
+            <div class="bento-card-desc">
+              实用工具集合，包括JSON转换、Base64编解码、Token生成、Hash计算、UUID生成器等。
+            </div>
+            <span class="bento-card-link">
+              探索工具 <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+          
+          <!-- 项目展示 -->
+          <div class="bento-card green" onclick="showSection('projects')">
+            <div class="bento-card-icon green">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <div class="bento-card-title">项目展示</div>
+            <div class="bento-card-desc">
+              开源项目与个人作品展示。
+            </div>
+            <span class="bento-card-link">
+              查看项目 <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+          
+          <!-- 技术博客 -->
+          <div class="bento-card orange" onclick="showSection('blog')">
+            <div class="bento-card-icon orange">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="bento-card-title">技术博客</div>
+            <div class="bento-card-desc">
+              技术文章、学习笔记与心得分享。
+            </div>
+            <span class="bento-card-link">
+              阅读文章 <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+          
+          <!-- 名人经典语录 -->
+          <div class="bento-card orange" onclick="showSection('quotes')">
+            <div class="bento-card-icon orange">
+              <i class="fas fa-quote-right"></i>
+            </div>
+            <div class="bento-card-title">名人语录</div>
+            <div class="bento-card-desc">
+              收藏名人智慧，感悟人生哲理。
+            </div>
+            <span class="bento-card-link">
+              浏览语录 <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+          
+          <!-- 代码片段 (预留) -->
+          <div class="bento-card cyan" onclick="showSection('snippets')">
+            <div class="bento-card-icon cyan">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="bento-card-title">代码片段</div>
+            <div class="bento-card-desc">
+              常用代码片段库，方便快速开发。
+            </div>
+            <span class="bento-card-link">
+              浏览片段 <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+          
+          <!-- 学习资源 (预留) -->
+          <div class="bento-card gray" onclick="showSection('resources')">
+            <div class="bento-card-icon gray">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="bento-card-title">学习资源</div>
+            <div class="bento-card-desc">
+              精选技术学习资料与教程。
+            </div>
+            <span class="bento-card-link">
+              探索资源 <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+          
+          <!-- 文案记事本 -->
+          <div class="bento-card pink" onclick="showSection('notes')">
+            <div class="bento-card-icon pink">
+              <i class="fas fa-pen-fancy"></i>
+            </div>
+            <div class="bento-card-title">文案记事本</div>
+            <div class="bento-card-desc">
+              收藏那些触动人心的句子与文案。
+            </div>
+            <span class="bento-card-link">
+              记录灵感 <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+          
+          <!-- 素材库 (预留) -->
+          <div class="bento-card yellow" onclick="showSection('materials')">
+            <div class="bento-card-icon yellow">
+              <i class="fas fa-images"></i>
+            </div>
+            <div class="bento-card-title">素材库</div>
+            <div class="bento-card-desc">
+              精选设计素材与资源集合。
+            </div>
+            <span class="bento-card-link">
+              浏览素材 <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== Toolbox 工具箱模块 ========== -->
+      <section id="toolbox" class="section" style="display: none;">
+        <h2 class="section-title">工具箱</h2>
+        
+        <div style="display: flex; gap: 20px;">
+          <!-- 工具导航 -->
+          <div class="tool-sidebar" style="width: 200px; flex-shrink: 0;">
+            <div style="position: sticky; top: 100px;">
+              <button class="tool-nav-btn active" onclick="selectTool('json2yaml')">
+                <i class="fas fa-file-code"></i> JSON/YAML
+              </button>
+              <button class="tool-nav-btn" onclick="selectTool('base64')">
+                <i class="fas fa-lock"></i> Base64
+              </button>
+              <button class="tool-nav-btn" onclick="selectTool('token')">
+                <i class="fas fa-key"></i> Token
+              </button>
+              <button class="tool-nav-btn" onclick="selectTool('hash')">
+                <i class="fas fa-hashtag"></i> Hash
+              </button>
+              <button class="tool-nav-btn" onclick="selectTool('uuid')">
+                <i class="fas fa-id-card"></i> UUID
+              </button>
+              <button class="tool-nav-btn" onclick="selectTool('time')">
+                <i class="fas fa-clock"></i> 时间转换
+              </button>
+            </div>
+          </div>
+          
+          <!-- 工具内容区 -->
+          <div class="tool-content-area" style="flex: 1;">
+            
+            <!-- JSON转YAML工具 -->
+            <div id="tool-json2yaml" class="card tool-panel">
+              <div class="card-title">
+                <i class="fas fa-file-code"></i> JSON ↔ YAML 转换
+              </div>
+              <div class="card-description">
+                在线JSON和YAML格式互转工具
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                <div>
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    JSON 输入
+                  </label>
+                  <textarea id="json-input" class="tool-textarea" placeholder='{"name": "test", "value": 123}'></textarea>
+                  <button class="btn btn-primary" style="margin-top: 10px; width: 100%;" onclick="convertJson2Yaml()">
+                    JSON → YAML
+                  </button>
+                </div>
+                <div>
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    YAML 输出
+                  </label>
+                  <textarea id="yaml-output" class="tool-textarea" placeholder="name: test&#10;value: 123"></textarea>
+                  <button class="btn btn-secondary" style="margin-top: 10px; width: 100%;" onclick="convertYaml2Json()">
+                    YAML → JSON
+                  </button>
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px; margin-top: 12px;">
+                <button class="btn btn-outline" onclick="copyToClipboard('yaml-output')">
+                  <i class="fas fa-copy"></i> 复制结果
+                </button>
+                <button class="btn btn-outline" onclick="clearTool('json2yaml')">
+                  <i class="fas fa-trash"></i> 清空
+                </button>
+              </div>
+            </div>
+            
+            <!-- Base64编解码工具 -->
+            <div id="tool-base64" class="card tool-panel" style="display: none;">
+              <div class="card-title">
+                <i class="fas fa-lock"></i> Base64 编解码
+              </div>
+              <div class="card-description">
+                在线Base64编码和解码工具
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                <div>
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    原始文本
+                  </label>
+                  <textarea id="base64-input" class="tool-textarea" placeholder="输入需要编码的文本..."></textarea>
+                  <button class="btn btn-primary" style="margin-top: 10px; width: 100%;" onclick="encodeBase64()">
+                    编码为 Base64
+                  </button>
+                </div>
+                <div>
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    Base64 结果
+                  </label>
+                  <textarea id="base64-output" class="tool-textarea" placeholder="Base64编码结果..."></textarea>
+                  <button class="btn btn-secondary" style="margin-top: 10px; width: 100%;" onclick="decodeBase64()">
+                    解码 Base64
+                  </button>
+                </div>
+              </div>
+              <div style="display: flex; gap: 10px; margin-top: 12px;">
+                <button class="btn btn-outline" onclick="copyToClipboard('base64-output')">
+                  <i class="fas fa-copy"></i> 复制结果
+                </button>
+                <button class="btn btn-outline" onclick="clearTool('base64')">
+                  <i class="fas fa-trash"></i> 清空
+                </button>
+              </div>
+            </div>
+            
+            <!-- Token生成工具 -->
+            <div id="tool-token" class="card tool-panel" style="display: none;">
+              <div class="card-title">
+                <i class="fas fa-key"></i> Token 生成器
+              </div>
+              <div class="card-description">
+                生成随机Token和密钥
+              </div>
+              <div style="margin-top: 20px;">
+                <div style="display: flex; gap: 20px; margin-bottom: 16px;">
+                  <div style="flex: 1;">
+                    <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                      Token长度
+                    </label>
+                    <input type="number" id="token-length" class="tool-input" value="32" min="8" max="256">
+                  </div>
+                  <div style="flex: 1;">
+                    <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                      字符类型
+                    </label>
+                    <select id="token-type" class="tool-input" style="padding: 12px;">
+                      <option value="alphanumeric">字母+数字</option>
+                      <option value="alpha">仅字母</option>
+                      <option value="numeric">仅数字</option>
+                      <option value="hex">十六进制</option>
+                      <option value="base64">Base64字符</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    生成的Token
+                  </label>
+                  <textarea id="token-output" class="tool-textarea" placeholder="点击生成按钮获取Token"></textarea>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 12px;">
+                  <button class="btn btn-primary" onclick="generateToken()">
+                    <i class="fas fa-random"></i> 生成Token
+                  </button>
+                  <button class="btn btn-outline" onclick="copyToClipboard('token-output')">
+                    <i class="fas fa-copy"></i> 复制Token
+                  </button>
+                  <button class="btn btn-outline" onclick="clearTool('token')">
+                    <i class="fas fa-trash"></i> 清空
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Hash计算工具 -->
+            <div id="tool-hash" class="card tool-panel" style="display: none;">
+              <div class="card-title">
+                <i class="fas fa-hashtag"></i> Hash 计算器
+              </div>
+              <div class="card-description">
+                计算字符串的各种哈希值
+              </div>
+              <div style="margin-top: 20px;">
+                <div>
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    输入字符串
+                  </label>
+                  <textarea id="hash-input" class="tool-textarea" placeholder="输入需要计算哈希的字符串..."></textarea>
+                </div>
+                <div style="margin-top: 16px;">
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    选择算法
+                  </label>
+                  <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <button class="hash-algo-btn active" onclick="selectHashAlgo('md5')">MD5</button>
+                    <button class="hash-algo-btn" onclick="selectHashAlgo('sha1')">SHA-1</button>
+                    <button class="hash-algo-btn" onclick="selectHashAlgo('sha256')">SHA-256</button>
+                    <button class="hash-algo-btn" onclick="selectHashAlgo('sha512')">SHA-512</button>
+                    <button class="hash-algo-btn" onclick="selectHashAlgo('sha3-256')">SHA3-256</button>
+                    <button class="hash-algo-btn" onclick="selectHashAlgo('sha3-512')">SHA3-512</button>
+                  </div>
+                </div>
+                <div style="margin-top: 16px;">
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    Hash结果
+                  </label>
+                  <textarea id="hash-output" class="tool-textarea" placeholder="计算结果将显示在这里"></textarea>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 12px;">
+                  <button class="btn btn-primary" onclick="calculateHash()">
+                    <i class="fas fa-calculator"></i> 计算Hash
+                  </button>
+                  <button class="btn btn-outline" onclick="copyToClipboard('hash-output')">
+                    <i class="fas fa-copy"></i> 复制结果
+                  </button>
+                  <button class="btn btn-outline" onclick="clearTool('hash')">
+                    <i class="fas fa-trash"></i> 清空
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- UUID生成工具 -->
+            <div id="tool-uuid" class="card tool-panel" style="display: none;">
+              <div class="card-title">
+                <i class="fas fa-id-card"></i> UUID 生成器
+              </div>
+              <div class="card-description">
+                生成UUID（版本4）
+              </div>
+              <div style="margin-top: 20px;">
+                <div style="display: flex; gap: 20px; margin-bottom: 16px;">
+                  <div style="flex: 1;">
+                    <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                      生成数量
+                    </label>
+                    <input type="number" id="uuid-count" class="tool-input" value="1" min="1" max="50">
+                  </div>
+                  <div style="flex: 1;">
+                    <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                      格式
+                    </label>
+                    <select id="uuid-format" class="tool-input" style="padding: 12px;">
+                      <option value="standard">标准格式</option>
+                      <option value="no-hyphen">无连字符</option>
+                      <option value="uppercase">大写</option>
+                      <option value="lowercase">小写</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    生成的UUID
+                  </label>
+                  <textarea id="uuid-output" class="tool-textarea" placeholder="点击生成按钮获取UUID"></textarea>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 12px;">
+                  <button class="btn btn-primary" onclick="generateUUID()">
+                    <i class="fas fa-random"></i> 生成UUID
+                  </button>
+                  <button class="btn btn-outline" onclick="copyToClipboard('uuid-output')">
+                    <i class="fas fa-copy"></i> 复制UUID
+                  </button>
+                  <button class="btn btn-outline" onclick="clearTool('uuid')">
+                    <i class="fas fa-trash"></i> 清空
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 时间转换器 -->
+            <div id="tool-time" class="card tool-panel" style="display: none;">
+              <div class="card-title">
+                <i class="fas fa-clock"></i> 时间转换器
+              </div>
+              <div class="card-description">
+                时间戳与日期时间互转
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                <div>
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    时间戳 (秒)
+                  </label>
+                  <input type="number" id="timestamp-input" class="tool-input" placeholder="输入时间戳">
+                  <button class="btn btn-primary" style="margin-top: 10px; width: 100%;" onclick="convertTimestamp()">
+                    时间戳 → 日期
+                  </button>
+                </div>
+                <div>
+                  <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                    日期时间
+                  </label>
+                  <input type="datetime-local" id="datetime-input" class="tool-input">
+                  <button class="btn btn-secondary" style="margin-top: 10px; width: 100%;" onclick="convertDatetime()">
+                    日期 → 时间戳
+                  </button>
+                </div>
+              </div>
+              <div style="margin-top: 16px;">
+                <label style="font-size: 13px; font-weight: 500; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+                  转换结果
+                </label>
+                <textarea id="time-output" class="tool-textarea" placeholder="转换结果将显示在这里"></textarea>
+              </div>
+              <div style="display: flex; gap: 10px; margin-top: 12px;">
+                <button class="btn btn-secondary" onclick="getCurrentTime()">
+                  <i class="fas fa-clock"></i> 获取当前时间
+                </button>
+                <button class="btn btn-outline" onclick="copyToClipboard('time-output')">
+                  <i class="fas fa-copy"></i> 复制结果
+                </button>
+                <button class="btn btn-outline" onclick="clearTool('time')">
+                  <i class="fas fa-trash"></i> 清空
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== Projects 项目模块 ========== -->
+      <section id="projects" class="section" style="display: none;">
+        <h2 class="section-title">项目展示</h2>
+        <div class="card mb-6">
+          <div class="card-title">📁 项目列表</div>
+          <div class="card-description">
+            这里展示我的开源项目和个人作品。
+          </div>
+          <div id="project-list" style="margin-top: 20px;">
+            <!-- 项目卡片由JS动态生成 -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== Blog 博客模块 ========== -->
+      <section id="blog" class="section" style="display: none;">
+        <h2 class="section-title">技术博客</h2>
+        <div class="card mb-6">
+          <div class="card-title">📚 文章列表</div>
+          <div class="card-description">
+            技术文章、学习笔记与心得分享。
+          </div>
+          <div id="blog-list" style="margin-top: 20px;">
+            <!-- 博客卡片由JS动态生成 -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== Quotes 名人语录模块 ========== -->
+      <section id="quotes" class="section" style="display: none;">
+        <h2 class="section-title">名人语录</h2>
+        <p class="section-subtitle">收藏名人智慧，感悟人生哲理</p>
+        
+        <div class="quotes-author-tabs" id="quotes-author-tabs">
+          <!-- 名人标签由JS动态生成 -->
+        </div>
+        
+        <div class="quotes-toolbar">
+          <div class="quotes-stats">
+            <span class="quotes-count"><i class="fas fa-quote-left"></i> 共 <span id="quotes-count">0</span> 条语录</span>
+          </div>
+          <div class="quotes-toolbar-actions">
+            <button class="btn btn-outline btn-sm" onclick="openAddAuthorModal()">
+              <i class="fas fa-user-plus"></i> 新增名人
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="openAddQuoteModal()">
+              <i class="fas fa-plus"></i> 新增语录
+            </button>
+          </div>
+        </div>
+        
+        <div class="quotes-book-tabs" id="quotes-book-tabs">
+          <!-- 书籍标签由JS动态生成 -->
+        </div>
+        
+        <div class="quotes-theme-filter" id="quotes-theme-filter">
+          <!-- 主题筛选由JS动态生成 -->
+        </div>
+        
+        <div id="quotes-list" class="quotes-list">
+          <!-- 语录卡片由JS动态生成 -->
+        </div>
+        
+        <div class="quotes-batch-actions">
+          <button class="btn btn-primary" onclick="copyAllQuotes()">
+            <i class="fas fa-copy"></i> 复制全部显示
+          </button>
+          <button class="btn btn-secondary" onclick="exportQuotes()">
+            <i class="fas fa-download"></i> 导出文本
+          </button>
+        </div>
+      </section>
+
+      <!-- ========== Contact 联系模块 ========== -->
+      <section id="contact" class="section" style="display: none;">
+        <h2 class="section-title">联系我</h2>
+        <p class="section-subtitle">欢迎通过以下方式联系我</p>
+        
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon email">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">邮箱</div>
+              <div class="contact-value">zhang.miao@sjtu.edu.cn</div>
+              <div class="contact-value">jensonzhang@126.com</div>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon github">
+              <i class="fab fa-github"></i>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">GitHub</div>
+              <div class="contact-value"><a href="https://github.com/jensonzhang" target="_blank">github.com/jensonzhang</a></div>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon wechat">
+              <i class="fab fa-weixin"></i>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">微信</div>
+              <div class="contact-value">JensonZhang_Miao</div>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon location">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-info">
+              <div class="contact-label">地址</div>
+              <div class="contact-value">上海市徐汇区</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card mt-8">
+          <div class="card-title">💬 留言</div>
+          <div class="card-description">如有合作机会或技术交流，欢迎留言</div>
+          <form class="contact-form" onsubmit="handleContactSubmit(event)">
+            <div class="form-group">
+              <label for="contact-name">您的姓名</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="请输入您的姓名" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">邮箱地址</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="请输入您的邮箱" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">留言内容</label>
+              <textarea id="contact-message" class="form-textarea" placeholder="请输入您想说的内容..." rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4">
+              <i class="fas fa-paper-plane"></i> 发送留言
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ========== Snippets 代码片段模块 (预留) ========== -->
+      <section id="snippets" class="section" style="display: none;">
+        <h2 class="section-title">代码片段</h2>
+        <div class="card">
+          <div class="card-title">🔧 代码片段库</div>
+          <div class="card-description">
+            此模块预留，用于展示常用代码片段。
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== Resources 学习资源模块 (预留) ========== -->
+      <section id="resources" class="section" style="display: none;">
+        <h2 class="section-title">学习资源</h2>
+        <div class="card">
+          <div class="card-title">📚 学习资源</div>
+          <div class="card-description">
+            此模块预留，用于分享学习资料和教程。
+          </div>
+        </div>
+      </section>
+      
+      <!-- ========== Notes 文案记事本模块 ========== -->
+      <section id="notes" class="section" style="display: none;">
+        <h2 class="section-title">文案记事本</h2>
+        <p class="section-subtitle">收藏那些触动人心的句子与文案</p>
+        
+        <!-- 添加文案区域 -->
+        <div class="notes-add-section">
+          <div class="notes-input-card">
+            <textarea id="note-input" class="notes-textarea" placeholder="写下你喜欢的句子或文案..."></textarea>
+            <div class="notes-input-actions">
+              <button class="btn btn-primary notes-add-btn" onclick="addNote()">
+                <i class="fas fa-plus"></i> 添加到记事本
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 文案列表 -->
+        <div class="notes-stats">
+          <span class="notes-count"><i class="fas fa-bookmark"></i> 共 <span id="notes-count">0</span> 条文案</span>
+          <button class="notes-sort-btn" onclick="toggleSortNotes()">
+            <i class="fas fa-sort"></i> <span id="sort-label">按时间排序</span>
+          </button>
+        </div>
+        
+        <div id="notes-list" class="notes-grid">
+          <!-- 文案卡片将动态生成 -->
+        </div>
+        
+        <!-- 空状态 -->
+        <div id="notes-empty" class="notes-empty" style="display: none;">
+          <div class="notes-empty-icon"><i class="fas fa-pen-fancy"></i></div>
+          <div class="notes-empty-title">还没有收藏任何文案</div>
+          <div class="notes-empty-desc">写下你喜欢的句子，记录生活中的灵感</div>
+        </div>
+      </section>
+      
+      <!-- ========== Materials 素材库模块 (预留) ========== -->
+      <section id="materials" class="section" style="display: none;">
+        <h2 class="section-title">素材库</h2>
+        <p class="section-subtitle">精选设计素材与资源集合</p>
+        <div class="card">
+          <div class="card-title">🎨 素材库</div>
+          <div class="card-description">
+            此模块预留，用于展示精选设计素材与资源。
+          </div>
+        </div>
+      </section>
+      
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © <span id="currentYear">2024</span> <a href="#">MiloLab</a>. All rights reserved.
+        </div>
+        <div class="footer-icp">
+          <i class="fas fa-shield-alt"></i> 京ICP备000000001号
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 主脚本 -->
+  <script src="js/main.js"></script>
+  
+  <!-- 工具脚本 -->
+  <script src="js/tools/json2yaml.js"></script>
+  <script src="js/tools/base64.js"></script>
+  <script src="js/tools/token.js"></script>
+  <script src="js/tools/hash.js"></script>
+  <script src="js/tools/uuid.js"></script>
+  <script src="js/tools/time.js"></script>
+  
+  <!-- 新增名人弹窗 -->
+  <div id="add-author-modal" class="modal" style="display: none;">
+    <div class="modal-overlay" onclick="closeAddAuthorModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-user-plus"></i> 新增名人</h3>
+        <button class="modal-close" onclick="closeAddAuthorModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="author-name">名人姓名</label>
+          <input type="text" id="author-name" class="form-input" placeholder="请输入名人姓名" required>
+        </div>
+        <div class="form-group">
+          <label>头像颜色</label>
+          <div class="color-picker">
+            <button class="color-option selected" data-color="linear-gradient(135deg, #4F46E5, #7C3AED)" style="background: linear-gradient(135deg, #4F46E5, #7C3AED);"></button>
+            <button class="color-option" data-color="linear-gradient(135deg, #EF4444, #F97316)" style="background: linear-gradient(135deg, #EF4444, #F97316);"></button>
+            <button class="color-option" data-color="linear-gradient(135deg, #06B6D4, #10B981)" style="background: linear-gradient(135deg, #06B6D4, #10B981);"></button>
+            <button class="color-option" data-color="linear-gradient(135deg, #8B5CF6, #EC4899)" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);"></button>
+            <button class="color-option" data-color="linear-gradient(135deg, #8B4513, #A0522D)" style="background: linear-gradient(135deg, #8B4513, #A0522D);"></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="author-book">关联书籍（可选，用逗号分隔）</label>
+          <input type="text" id="author-book" class="form-input" placeholder="例如：活着,许三观卖血记">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeAddAuthorModal()">取消</button>
+        <button class="btn btn-primary" onclick="addAuthor()">确认添加</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 新增语录弹窗 -->
+  <div id="add-quote-modal" class="modal" style="display: none;">
+    <div class="modal-overlay" onclick="closeAddQuoteModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-plus"></i> 新增语录</h3>
+        <button class="modal-close" onclick="closeAddQuoteModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="quote-book">选择书籍</label>
+          <select id="quote-book" class="form-input" required></select>
+        </div>
+        <div class="form-group">
+          <label for="quote-text">语录内容</label>
+          <textarea id="quote-text" class="form-textarea" placeholder="请输入语录内容..." rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="quote-theme">主题标签</label>
+          <input type="text" id="quote-theme" class="form-input" placeholder="例如：人生感悟">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeAddQuoteModal()">取消</button>
+        <button class="btn btn-primary" onclick="addQuote()">确认添加</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 删除确认弹窗 -->
+  <div id="confirm-modal" class="modal" style="display: none;">
+    <div class="modal-overlay" onclick="closeConfirmModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-exclamation-triangle"></i> 确认删除</h3>
+        <button class="modal-close" onclick="closeConfirmModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="confirm-message">确定要删除吗？</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="closeConfirmModal()">取消</button>
+        <button class="btn btn-danger" onclick="confirmDelete()">确认删除</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

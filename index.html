@@ -297,98 +297,130 @@
           </div>
         </div>
 
-        <!-- Style2 档案索引 + 大图网格布局 -->
+        <!-- Style2 苹果风格布局 -->
         <div class="style2-home" style="display: none;">
-          <!-- 档案索引导航 -->
-          <div class="archive-index">
-            <div class="archive-index-header">
-              <h2>Archive</h2>
-              <div class="archive-index-nav">
-                <button class="archive-nav-item active" data-filter="all">All</button>
-                <button class="archive-nav-item" data-filter="tools">Tools</button>
-                <button class="archive-nav-item" data-filter="projects">Projects</button>
-                <button class="archive-nav-item" data-filter="blog">Blog</button>
-                <button class="archive-nav-item" data-filter="quotes">Quotes</button>
-                <button class="archive-nav-item" data-filter="notes">Notes</button>
-                <button class="archive-nav-item" data-filter="travel">Travel</button>
+          <!-- Apple风格 Hero 区域 -->
+          <div class="apple-hero">
+            <div class="apple-hero-content">
+              <div class="apple-hero-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h1 class="apple-hero-title">MiloLab</h1>
+              <p class="apple-hero-subtitle">全栈开发者 · 创造优雅的用户体验</p>
+              <p class="apple-hero-description">
+                专注于构建高质量的 Web 应用，熟悉多种编程语言和框架，致力于创造优雅的代码和用户体验。
+              </p>
+              <div class="apple-hero-links">
+                <a href="#" onclick="showSection('projects')" class="apple-link">
+                  查看项目
+                  <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="#" onclick="showSection('contact')" class="apple-link">
+                  联系我
+                  <i class="fas fa-chevron-right"></i>
+                </a>
               </div>
             </div>
           </div>
           
-          <!-- 大图网格 -->
-          <div class="image-grid">
-            <!-- 工具箱 -->
-            <div class="image-grid-item large" onclick="showSection('toolbox')">
-              <div class="image-grid-bg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-              <div class="image-grid-content">
-                <div class="image-grid-icon"><i class="fas fa-wrench"></i></div>
-                <div class="image-grid-title">工具箱</div>
-                <div class="image-grid-desc">实用工具集合</div>
+          <!-- Apple风格产品卡片区域 -->
+          <div class="apple-section">
+            <div class="apple-card" onclick="showSection('toolbox')">
+              <div class="apple-card-bg" style="background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 100%);"></div>
+              <div class="apple-card-content">
+                <div class="apple-card-icon">
+                  <i class="fas fa-wrench"></i>
+                </div>
+                <h3 class="apple-card-title">工具箱</h3>
+                <p class="apple-card-desc">实用工具集合</p>
+                <div class="apple-card-link">
+                  探索工具
+                  <i class="fas fa-arrow-right"></i>
+                </div>
               </div>
             </div>
             
-            <!-- 项目展示 -->
-            <div class="image-grid-item" onclick="showSection('projects')">
-              <div class="image-grid-bg" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);"></div>
-              <div class="image-grid-content">
-                <div class="image-grid-icon"><i class="fas fa-project-diagram"></i></div>
-                <div class="image-grid-title">项目</div>
+            <div class="apple-card" onclick="showSection('projects')">
+              <div class="apple-card-bg" style="background: linear-gradient(180deg, #000000 0%, #1c1c1e 100%);"></div>
+              <div class="apple-card-content">
+                <div class="apple-card-icon light">
+                  <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3 class="apple-card-title">项目</h3>
+                <p class="apple-card-desc">开源作品展示</p>
+                <div class="apple-card-link light">
+                  查看项目
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Apple风格双栏区域 -->
+          <div class="apple-section">
+            <div class="apple-card-large" onclick="showSection('blog')">
+              <div class="apple-card-large-bg" style="background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 100%);"></div>
+              <div class="apple-card-large-content">
+                <div class="apple-card-large-icon">
+                  <i class="fas fa-book"></i>
+                </div>
+                <h3 class="apple-card-large-title">技术博客</h3>
+                <p class="apple-card-large-desc">技术文章、学习笔记与心得分享</p>
+                <div class="apple-card-large-link">
+                  阅读文章
+                  <i class="fas fa-arrow-right"></i>
+                </div>
               </div>
             </div>
             
-            <!-- 技术博客 -->
-            <div class="image-grid-item" onclick="showSection('blog')">
-              <div class="image-grid-bg" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-              <div class="image-grid-content">
-                <div class="image-grid-icon"><i class="fas fa-book"></i></div>
-                <div class="image-grid-title">博客</div>
+            <div class="apple-card-large" onclick="showSection('quotes')">
+              <div class="apple-card-large-bg" style="background: linear-gradient(180deg, #000000 0%, #1c1c1e 100%);"></div>
+              <div class="apple-card-large-content">
+                <div class="apple-card-large-icon light">
+                  <i class="fas fa-quote-right"></i>
+                </div>
+                <h3 class="apple-card-large-title">名人语录</h3>
+                <p class="apple-card-large-desc">收藏名人智慧，感悟人生哲理</p>
+                <div class="apple-card-large-link light">
+                  浏览语录
+                  <i class="fas fa-arrow-right"></i>
+                </div>
               </div>
             </div>
-            
-            <!-- 名人语录 -->
-            <div class="image-grid-item wide" onclick="showSection('quotes')">
-              <div class="image-grid-bg" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-              <div class="image-grid-content">
-                <div class="image-grid-icon"><i class="fas fa-quote-right"></i></div>
-                <div class="image-grid-title">名人语录</div>
-                <div class="image-grid-desc">收藏名人智慧</div>
+          </div>
+          
+          <!-- Apple风格多卡片区域 -->
+          <div class="apple-grid">
+            <div class="apple-grid-item" onclick="showSection('notes')">
+              <div class="apple-grid-icon">
+                <i class="fas fa-pen-fancy"></i>
               </div>
+              <h4 class="apple-grid-title">文案记事本</h4>
+              <p class="apple-grid-desc">记录灵感与文案</p>
             </div>
             
-            <!-- 文案记事本 -->
-            <div class="image-grid-item" onclick="showSection('notes')">
-              <div class="image-grid-bg" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
-              <div class="image-grid-content">
-                <div class="image-grid-icon"><i class="fas fa-pen-fancy"></i></div>
-                <div class="image-grid-title">记事本</div>
+            <div class="apple-grid-item" onclick="showSection('travel')">
+              <div class="apple-grid-icon">
+                <i class="fas fa-map-marked-alt"></i>
               </div>
+              <h4 class="apple-grid-title">旅游攻略</h4>
+              <p class="apple-grid-desc">探索世界美景</p>
             </div>
             
-            <!-- 旅游攻略 -->
-            <div class="image-grid-item" onclick="showSection('travel')">
-              <div class="image-grid-bg" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
-              <div class="image-grid-content">
-                <div class="image-grid-icon"><i class="fas fa-map-marked-alt"></i></div>
-                <div class="image-grid-title">旅游</div>
+            <div class="apple-grid-item" onclick="showSection('recommendations')">
+              <div class="apple-grid-icon">
+                <i class="fas fa-star"></i>
               </div>
+              <h4 class="apple-grid-title">好物推荐</h4>
+              <p class="apple-grid-desc">精选优质好物</p>
             </div>
             
-            <!-- 好物推荐 -->
-            <div class="image-grid-item" onclick="showSection('recommendations')">
-              <div class="image-grid-bg" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
-              <div class="image-grid-content">
-                <div class="image-grid-icon"><i class="fas fa-star"></i></div>
-                <div class="image-grid-title">推荐</div>
+            <div class="apple-grid-item" onclick="showSection('snippets')">
+              <div class="apple-grid-icon">
+                <i class="fas fa-code"></i>
               </div>
-            </div>
-            
-            <!-- 代码片段 -->
-            <div class="image-grid-item" onclick="showSection('snippets')">
-              <div class="image-grid-bg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-              <div class="image-grid-content">
-                <div class="image-grid-icon"><i class="fas fa-code"></i></div>
-                <div class="image-grid-title">代码</div>
-              </div>
+              <h4 class="apple-grid-title">代码片段</h4>
+              <p class="apple-grid-desc">快速开发利器</p>
             </div>
           </div>
         </div>

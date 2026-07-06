@@ -22,6 +22,20 @@ function showSection(sectionId) {
   // 更新当前模块状态
   currentSection = sectionId;
   
+  // 如果不是首页，切换回默认风格
+  if (sectionId !== 'home') {
+    const styleToggle = document.getElementById('styleToggle');
+    if (currentStyle === 'style2') {
+      currentStyle = 'style1';
+      document.documentElement.removeAttribute('data-style');
+      localStorage.setItem('style', 'style1');
+      if (styleToggle) {
+        styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
+      }
+      updateHomeLayout();
+    }
+  }
+  
   // 隐藏所有模块
   document.querySelectorAll('.section').forEach(section => {
     section.style.display = 'none';

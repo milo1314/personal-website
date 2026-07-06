@@ -3030,7 +3030,7 @@ section {
   border-radius: 24px;
   overflow: hidden;
   cursor: pointer;
-  aspect-ratio: 21/9;
+  aspect-ratio: 16/9;
   transition: transform 0.3s;
 }
 

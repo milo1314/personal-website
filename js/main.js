@@ -22,16 +22,28 @@ function showSection(sectionId) {
   // 更新当前模块状态
   currentSection = sectionId;
   
-  // 如果不是首页，切换回默认风格
-  if (sectionId !== 'home') {
+  if (sectionId === 'home') {
+    // 回到首页时，从localStorage恢复之前选择的风格
+    const savedStyle = localStorage.getItem('style');
     const styleToggle = document.getElementById('styleToggle');
-    if (currentStyle === 'style2') {
+    if (savedStyle === 'style2') {
+      currentStyle = 'style2';
+      document.documentElement.setAttribute('data-style', 'style2');
+      if (styleToggle) {
+        styleToggle.innerHTML = '<i class="fas fa-home"></i>';
+      }
+    } else {
       currentStyle = 'style1';
       document.documentElement.removeAttribute('data-style');
-      localStorage.setItem('style', 'style1');
       if (styleToggle) {
         styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
       }
+    }
+    updateHomeLayout();
+  } else {
+    // 离开首页时，临时切换到默认风格（不改变localStorage）
+    if (currentStyle === 'style2') {
+      document.documentElement.removeAttribute('data-style');
       updateHomeLayout();
     }
   }

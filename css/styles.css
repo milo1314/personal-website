@@ -285,6 +285,12 @@ section {
   position: relative;
 }
 
+.section-title i {
+  color: var(--accent-primary);
+  margin-right: 10px;
+  font-size: 18px;
+}
+
 .section-title::after {
   content: '';
   position: absolute;
@@ -425,44 +431,104 @@ section {
   font-size: 14px;
 }
 
-/* ===== Tech Stack技能标签 ===== */
-.tech-stack-list {
+/* ===== Tech Stack 驼峰波浪布局 ===== */
+.tech-stack-container {
+  margin-bottom: 24px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.tech-tag {
-  display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  border-radius: var(--radius-md);
-  font-size: 13px;
+  gap: 16px;
+  padding: 20px;
+}
+
+.tech-stack-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tech-stack-row:nth-child(1) {
+  margin-bottom: 8px;
+}
+
+.tech-stack-row:nth-child(2) {
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+.tech-stack-row:nth-child(3) {
+  margin-top: -8px;
+}
+
+.tech-stack-node {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
   font-family: var(--font-mono);
-  font-weight: 500;
+  font-weight: 600;
+  cursor: pointer;
   transition: all var(--transition-fast);
-  cursor: default;
+  border: 2px solid transparent;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  background: var(--bg-card);
+  position: relative;
 }
 
-.tech-tag:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+.tech-stack-node::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
 }
 
-/* 不同技术的颜色 */
-.tech-tag.js { background: #f7df1e20; color: #f7df1e; border: 1px solid #f7df1e40; }
-.tech-tag.ts { background: #3178c620; color: #3178c6; border: 1px solid #3178c640; }
-.tech-tag.py { background: #3776ab20; color: #3776ab; border: 1px solid #3776ab40; }
-.tech-tag.go { background: #00add820; color: #00add8; border: 1px solid #00add840; }
-.tech-tag.vue { background: #42b88320; color: #42b883; border: 1px solid #42b88340; }
-.tech-tag.react { background: #61dafb20; color: #61dafb; border: 1px solid #61dafb40; }
-.tech-tag.node { background: #33993320; color: #339933; border: 1px solid #33993340; }
-.tech-tag.docker { background: #2496ed20; color: #2496ed; border: 1px solid #2496ed40; }
-.tech-tag.k8s { background: #326ce520; color: #326ce5; border: 1px solid #326ce540; }
-.tech-tag.git { background: #f0503220; color: #f05032; border: 1px solid #f0503240; }
-.tech-tag.aws { background: #ff990020; color: #ff9900; border: 1px solid #ff990040; }
-.tech-tag.linux { background: #fcc62420; color: #fcc624; border: 1px solid #fcc62440; }
+.tech-stack-node i {
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+.tech-stack-node:hover {
+  transform: translateY(-6px) scale(1.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tech-stack-node:hover::before {
+  opacity: 0.3;
+}
+
+.tech-stack-node.js { background: linear-gradient(135deg, rgba(247, 223, 30, 0.2) 0%, rgba(247, 223, 30, 0.05) 100%); color: #f7df1e; border-color: rgba(247, 223, 30, 0.5); }
+.tech-stack-node.js::before { background: radial-gradient(circle, #f7df1e 0%, transparent 70%); }
+.tech-stack-node.ts { background: linear-gradient(135deg, rgba(49, 120, 198, 0.2) 0%, rgba(49, 120, 198, 0.05) 100%); color: #3178c6; border-color: rgba(49, 120, 198, 0.5); }
+.tech-stack-node.ts::before { background: radial-gradient(circle, #3178c6 0%, transparent 70%); }
+.tech-stack-node.vue { background: linear-gradient(135deg, rgba(66, 184, 131, 0.2) 0%, rgba(66, 184, 131, 0.05) 100%); color: #42b883; border-color: rgba(66, 184, 131, 0.5); }
+.tech-stack-node.vue::before { background: radial-gradient(circle, #42b883 0%, transparent 70%); }
+.tech-stack-node.react { background: linear-gradient(135deg, rgba(97, 218, 251, 0.2) 0%, rgba(97, 218, 251, 0.05) 100%); color: #61dafb; border-color: rgba(97, 218, 251, 0.5); }
+.tech-stack-node.react::before { background: radial-gradient(circle, #61dafb 0%, transparent 70%); }
+.tech-stack-node.node { background: linear-gradient(135deg, rgba(51, 153, 51, 0.2) 0%, rgba(51, 153, 51, 0.05) 100%); color: #339933; border-color: rgba(51, 153, 51, 0.5); }
+.tech-stack-node.node::before { background: radial-gradient(circle, #339933 0%, transparent 70%); }
+.tech-stack-node.py { background: linear-gradient(135deg, rgba(55, 118, 171, 0.2) 0%, rgba(55, 118, 171, 0.05) 100%); color: #3776ab; border-color: rgba(55, 118, 171, 0.5); }
+.tech-stack-node.py::before { background: radial-gradient(circle, #3776ab 0%, transparent 70%); }
+.tech-stack-node.go { background: linear-gradient(135deg, rgba(0, 173, 216, 0.2) 0%, rgba(0, 173, 216, 0.05) 100%); color: #00add8; border-color: rgba(0, 173, 216, 0.5); }
+.tech-stack-node.go::before { background: radial-gradient(circle, #00add8 0%, transparent 70%); }
+.tech-stack-node.docker { background: linear-gradient(135deg, rgba(36, 150, 237, 0.2) 0%, rgba(36, 150, 237, 0.05) 100%); color: #2496ed; border-color: rgba(36, 150, 237, 0.5); }
+.tech-stack-node.docker::before { background: radial-gradient(circle, #2496ed 0%, transparent 70%); }
+.tech-stack-node.k8s { background: linear-gradient(135deg, rgba(50, 108, 229, 0.2) 0%, rgba(50, 108, 229, 0.05) 100%); color: #326ce5; border-color: rgba(50, 108, 229, 0.5); }
+.tech-stack-node.k8s::before { background: radial-gradient(circle, #326ce5 0%, transparent 70%); }
+.tech-stack-node.aws { background: linear-gradient(135deg, rgba(255, 153, 0, 0.2) 0%, rgba(255, 153, 0, 0.05) 100%); color: #ff9900; border-color: rgba(255, 153, 0, 0.5); }
+.tech-stack-node.aws::before { background: radial-gradient(circle, #ff9900 0%, transparent 70%); }
+.tech-stack-node.linux { background: linear-gradient(135deg, rgba(252, 198, 36, 0.2) 0%, rgba(252, 198, 36, 0.05) 100%); color: #fcc624; border-color: rgba(252, 198, 36, 0.5); }
+.tech-stack-node.linux::before { background: radial-gradient(circle, #fcc624 0%, transparent 70%); }
+.tech-stack-node.git { background: linear-gradient(135deg, rgba(240, 80, 50, 0.2) 0%, rgba(240, 80, 50, 0.05) 100%); color: #f05032; border-color: rgba(240, 80, 50, 0.5); }
+.tech-stack-node.git::before { background: radial-gradient(circle, #f05032 0%, transparent 70%); }
 
 /* ===== Bento Grid布局 ===== */
 .bento-grid {
@@ -990,13 +1056,24 @@ section {
     flex-wrap: wrap;
   }
   
-  .tech-stack-list {
-    gap: 8px;
+  .tech-stack-container {
+    padding: 12px;
   }
   
-  .tech-tag {
-    padding: 6px 12px;
-    font-size: 12px;
+  .tech-stack-row {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .tech-stack-node {
+    width: 48px;
+    height: 48px;
+    font-size: 9px;
+  }
+  
+  .tech-stack-node i {
+    font-size: 16px;
   }
   
   .bento-grid {
@@ -1728,4 +1805,365 @@ section {
   background: #ef4444;
   color: white;
   border-color: #ef4444;
+}
+
+.rec-image-preview {
+  max-width: 200px;
+  max-height: 150px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.rec-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rec-image-preview-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background var(--transition-fast);
+}
+
+.rec-image-preview-remove:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.recommendation-card-image {
+  width: 100%;
+  height: 180px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.recommendation-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== 旅游攻略模块 ===== */
+.travel-city-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.travel-city-tab {
+  padding: 10px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.travel-city-tab:hover {
+  background: var(--bg-secondary);
+}
+
+.travel-city-tab.active {
+  background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+  color: white;
+  border-color: transparent;
+}
+
+.travel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.travel-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.travel-card:hover {
+  border-color: #3B82F6;
+}
+
+.travel-card-header {
+  padding: 16px 20px;
+}
+
+.travel-card-details {
+  padding: 0 20px;
+  border-top: 1px dashed var(--border-color);
+  margin-top: 8px;
+}
+
+.travel-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 0;
+  padding: 12px 20px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.travel-add-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.travel-add-toggle-icon {
+  font-size: 14px;
+  color: var(--text-muted);
+  transition: transform var(--transition-fast);
+}
+
+.travel-add-toggle-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.travel-add-form {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-normal);
+  padding: 0 20px;
+}
+
+.travel-add-form.expanded {
+  max-height: 1200px;
+  padding: 0 20px 20px;
+}
+
+.travel-card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.travel-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.travel-card:hover .travel-card-image img {
+  transform: scale(1.05);
+}
+
+.travel-card-content {
+  padding: 0;
+}
+
+.travel-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.travel-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.travel-card-city {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: rgba(59, 130, 246, 0.1);
+  color: #3B82F6;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.travel-card-days {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: rgba(34, 197, 94, 0.1);
+  color: #22C55E;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.travel-route {
+  background: rgba(59, 130, 246, 0.05);
+  border-left: 3px solid #3B82F6;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.travel-route-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3B82F6;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.travel-route-content {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.travel-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.travel-tips {
+  background: rgba(251, 191, 36, 0.05);
+  border-left: 3px solid #FBBF24;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.travel-tips-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #FBBF24;
+  margin-bottom: 4px;
+}
+
+.travel-tips-content {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: pre-line;
+}
+
+.travel-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.travel-save-btn {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3B82F6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.travel-save-btn:hover {
+  background: #3B82F6;
+  color: white;
+  border-color: #3B82F6;
+}
+
+.travel-edit-btn {
+  background: rgba(139, 92, 246, 0.1);
+  color: #8B5CF6;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.travel-edit-btn:hover {
+  background: #8B5CF6;
+  color: white;
+  border-color: #8B5CF6;
+}
+
+.travel-delete-btn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.travel-delete-btn:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+.travel-image-preview {
+  max-width: 200px;
+  max-height: 150px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.travel-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.travel-image-preview-remove {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background var(--transition-fast);
+}
+
+.travel-image-preview-remove:hover {
+  background: rgba(0, 0, 0, 0.8);
 }

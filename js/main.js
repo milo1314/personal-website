@@ -846,11 +846,44 @@ function initRecommendations() {
   renderRecommendations();
 }
 
+function handleImageUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const preview = document.getElementById('rec-image-preview');
+    const imageUrlInput = document.getElementById('rec-image-url');
+    
+    imageUrlInput.value = e.target.result;
+    preview.innerHTML = `
+      <img src="${e.target.result}" alt="预览">
+      <button class="rec-image-preview-remove" onclick="removeImagePreview()">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+    preview.style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeImagePreview() {
+  const preview = document.getElementById('rec-image-preview');
+  const imageUrlInput = document.getElementById('rec-image-url');
+  const imageFileInput = document.getElementById('rec-image-file');
+  
+  preview.style.display = 'none';
+  preview.innerHTML = '';
+  imageUrlInput.value = '';
+  imageFileInput.value = '';
+}
+
 function handleRecommendationSubmit(e) {
   e.preventDefault();
   
   const title = document.getElementById('rec-title').value.trim();
   const category = document.getElementById('rec-category').value;
+  const image = document.getElementById('rec-image-url').value.trim();
   const url = document.getElementById('rec-url').value.trim();
   const desc = document.getElementById('rec-desc').value.trim();
   
@@ -864,6 +897,7 @@ function handleRecommendationSubmit(e) {
     id: Date.now(),
     title: title,
     category: category,
+    image: image,
     url: url,
     desc: desc,
     createdAt: Date.now()
@@ -876,6 +910,7 @@ function handleRecommendationSubmit(e) {
   document.getElementById('rec-category').value = 'tech';
   document.getElementById('rec-url').value = '';
   document.getElementById('rec-desc').value = '';
+  removeImagePreview();
   
   renderRecommendations();
   showToast('✓ 好物推荐已添加', 'success');
@@ -910,6 +945,7 @@ function renderRecommendations() {
   
   container.innerHTML = sorted.map(rec => `
     <div class="recommendation-card">
+      ${rec.image ? `<div class="recommendation-card-image"><img src="${rec.image}" alt="${rec.title}"></div>` : ''}
       <div class="recommendation-header">
         <div class="recommendation-icon ${rec.category}">
           <i class="${categoryIcons[rec.category]}"></i>
@@ -1684,3 +1720,585 @@ function handleContactSubmit(event) {
   
   showToast('已打开邮件客户端，请发送邮件', 'success');
 }
+
+// ===== 旅游攻略模块 =====
+const defaultTravelGuides = [
+  {
+    id: 1,
+    title: '北京三日游经典路线',
+    city: 'beijing',
+    image: '',
+    days: 3,
+    route: 'Day1: 天安门广场 → 故宫博物院 → 景山公园\nDay2: 颐和园 → 圆明园 → 北京大学\nDay3: 八达岭长城 → 明十三陵',
+    desc: '北京三日游经典路线，涵盖了北京最具代表性的景点。故宫是必去之地，建议提前预约门票。长城建议选择八达岭段，交通方便。',
+    tips: '1. 故宫周一闭馆，注意安排时间\n2. 长城门票建议提前网上购买\n3. 北京地铁交通发达，建议办理交通卡',
+    createdAt: Date.now()
+  },
+  {
+    id: 2,
+    title: '上海美食与夜景之旅',
+    city: 'shanghai',
+    image: '',
+    days: 2,
+    route: 'Day1: 南京路步行街 → 外滩 → 东方明珠塔\nDay2: 豫园 → 田子坊 → 陆家嘴',
+    desc: '上海两日游，体验魔都的繁华与美食。外滩夜景是必看的，建议傍晚去，可以看到白天和夜晚两种景色。',
+    tips: '1. 外滩人流量大，注意安全\n2. 豫园小吃推荐：南翔小笼包、蟹壳黄\n3. 陆家嘴三件套拍照打卡',
+    createdAt: Date.now()
+  },
+  {
+    id: 3,
+    title: '成都美食休闲之旅',
+    city: 'chengdu',
+    image: '',
+    days: 4,
+    route: 'Day1: 宽窄巷子 → 锦里 → 武侯祠\nDay2: 大熊猫基地 → 春熙路 → 太古里\nDay3: 都江堰 → 青城山\nDay4: 人民公园喝茶 → 玉林路小酒馆',
+    desc: '成都四日游，感受慢生活的魅力。大熊猫基地是亲子游的好地方，都江堰和青城山一日游也非常值得。',
+    tips: '1. 大熊猫基地建议早上去，熊猫比较活跃\n2. 成都火锅推荐：大龙燚、小龙坎\n3. 人民公园鹤鸣茶社体验盖碗茶',
+    createdAt: Date.now()
+  },
+  {
+    id: 4,
+    title: '杭州西湖深度游',
+    city: 'hangzhou',
+    image: '',
+    days: 3,
+    route: 'Day1: 西湖十景 → 雷峰塔 → 苏堤\nDay2: 灵隐寺 → 飞来峰 → 龙井村\nDay3: 西溪湿地 → 河坊街 → 南宋御街',
+    desc: '杭州三日游，漫步西湖，感受江南水乡的韵味。西湖十景各有特色，建议租自行车环湖游览。',
+    tips: '1. 灵隐寺香火旺盛，建议提前预约\n2. 龙井村可以品尝正宗西湖龙井\n3. 西湖音乐喷泉值得一看',
+    createdAt: Date.now()
+  }
+];
+
+let currentTravelCity = 'all';
+
+const travelCityNames = {
+  beijing: '北京',
+  shanghai: '上海',
+  chengdu: '成都',
+  hangzhou: '杭州',
+  other: '其他'
+};
+
+function getTravelGuides() {
+  const saved = localStorage.getItem('travelGuides');
+  if (saved) {
+    return JSON.parse(saved);
+  }
+  return defaultTravelGuides;
+}
+
+function saveTravelGuides(guides) {
+  localStorage.setItem('travelGuides', JSON.stringify(guides));
+}
+
+function switchTravelCity(city) {
+  currentTravelCity = city;
+  
+  document.querySelectorAll('.travel-city-tab').forEach(tab => {
+    tab.classList.remove('active');
+  });
+  event.target.classList.add('active');
+  
+  renderTravelGuides();
+}
+
+function renderTravelGuides() {
+  const container = document.getElementById('travel-list');
+  const guides = getTravelGuides();
+  
+  const filtered = currentTravelCity === 'all' 
+    ? guides 
+    : guides.filter(g => g.city === currentTravelCity);
+  
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+        <i class="fas fa-map-marked-alt" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+        <p>暂无该城市的攻略</p>
+        <p style="font-size: 14px;">快来添加第一条攻略吧！</p>
+      </div>
+    `;
+    return;
+  }
+  
+  container.innerHTML = filtered.map(guide => `
+    <div class="travel-card" id="travel-card-${guide.id}">
+      ${guide.image ? `<div class="travel-card-image"><img src="${guide.image}" alt="${guide.title}"></div>` : ''}
+      <div class="travel-card-content">
+        <div class="travel-card-header">
+          <h3 class="travel-card-title">${guide.title}</h3>
+          <div style="display: flex; gap: 8px; margin-top: 6px;">
+            <span class="travel-card-city"><i class="fas fa-map-marker-alt"></i> ${travelCityNames[guide.city]}</span>
+            ${guide.days ? `<span class="travel-card-days"><i class="fas fa-calendar"></i> ${guide.days}天</span>` : ''}
+          </div>
+        </div>
+        <div class="travel-card-details" id="card-details-${guide.id}">
+          <div class="travel-route">
+            <div class="travel-route-title"><i class="fas fa-route"></i> 导航路线</div>
+            <div class="travel-route-content">${guide.route}</div>
+          </div>
+          ${guide.desc ? `<div class="travel-desc">${guide.desc}</div>` : ''}
+          ${guide.tips ? `
+            <div class="travel-tips">
+              <div class="travel-tips-title"><i class="fas fa-lightbulb"></i> 注意事项</div>
+              <div class="travel-tips-content">${guide.tips}</div>
+            </div>
+          ` : ''}
+        </div>
+        <div class="travel-card-actions">
+          <button class="travel-save-btn" onclick="saveTravelGuideAsImage(${guide.id})">
+            <i class="fas fa-download"></i> 保存图片
+          </button>
+          <button class="travel-edit-btn" onclick="editTravelGuide(${guide.id})">
+            <i class="fas fa-edit"></i> 修改
+          </button>
+          <button class="travel-delete-btn" onclick="deleteTravelGuide(${guide.id})">
+            <i class="fas fa-trash"></i> 删除
+          </button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleTravelCard(id) {
+  const details = document.getElementById('card-details-' + id);
+  const toggle = document.getElementById('toggle-' + id);
+  
+  if (details && toggle) {
+    details.classList.toggle('expanded');
+    toggle.classList.toggle('expanded');
+  }
+}
+
+function toggleTravelAddForm() {
+  const form = document.getElementById('travel-add-form');
+  const icon = document.getElementById('travel-add-toggle-icon');
+  const submitBtn = document.getElementById('travel-submit');
+  
+  if (form && icon) {
+    const isExpanded = form.classList.contains('expanded');
+    
+    if (isExpanded) {
+      form.classList.remove('expanded');
+      icon.classList.remove('expanded');
+      
+      document.getElementById('travel-title').value = '';
+      document.getElementById('travel-city').value = 'beijing';
+      document.getElementById('travel-days').value = '';
+      document.getElementById('travel-route').value = '';
+      document.getElementById('travel-desc').value = '';
+      document.getElementById('travel-tips').value = '';
+      removeTravelImagePreview();
+      
+      submitBtn.textContent = '添加攻略';
+      delete submitBtn.dataset.editId;
+    } else {
+      form.classList.add('expanded');
+      icon.classList.add('expanded');
+    }
+  }
+}
+
+function editTravelGuide(id) {
+  const guides = getTravelGuides();
+  const guide = guides.find(g => g.id === id);
+  if (!guide) return;
+  
+  const form = document.getElementById('travel-add-form');
+  const icon = document.getElementById('travel-add-toggle-icon');
+  if (form && icon) {
+    form.classList.add('expanded');
+    icon.classList.add('expanded');
+  }
+  
+  document.getElementById('travel-title').value = guide.title;
+  document.getElementById('travel-city').value = guide.city;
+  document.getElementById('travel-days').value = guide.days || '';
+  document.getElementById('travel-route').value = guide.route;
+  document.getElementById('travel-desc').value = guide.desc || '';
+  document.getElementById('travel-tips').value = guide.tips || '';
+  
+  if (guide.image) {
+    document.getElementById('travel-image-url').value = guide.image;
+    const preview = document.getElementById('travel-image-preview');
+    preview.innerHTML = `
+      <img src="${guide.image}" alt="预览">
+      <button class="travel-image-preview-remove" onclick="removeTravelImagePreview()">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+    preview.style.display = 'block';
+  }
+  
+  const submitBtn = document.getElementById('travel-submit');
+  submitBtn.textContent = '保存修改';
+  submitBtn.dataset.editId = id;
+  
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function handleTravelImageUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const preview = document.getElementById('travel-image-preview');
+    const imageUrlInput = document.getElementById('travel-image-url');
+    
+    imageUrlInput.value = e.target.result;
+    preview.innerHTML = `
+      <img src="${e.target.result}" alt="预览">
+      <button class="travel-image-preview-remove" onclick="removeTravelImagePreview()">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+    preview.style.display = 'block';
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeTravelImagePreview() {
+  const preview = document.getElementById('travel-image-preview');
+  const imageUrlInput = document.getElementById('travel-image-url');
+  const imageFileInput = document.getElementById('travel-image-file');
+  
+  preview.style.display = 'none';
+  preview.innerHTML = '';
+  imageUrlInput.value = '';
+  imageFileInput.value = '';
+}
+
+function handleTravelSubmit(e) {
+  e.preventDefault();
+  
+  const title = document.getElementById('travel-title').value.trim();
+  const city = document.getElementById('travel-city').value;
+  const image = document.getElementById('travel-image-url').value.trim();
+  const days = parseInt(document.getElementById('travel-days').value) || 0;
+  const route = document.getElementById('travel-route').value.trim();
+  const desc = document.getElementById('travel-desc').value.trim();
+  const tips = document.getElementById('travel-tips').value.trim();
+  
+  if (!title || !route) {
+    showToast('请填写攻略标题和导航路线', 'warning');
+    return;
+  }
+  
+  const submitBtn = document.getElementById('travel-submit');
+  const editId = submitBtn.dataset.editId;
+  
+  const guides = getTravelGuides();
+  
+  if (editId) {
+    const index = guides.findIndex(g => g.id == editId);
+    if (index !== -1) {
+      guides[index] = {
+        ...guides[index],
+        title: title,
+        city: city,
+        image: image,
+        days: days,
+        route: route,
+        desc: desc,
+        tips: tips,
+        updatedAt: Date.now()
+      };
+      saveTravelGuides(guides);
+      showToast('✓ 攻略修改成功', 'success');
+    }
+    
+    submitBtn.textContent = '添加攻略';
+    delete submitBtn.dataset.editId;
+    
+    renderTravelGuides();
+    
+    setTimeout(() => {
+      const card = document.getElementById('travel-card-' + editId);
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 100);
+    return;
+  } else {
+    const newGuide = {
+      id: Date.now(),
+      title: title,
+      city: city,
+      image: image,
+      days: days,
+      route: route,
+      desc: desc,
+      tips: tips,
+      createdAt: Date.now()
+    };
+    
+    guides.unshift(newGuide);
+    saveTravelGuides(guides);
+    showToast('✓ 攻略添加成功', 'success');
+  }
+  
+  document.getElementById('travel-title').value = '';
+  document.getElementById('travel-city').value = 'beijing';
+  document.getElementById('travel-days').value = '';
+  document.getElementById('travel-route').value = '';
+  document.getElementById('travel-desc').value = '';
+  document.getElementById('travel-tips').value = '';
+  removeTravelImagePreview();
+  
+  renderTravelGuides();
+}
+
+function deleteTravelGuide(id) {
+  if (!confirm('确定要删除这条攻略吗？')) {
+    return;
+  }
+  
+  const guides = getTravelGuides();
+  const updated = guides.filter(g => g.id !== id);
+  saveTravelGuides(updated);
+  
+  renderTravelGuides();
+  showToast('✓ 攻略已删除', 'success');
+}
+
+function saveTravelGuideAsImage(id) {
+  const guides = getTravelGuides();
+  const guide = guides.find(g => g.id === id);
+  if (!guide) {
+    showToast('未找到攻略', 'error');
+    return;
+  }
+  
+  showToast('正在生成图片，请稍候...', 'info');
+  
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  
+  const padding = 40;
+  const lineHeight = 32;
+  const titleFontSize = 28;
+  const subtitleFontSize = 16;
+  const contentFontSize = 15;
+  const routeFontSize = 14;
+  const maxTextWidth = canvas.width - padding * 2;
+  
+  let imageHeight = 0;
+  let imageLoaded = false;
+  
+  const loadImage = () => {
+    if (!guide.image) {
+      imageLoaded = true;
+      generateCanvas();
+      return;
+    }
+    
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      imageHeight = Math.min(300, img.height * (600 / img.width));
+      imageLoaded = true;
+      generateCanvas();
+    };
+    img.onerror = () => {
+      imageLoaded = true;
+      generateCanvas();
+    };
+    img.src = guide.image;
+  };
+  
+  const calculateLines = (text, fontSize) => {
+    ctx.font = `${fontSize}px 'Microsoft YaHei', sans-serif`;
+    const words = text.split('');
+    let lines = 1;
+    let currentLine = '';
+    const maxWidth = 600;
+    
+    for (let n = 0; n < words.length; n++) {
+      const testLine = currentLine + words[n];
+      const testWidth = ctx.measureText(testLine).width;
+      if (testWidth > maxWidth && n > 0) {
+        lines++;
+        currentLine = words[n];
+      } else {
+        currentLine = testLine;
+      }
+    }
+    return lines;
+  };
+  
+  const generateCanvas = () => {
+    let contentHeight = padding * 2;
+    
+    contentHeight += titleFontSize + 20;
+    
+    contentHeight += lineHeight + 10;
+    
+    contentHeight += lineHeight * 2 + 20;
+    
+    if (guide.image) {
+      contentHeight += imageHeight + 20;
+    }
+    
+    contentHeight += lineHeight + 15;
+    
+    const routeLines = guide.route.split('\n').length;
+    contentHeight += routeLines * lineHeight + 20;
+    
+    if (guide.desc) {
+      const descLines = calculateLines(guide.desc, contentFontSize);
+      contentHeight += lineHeight + 15 + descLines * lineHeight + 20;
+    }
+    
+    if (guide.tips) {
+      contentHeight += lineHeight + 15;
+      const tipsLines = guide.tips.split('\n').length;
+      contentHeight += tipsLines * lineHeight + 20;
+    }
+    
+    contentHeight += 60;
+    
+    canvas.width = 680;
+    canvas.height = Math.max(600, contentHeight);
+    
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.fillStyle = '#f0f4f8';
+    ctx.fillRect(0, 0, canvas.width, 100);
+    
+    ctx.fillStyle = '#3B82F6';
+    ctx.font = `bold ${titleFontSize}px 'Microsoft YaHei', sans-serif`;
+    ctx.fillText(guide.title, padding, padding + titleFontSize - 18);
+    
+    ctx.fillStyle = '#64748b';
+    ctx.font = `${subtitleFontSize}px 'Microsoft YaHei', sans-serif`;
+    let tagX = padding;
+    ctx.fillText(`📍 ${travelCityNames[guide.city]}`, tagX, padding + titleFontSize + 8);
+    tagX += ctx.measureText(`📍 ${travelCityNames[guide.city]}`).width + 20;
+    if (guide.days) {
+      ctx.fillText(`📅 ${guide.days}天`, tagX, padding + titleFontSize + 8);
+    }
+    
+    let currentY = padding + titleFontSize + lineHeight * 2 + 20;
+    
+    if (guide.image && imageHeight > 0) {
+      ctx.fillStyle = '#e2e8f0';
+      ctx.fillRect(padding, currentY, canvas.width - padding * 2, imageHeight);
+      
+      try {
+        const img = new Image();
+        img.src = guide.image;
+        const drawImg = () => {
+          const imgWidth = canvas.width - padding * 2;
+          const imgHeight = imageHeight;
+          ctx.drawImage(img, padding, currentY, imgWidth, imgHeight);
+          currentY += imageHeight + 20;
+          drawContent();
+        };
+        if (img.complete) {
+          drawImg();
+        } else {
+          img.onload = drawImg;
+          img.onerror = drawContent;
+        }
+      } catch (e) {
+        currentY += imageHeight + 20;
+        drawContent();
+      }
+      return;
+    }
+    
+    drawContent();
+    
+    function drawContent() {
+      ctx.fillStyle = '#3B82F6';
+      ctx.font = `bold ${contentFontSize}px 'Microsoft YaHei', sans-serif`;
+      ctx.fillText('🗺️ 导航路线', padding, currentY);
+      currentY += lineHeight;
+      
+      ctx.fillStyle = '#1e293b';
+      ctx.font = `${routeFontSize}px 'Microsoft YaHei', sans-serif`;
+      guide.route.split('\n').forEach(line => {
+        ctx.fillText(line.trim(), padding, currentY);
+        currentY += lineHeight;
+      });
+      currentY += 10;
+      
+      if (guide.desc) {
+        ctx.fillStyle = '#3B82F6';
+        ctx.font = `bold ${contentFontSize}px 'Microsoft YaHei', sans-serif`;
+        ctx.fillText('📝 详细攻略', padding, currentY);
+        currentY += lineHeight;
+        
+        ctx.fillStyle = '#475569';
+        ctx.font = `${contentFontSize}px 'Microsoft YaHei', sans-serif`;
+        const descLines = wrapText(ctx, guide.desc, padding, currentY, 600, lineHeight);
+        currentY += descLines * lineHeight + 20;
+      }
+      
+      if (guide.tips) {
+        ctx.fillStyle = '#FBBF24';
+        ctx.font = `bold ${contentFontSize}px 'Microsoft YaHei', sans-serif`;
+        ctx.fillText('💡 注意事项', padding, currentY);
+        currentY += lineHeight;
+        
+        ctx.fillStyle = '#475569';
+        ctx.font = `${contentFontSize}px 'Microsoft YaHei', sans-serif`;
+        guide.tips.split('\n').forEach(line => {
+          ctx.fillText(line.trim(), padding, currentY);
+          currentY += lineHeight;
+        });
+      }
+      
+      ctx.fillStyle = '#1E40AF';
+      ctx.font = 'bold 20px "Microsoft YaHei", sans-serif';
+      ctx.shadowColor = 'rgba(30, 64, 175, 0.4)';
+      ctx.shadowBlur = 15;
+      ctx.shadowOffsetX = 3;
+      ctx.shadowOffsetY = 3;
+      const watermarkText = '世界很大，你值得出去看看';
+      ctx.fillText(watermarkText, canvas.width / 2 - ctx.measureText(watermarkText).width / 2, canvas.height - 35);
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+      
+      const link = document.createElement('a');
+      link.download = `${guide.title}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      
+      showToast('✓ 攻略图片已保存', 'success');
+    }
+  };
+  
+  loadImage();
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = text.split('');
+  let line = '';
+  let lines = 1;
+  
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n];
+    const metrics = ctx.measureText(testLine);
+    const testWidth = metrics.width;
+    if (testWidth > maxWidth && n > 0) {
+      ctx.fillText(line, x, y);
+      line = words[n];
+      y += lineHeight;
+      lines++;
+    } else {
+      line = testLine;
+    }
+  }
+  ctx.fillText(line, x, y);
+  return lines;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderTravelGuides();
+});

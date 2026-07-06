@@ -125,46 +125,26 @@
           </div>
         </div>
         
-        <!-- Tech Stack 技能标签 -->
-        <h2 class="section-title">Tech Stack</h2>
-        <div class="card mb-8">
-          <div class="tech-stack-list">
-            <span class="tech-tag js">
-              <i class="fab fa-js"></i> JavaScript
-            </span>
-            <span class="tech-tag ts">
-              <i class="fab fa-typescript"></i> TypeScript
-            </span>
-            <span class="tech-tag py">
-              <i class="fab fa-python"></i> Python
-            </span>
-            <span class="tech-tag go">
-              <i class="fab fa-golang"></i> Go
-            </span>
-            <span class="tech-tag vue">
-              <i class="fab fa-vuejs"></i> Vue.js
-            </span>
-            <span class="tech-tag react">
-              <i class="fab fa-react"></i> React
-            </span>
-            <span class="tech-tag node">
-              <i class="fab fa-node-js"></i> Node.js
-            </span>
-            <span class="tech-tag docker">
-              <i class="fab fa-docker"></i> Docker
-            </span>
-            <span class="tech-tag k8s">
-              <i class="fab fa-kubernetes"></i> Kubernetes
-            </span>
-            <span class="tech-tag git">
-              <i class="fab fa-git"></i> Git
-            </span>
-            <span class="tech-tag aws">
-              <i class="fab fa-aws"></i> AWS
-            </span>
-            <span class="tech-tag linux">
-              <i class="fab fa-linux"></i> Linux
-            </span>
+        <!-- Tech Stack 驼峰波浪布局 -->
+        <h2 class="section-title"><i class="fas fa-cpu"></i> Tech Stack</h2>
+        <div class="tech-stack-container">
+          <div class="tech-stack-row">
+            <div class="tech-stack-node js"><i class="fab fa-js"></i><span>JS</span></div>
+            <div class="tech-stack-node ts"><i class="fab fa-typescript"></i><span>TS</span></div>
+            <div class="tech-stack-node vue"><i class="fab fa-vuejs"></i><span>Vue</span></div>
+            <div class="tech-stack-node react"><i class="fab fa-react"></i><span>React</span></div>
+          </div>
+          <div class="tech-stack-row">
+            <div class="tech-stack-node node"><i class="fab fa-node-js"></i><span>Node</span></div>
+            <div class="tech-stack-node py"><i class="fab fa-python"></i><span>Py</span></div>
+            <div class="tech-stack-node go"><i class="fab fa-golang"></i><span>Go</span></div>
+          </div>
+          <div class="tech-stack-row">
+            <div class="tech-stack-node docker"><i class="fab fa-docker"></i><span>Docker</span></div>
+            <div class="tech-stack-node k8s"><i class="fab fa-kubernetes"></i><span>K8s</span></div>
+            <div class="tech-stack-node aws"><i class="fab fa-aws"></i><span>AWS</span></div>
+            <div class="tech-stack-node linux"><i class="fab fa-linux"></i><span>Linux</span></div>
+            <div class="tech-stack-node git"><i class="fab fa-git"></i><span>Git</span></div>
           </div>
         </div>
         
@@ -296,12 +276,26 @@
               发现好物 <i class="fas fa-arrow-right"></i>
             </span>
           </div>
+          
+          <!-- 旅游攻略 -->
+          <div class="bento-card blue" onclick="showSection('travel')">
+            <div class="bento-card-icon blue">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <div class="bento-card-title">旅游攻略</div>
+            <div class="bento-card-desc">
+              按城市分类的旅行攻略与导航路线规划。
+            </div>
+            <span class="bento-card-link">
+              探索世界 <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
         </div>
       </section>
 
       <!-- ========== Toolbox 工具箱模块 ========== -->
       <section id="toolbox" class="section" style="display: none;">
-        <h2 class="section-title">工具箱</h2>
+        <h2 class="section-title"><i class="fas fa-toolbox"></i> 工具箱</h2>
         
         <div style="display: flex; gap: 20px;">
           <!-- 工具导航 -->
@@ -605,7 +599,7 @@
 
       <!-- ========== Projects 项目模块 ========== -->
       <section id="projects" class="section" style="display: none;">
-        <h2 class="section-title">项目展示</h2>
+        <h2 class="section-title"><i class="fas fa-folder-open"></i> 项目展示</h2>
         <div class="card mb-6">
           <div class="card-title">📁 项目列表</div>
           <div class="card-description">
@@ -619,7 +613,7 @@
 
       <!-- ========== Blog 博客模块 ========== -->
       <section id="blog" class="section" style="display: none;">
-        <h2 class="section-title">技术博客</h2>
+        <h2 class="section-title"><i class="fas fa-blog"></i> 技术博客</h2>
         <div class="card mb-6">
           <div class="card-title">📚 文章列表</div>
           <div class="card-description">
@@ -633,7 +627,7 @@
 
       <!-- ========== Quotes 名人语录模块 ========== -->
       <section id="quotes" class="section" style="display: none;">
-        <h2 class="section-title">名人语录</h2>
+        <h2 class="section-title"><i class="fas fa-quote-left"></i> 名人语录</h2>
         <p class="section-subtitle">收藏名人智慧，感悟人生哲理</p>
         
         <div class="quotes-author-tabs" id="quotes-author-tabs">
@@ -678,7 +672,7 @@
 
       <!-- ========== Contact 联系模块 ========== -->
       <section id="contact" class="section" style="display: none;">
-        <h2 class="section-title">联系我</h2>
+        <h2 class="section-title"><i class="fas fa-envelope"></i> 联系我</h2>
         <p class="section-subtitle">欢迎通过以下方式联系我</p>
         
         <div class="contact-grid">
@@ -749,7 +743,7 @@
 
       <!-- ========== Snippets 代码片段模块 (预留) ========== -->
       <section id="snippets" class="section" style="display: none;">
-        <h2 class="section-title">代码片段</h2>
+        <h2 class="section-title"><i class="fas fa-code"></i> 代码片段</h2>
         <div class="card">
           <div class="card-title">🔧 代码片段库</div>
           <div class="card-description">
@@ -760,7 +754,7 @@
 
       <!-- ========== Resources 学习资源模块 (预留) ========== -->
       <section id="resources" class="section" style="display: none;">
-        <h2 class="section-title">学习资源</h2>
+        <h2 class="section-title"><i class="fas fa-book-open"></i> 学习资源</h2>
         <div class="card">
           <div class="card-title">📚 学习资源</div>
           <div class="card-description">
@@ -771,7 +765,7 @@
       
       <!-- ========== Notes 文案记事本模块 ========== -->
       <section id="notes" class="section" style="display: none;">
-        <h2 class="section-title">文案记事本</h2>
+        <h2 class="section-title"><i class="fas fa-pen-fancy"></i> 文案记事本</h2>
         <p class="section-subtitle">收藏那些触动人心的句子与文案</p>
         
         <!-- 添加文案区域 -->
@@ -808,7 +802,7 @@
       
       <!-- ========== Materials 素材库模块 (预留) ========== -->
       <section id="materials" class="section" style="display: none;">
-        <h2 class="section-title">素材库</h2>
+        <h2 class="section-title"><i class="fas fa-images"></i> 素材库</h2>
         <p class="section-subtitle">精选设计素材与资源集合</p>
         <div class="card">
           <div class="card-title">🎨 素材库</div>
@@ -820,7 +814,7 @@
       
       <!-- ========== Recommendations 好物推荐模块 ========== -->
       <section id="recommendations" class="section" style="display: none;">
-        <h2 class="section-title">好物推荐</h2>
+        <h2 class="section-title"><i class="fas fa-star"></i> 好物推荐</h2>
         <p class="section-subtitle">精心挑选的优质好物与实用工具推荐</p>
         
         <div class="recommendations-grid" id="recommendations-list">
@@ -846,6 +840,17 @@
               </select>
             </div>
             <div class="form-group">
+              <label for="rec-image">图片（可选）</label>
+              <div style="display: flex; gap: 12px;">
+                <input type="text" id="rec-image-url" class="form-input" placeholder="图片URL地址">
+                <label for="rec-image-file" class="btn btn-outline" style="padding: 10px 20px; cursor: pointer;">
+                  <i class="fas fa-upload"></i> 上传图片
+                </label>
+                <input type="file" id="rec-image-file" class="form-input" accept="image/*" style="display: none;" onchange="handleImageUpload(this)">
+              </div>
+              <div id="rec-image-preview" class="rec-image-preview" style="display: none; margin-top: 12px;"></div>
+            </div>
+            <div class="form-group">
               <label for="rec-url">链接（可选）</label>
               <input type="url" id="rec-url" class="form-input" placeholder="产品链接">
             </div>
@@ -857,6 +862,94 @@
               <i class="fas fa-plus"></i> 添加推荐
             </button>
           </form>
+        </div>
+      </section>
+      
+      <!-- ========== Travel 旅游攻略模块 ========== -->
+      <section id="travel" class="section" style="display: none;">
+        <h2 class="section-title"><i class="fas fa-plane"></i> 旅游攻略</h2>
+        <p class="section-subtitle">按城市分类的旅行攻略与导航路线规划</p>
+        
+        <div class="travel-city-tabs">
+          <button class="travel-city-tab active" onclick="switchTravelCity('all')">
+            <i class="fas fa-globe"></i> 全部城市
+          </button>
+          <button class="travel-city-tab" onclick="switchTravelCity('beijing')">
+            <i class="fas fa-map-marker-alt"></i> 北京
+          </button>
+          <button class="travel-city-tab" onclick="switchTravelCity('shanghai')">
+            <i class="fas fa-map-marker-alt"></i> 上海
+          </button>
+          <button class="travel-city-tab" onclick="switchTravelCity('chengdu')">
+            <i class="fas fa-map-marker-alt"></i> 成都
+          </button>
+          <button class="travel-city-tab" onclick="switchTravelCity('hangzhou')">
+            <i class="fas fa-map-marker-alt"></i> 杭州
+          </button>
+          <button class="travel-city-tab" onclick="switchTravelCity('other')">
+            <i class="fas fa-map-marker-alt"></i> 其他
+          </button>
+        </div>
+        
+        <div id="travel-list" class="travel-list">
+        </div>
+        
+        <div class="card mt-8">
+          <div class="travel-add-toggle" onclick="toggleTravelAddForm()">
+            <div>
+              <div class="card-title">📝 添加攻略</div>
+              <div class="card-description">分享你的旅行攻略与路线规划</div>
+            </div>
+            <i class="fas fa-chevron-down travel-add-toggle-icon" id="travel-add-toggle-icon"></i>
+          </div>
+          <div class="travel-add-form" id="travel-add-form">
+            <form class="travel-form" onsubmit="handleTravelSubmit(event)">
+              <div class="form-group">
+                <label for="travel-title">攻略标题</label>
+                <input type="text" id="travel-title" class="form-input" placeholder="如：北京三日游详细攻略" required>
+              </div>
+              <div class="form-group">
+                <label for="travel-city">目的地城市</label>
+                <select id="travel-city" class="form-input">
+                  <option value="beijing">北京</option>
+                  <option value="shanghai">上海</option>
+                  <option value="chengdu">成都</option>
+                  <option value="hangzhou">杭州</option>
+                  <option value="other">其他</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="travel-image">封面图片（可选）</label>
+                <div style="display: flex; gap: 12px;">
+                  <input type="text" id="travel-image-url" class="form-input" placeholder="图片URL地址">
+                  <label for="travel-image-file" class="btn btn-outline" style="padding: 10px 20px; cursor: pointer;">
+                    <i class="fas fa-upload"></i> 上传图片
+                  </label>
+                  <input type="file" id="travel-image-file" class="form-input" accept="image/*" style="display: none;" onchange="handleTravelImageUpload(this)">
+                </div>
+                <div id="travel-image-preview" class="travel-image-preview" style="display: none; margin-top: 12px;"></div>
+              </div>
+              <div class="form-group">
+                <label for="travel-days">游玩天数</label>
+                <input type="number" id="travel-days" class="form-input" placeholder="游玩天数" min="1" max="30">
+              </div>
+              <div class="form-group">
+                <label for="travel-route">导航路线（核心）</label>
+                <textarea id="travel-route" class="form-textarea" placeholder="按天规划路线，如：&#10;Day1: 天安门 → 故宫 → 景山公园&#10;Day2: 颐和园 → 圆明园&#10;Day3: 八达岭长城" rows="4" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="travel-desc">详细攻略</label>
+                <textarea id="travel-desc" class="form-textarea" placeholder="景点介绍、美食推荐、住宿建议等..." rows="5"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="travel-tips">注意事项</label>
+                <textarea id="travel-tips" class="form-textarea" placeholder="出行提示、避坑指南等..." rows="2"></textarea>
+              </div>
+              <button type="submit" id="travel-submit" class="btn btn-primary mt-4">
+                <i class="fas fa-plus"></i> 添加攻略
+              </button>
+            </form>
+          </div>
         </div>
       </section>
       

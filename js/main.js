@@ -304,6 +304,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 初始化文案笔记
   initNotes();
   
+  // 初始化好物推荐
+  initRecommendations();
+  
   // 绑定主题切换按钮
   const themeToggle = document.getElementById('themeToggle');
   if (themeToggle) {
@@ -762,6 +765,167 @@ function renderNotes() {
       `).join('');
     }
   }
+}
+
+/**
+ * ==================== 好物推荐模块 ====================
+ */
+
+const RECOMMENDATIONS_STORAGE_KEY = 'devhub_recommendations';
+
+const categoryIcons = {
+  tech: 'fas fa-mobile-alt',
+  book: 'fas fa-book',
+  life: 'fas fa-home',
+  tool: 'fas fa-wrench',
+  other: 'fas fa-star'
+};
+
+const categoryNames = {
+  tech: '数码科技',
+  book: '书籍阅读',
+  life: '生活家居',
+  tool: '效率工具',
+  other: '其他'
+};
+
+function getRecommendations() {
+  const stored = localStorage.getItem(RECOMMENDATIONS_STORAGE_KEY);
+  if (stored) {
+    return JSON.parse(stored);
+  }
+  return [
+    {
+      id: Date.now() - 3600000 * 24,
+      title: 'VS Code',
+      category: 'tool',
+      url: 'https://code.visualstudio.com',
+      desc: '微软出品的强大代码编辑器，插件生态丰富，支持几乎所有编程语言。',
+      createdAt: Date.now() - 3600000 * 24
+    },
+    {
+      id: Date.now() - 3600000 * 12,
+      title: 'Notion',
+      category: 'tool',
+      url: 'https://www.notion.so',
+      desc: '一站式工作空间，集笔记、任务管理、数据库于一体，非常适合个人和团队使用。',
+      createdAt: Date.now() - 3600000 * 12
+    },
+    {
+      id: Date.now() - 3600000 * 6,
+      title: '《史蒂夫·乔布斯传》',
+      category: 'book',
+      url: 'https://book.douban.com/subject/6566747/',
+      desc: '沃尔特·艾萨克森撰写的乔布斯官方传记，深入了解苹果创始人的传奇人生。',
+      createdAt: Date.now() - 3600000 * 6
+    },
+    {
+      id: Date.now() - 3600000 * 2,
+      title: 'AirPods Pro',
+      category: 'tech',
+      url: 'https://www.apple.com/airpods-pro/',
+      desc: '苹果的旗舰降噪耳机，主动降噪效果出色，佩戴舒适，适合日常通勤。',
+      createdAt: Date.now() - 3600000 * 2
+    },
+    {
+      id: Date.now(),
+      title: '小米台灯',
+      category: 'life',
+      url: 'https://www.mi.com/xiaomi-lamp',
+      desc: '简约设计，护眼模式，亮度可调节，是工作学习的好伴侣。',
+      createdAt: Date.now()
+    }
+  ];
+}
+
+function saveRecommendations(recommendations) {
+  localStorage.setItem(RECOMMENDATIONS_STORAGE_KEY, JSON.stringify(recommendations));
+}
+
+function initRecommendations() {
+  renderRecommendations();
+}
+
+function handleRecommendationSubmit(e) {
+  e.preventDefault();
+  
+  const title = document.getElementById('rec-title').value.trim();
+  const category = document.getElementById('rec-category').value;
+  const url = document.getElementById('rec-url').value.trim();
+  const desc = document.getElementById('rec-desc').value.trim();
+  
+  if (!title || !desc) {
+    showToast('请填写名称和推荐理由', 'warning');
+    return;
+  }
+  
+  const recommendations = getRecommendations();
+  const newRec = {
+    id: Date.now(),
+    title: title,
+    category: category,
+    url: url,
+    desc: desc,
+    createdAt: Date.now()
+  };
+  
+  recommendations.unshift(newRec);
+  saveRecommendations(recommendations);
+  
+  document.getElementById('rec-title').value = '';
+  document.getElementById('rec-category').value = 'tech';
+  document.getElementById('rec-url').value = '';
+  document.getElementById('rec-desc').value = '';
+  
+  renderRecommendations();
+  showToast('✓ 好物推荐已添加', 'success');
+}
+
+function deleteRecommendation(recId) {
+  const recommendations = getRecommendations();
+  const updated = recommendations.filter(r => r.id !== recId);
+  saveRecommendations(updated);
+  renderRecommendations();
+  showToast('✓ 已删除', 'success');
+}
+
+function renderRecommendations() {
+  const recommendations = getRecommendations();
+  const container = document.getElementById('recommendations-list');
+  
+  if (!container) return;
+  
+  if (recommendations.length === 0) {
+    container.innerHTML = `
+      <div class="card" style="text-align: center; padding: 40px;">
+        <div style="font-size: 48px; margin-bottom: 16px;">✨</div>
+        <div class="card-title">还没有推荐好物</div>
+        <div class="card-description">添加你觉得好用的产品或工具，分享给大家</div>
+      </div>
+    `;
+    return;
+  }
+  
+  const sorted = [...recommendations].sort((a, b) => b.createdAt - a.createdAt);
+  
+  container.innerHTML = sorted.map(rec => `
+    <div class="recommendation-card">
+      <div class="recommendation-header">
+        <div class="recommendation-icon ${rec.category}">
+          <i class="${categoryIcons[rec.category]}"></i>
+        </div>
+        <div class="recommendation-title">${rec.title}</div>
+        <span class="recommendation-category">${categoryNames[rec.category]}</span>
+      </div>
+      <div class="recommendation-desc">${rec.desc}</div>
+      ${rec.url ? `<a href="${rec.url}" target="_blank" class="recommendation-url"><i class="fas fa-external-link-alt"></i> 查看详情</a>` : ''}
+      <div class="recommendation-actions">
+        <button class="recommendation-delete-btn" onclick="deleteRecommendation(${rec.id})">
+          <i class="fas fa-trash"></i> 删除
+        </button>
+      </div>
+    </div>
+  `).join('');
 }
 
 /**

@@ -282,6 +282,20 @@
               浏览素材 <i class="fas fa-arrow-right"></i>
             </span>
           </div>
+          
+          <!-- 好物推荐 -->
+          <div class="bento-card purple" onclick="showSection('recommendations')">
+            <div class="bento-card-icon purple">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="bento-card-title">好物推荐</div>
+            <div class="bento-card-desc">
+              精心挑选的优质好物与实用工具推荐。
+            </div>
+            <span class="bento-card-link">
+              发现好物 <i class="fas fa-arrow-right"></i>
+            </span>
+          </div>
         </div>
       </section>
 
@@ -801,6 +815,48 @@
           <div class="card-description">
             此模块预留，用于展示精选设计素材与资源。
           </div>
+        </div>
+      </section>
+      
+      <!-- ========== Recommendations 好物推荐模块 ========== -->
+      <section id="recommendations" class="section" style="display: none;">
+        <h2 class="section-title">好物推荐</h2>
+        <p class="section-subtitle">精心挑选的优质好物与实用工具推荐</p>
+        
+        <div class="recommendations-grid" id="recommendations-list">
+          <!-- 推荐卡片将动态生成 -->
+        </div>
+        
+        <div class="card mt-8">
+          <div class="card-title">📝 添加推荐</div>
+          <div class="card-description">分享你觉得好用的产品或工具</div>
+          <form class="recommendation-form" onsubmit="handleRecommendationSubmit(event)">
+            <div class="form-group">
+              <label for="rec-title">名称</label>
+              <input type="text" id="rec-title" class="form-input" placeholder="好物名称" required>
+            </div>
+            <div class="form-group">
+              <label for="rec-category">分类</label>
+              <select id="rec-category" class="form-input">
+                <option value="tech">数码科技</option>
+                <option value="book">书籍阅读</option>
+                <option value="life">生活家居</option>
+                <option value="tool">效率工具</option>
+                <option value="other">其他</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="rec-url">链接（可选）</label>
+              <input type="url" id="rec-url" class="form-input" placeholder="产品链接">
+            </div>
+            <div class="form-group">
+              <label for="rec-desc">推荐理由</label>
+              <textarea id="rec-desc" class="form-textarea" placeholder="说说你为什么推荐它..." rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4">
+              <i class="fas fa-plus"></i> 添加推荐
+            </button>
+          </form>
         </div>
       </section>
       

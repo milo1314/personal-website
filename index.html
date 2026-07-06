@@ -6,10 +6,11 @@
   <title>MiloLab - Milo's Portfolio</title>
   
   <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@6.4.0/css/all.min.css" integrity="sha384-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB4" crossorigin="anonymous">
   
   <!-- 全局样式 -->
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
   <!-- 导航栏 -->
@@ -293,6 +294,102 @@
             <span class="bento-card-link">
               探索世界 <i class="fas fa-arrow-right"></i>
             </span>
+          </div>
+        </div>
+
+        <!-- Style2 档案索引 + 大图网格布局 -->
+        <div class="style2-home" style="display: none;">
+          <!-- 档案索引导航 -->
+          <div class="archive-index">
+            <div class="archive-index-header">
+              <h2>Archive</h2>
+              <div class="archive-index-nav">
+                <button class="archive-nav-item active" data-filter="all">All</button>
+                <button class="archive-nav-item" data-filter="tools">Tools</button>
+                <button class="archive-nav-item" data-filter="projects">Projects</button>
+                <button class="archive-nav-item" data-filter="blog">Blog</button>
+                <button class="archive-nav-item" data-filter="quotes">Quotes</button>
+                <button class="archive-nav-item" data-filter="notes">Notes</button>
+                <button class="archive-nav-item" data-filter="travel">Travel</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 大图网格 -->
+          <div class="image-grid">
+            <!-- 工具箱 -->
+            <div class="image-grid-item large" onclick="showSection('toolbox')">
+              <div class="image-grid-bg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+              <div class="image-grid-content">
+                <div class="image-grid-icon"><i class="fas fa-wrench"></i></div>
+                <div class="image-grid-title">工具箱</div>
+                <div class="image-grid-desc">实用工具集合</div>
+              </div>
+            </div>
+            
+            <!-- 项目展示 -->
+            <div class="image-grid-item" onclick="showSection('projects')">
+              <div class="image-grid-bg" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);"></div>
+              <div class="image-grid-content">
+                <div class="image-grid-icon"><i class="fas fa-project-diagram"></i></div>
+                <div class="image-grid-title">项目</div>
+              </div>
+            </div>
+            
+            <!-- 技术博客 -->
+            <div class="image-grid-item" onclick="showSection('blog')">
+              <div class="image-grid-bg" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+              <div class="image-grid-content">
+                <div class="image-grid-icon"><i class="fas fa-book"></i></div>
+                <div class="image-grid-title">博客</div>
+              </div>
+            </div>
+            
+            <!-- 名人语录 -->
+            <div class="image-grid-item wide" onclick="showSection('quotes')">
+              <div class="image-grid-bg" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+              <div class="image-grid-content">
+                <div class="image-grid-icon"><i class="fas fa-quote-right"></i></div>
+                <div class="image-grid-title">名人语录</div>
+                <div class="image-grid-desc">收藏名人智慧</div>
+              </div>
+            </div>
+            
+            <!-- 文案记事本 -->
+            <div class="image-grid-item" onclick="showSection('notes')">
+              <div class="image-grid-bg" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+              <div class="image-grid-content">
+                <div class="image-grid-icon"><i class="fas fa-pen-fancy"></i></div>
+                <div class="image-grid-title">记事本</div>
+              </div>
+            </div>
+            
+            <!-- 旅游攻略 -->
+            <div class="image-grid-item" onclick="showSection('travel')">
+              <div class="image-grid-bg" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+              <div class="image-grid-content">
+                <div class="image-grid-icon"><i class="fas fa-map-marked-alt"></i></div>
+                <div class="image-grid-title">旅游</div>
+              </div>
+            </div>
+            
+            <!-- 好物推荐 -->
+            <div class="image-grid-item" onclick="showSection('recommendations')">
+              <div class="image-grid-bg" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);"></div>
+              <div class="image-grid-content">
+                <div class="image-grid-icon"><i class="fas fa-star"></i></div>
+                <div class="image-grid-title">推荐</div>
+              </div>
+            </div>
+            
+            <!-- 代码片段 -->
+            <div class="image-grid-item" onclick="showSection('snippets')">
+              <div class="image-grid-bg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+              <div class="image-grid-content">
+                <div class="image-grid-icon"><i class="fas fa-code"></i></div>
+                <div class="image-grid-title">代码</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -975,15 +1072,13 @@
   </footer>
 
   <!-- 主脚本 -->
-  <script src="/js/main.js"></script>
-  
-  <!-- 工具脚本 -->
-  <script src="/js/tools/json2yaml.js"></script>
-  <script src="/js/tools/base64.js"></script>
-  <script src="/js/tools/token.js"></script>
-  <script src="/js/tools/hash.js"></script>
-  <script src="/js/tools/uuid.js"></script>
-  <script src="/js/tools/time.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/tools/json2yaml.js"></script>
+  <script src="./js/tools/base64.js"></script>
+  <script src="./js/tools/token.js"></script>
+  <script src="./js/tools/hash.js"></script>
+  <script src="./js/tools/uuid.js"></script>
+  <script src="./js/tools/time.js"></script>
   
   <!-- 新增名人弹窗 -->
   <div id="add-author-modal" class="modal" style="display: none;">

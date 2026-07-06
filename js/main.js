@@ -233,13 +233,42 @@ function toggleStyle() {
     html.setAttribute('data-style', 'style2');
     localStorage.setItem('style', 'style2');
     styleToggle.innerHTML = '<i class="fas fa-home"></i>';
-    showToast('已切换到新风格', 'info');
+    showToast('已切换到档案索引风格', 'info');
   } else {
     currentStyle = 'style1';
     html.removeAttribute('data-style');
     localStorage.setItem('style', 'style1');
     styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
     showToast('已切换到默认风格', 'info');
+  }
+  
+  if (currentSection === 'home') {
+    updateHomeLayout();
+  }
+}
+
+/**
+ * 更新首页布局显示
+ */
+function updateHomeLayout() {
+  const style2Home = document.querySelector('.style2-home');
+  const heroCard = document.querySelector('.hero-card');
+  const techStack = document.querySelector('.tech-stack-container');
+  const bentoGrid = document.querySelector('.bento-grid');
+  const sectionTitles = document.querySelectorAll('.section-title');
+  
+  if (currentStyle === 'style2') {
+    if (style2Home) style2Home.style.display = 'block';
+    if (heroCard) heroCard.style.display = 'none';
+    if (techStack) techStack.style.display = 'none';
+    if (bentoGrid) bentoGrid.style.display = 'none';
+    sectionTitles.forEach(title => title.style.display = 'none');
+  } else {
+    if (style2Home) style2Home.style.display = 'none';
+    if (heroCard) heroCard.style.display = '';
+    if (techStack) techStack.style.display = '';
+    if (bentoGrid) bentoGrid.style.display = '';
+    sectionTitles.forEach(title => title.style.display = '');
   }
 }
 
@@ -260,6 +289,8 @@ function initStyle() {
     html.removeAttribute('data-style');
     styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
   }
+  
+  updateHomeLayout();
 }
 
 /**

@@ -424,7 +424,139 @@ document.addEventListener('DOMContentLoaded', () => {
   if (styleToggle) {
     styleToggle.addEventListener('click', toggleStyle);
   }
+  
+  // 初始化后端API测试
+  initApiTest();
 });
+
+/**
+ * 初始化后端API测试（演示调用后端接口）
+ */
+async function initApiTest() {
+  console.log('=== 后端API测试 ===');
+  
+  try {
+    const healthResult = await api.health();
+    console.log('API健康检查:', healthResult);
+    
+    if (healthResult.success) {
+      showToast('后端API连接成功！', 'success');
+      
+      await loadProjectsFromApi();
+      await loadBlogsFromApi();
+      await loadQuotesFromApi();
+      await loadSkillsFromApi();
+    } else {
+      showToast('后端API未启动，使用本地数据', 'info');
+    }
+  } catch (error) {
+    console.log('后端API未启动，使用本地数据');
+    showToast('后端API未启动，使用本地数据', 'info');
+  }
+}
+
+/**
+ * 从后端加载项目数据
+ */
+async function loadProjectsFromApi() {
+  try {
+    const result = await api.projects.getAll();
+    if (result.success && result.data && result.data.length > 0) {
+      console.log('从后端加载项目:', result.data.length, '个');
+      renderProjectsFromApi(result.data);
+    }
+  } catch (error) {
+    console.error('加载项目失败:', error);
+  }
+}
+
+/**
+ * 从后端加载博客数据
+ */
+async function loadBlogsFromApi() {
+  try {
+    const result = await api.blogs.getAll();
+    if (result.success && result.data && result.data.length > 0) {
+      console.log('从后端加载博客:', result.data.length, '篇');
+      renderBlogsFromApi(result.data);
+    }
+  } catch (error) {
+    console.error('加载博客失败:', error);
+  }
+}
+
+/**
+ * 从后端加载语录数据
+ */
+async function loadQuotesFromApi() {
+  try {
+    const result = await api.quotes.getAll();
+    if (result.success && result.data && result.data.length > 0) {
+      console.log('从后端加载语录:', result.data.length, '条');
+      renderQuotesFromApi(result.data);
+    }
+  } catch (error) {
+    console.error('加载语录失败:', error);
+  }
+}
+
+/**
+ * 从后端加载技能数据
+ */
+async function loadSkillsFromApi() {
+  try {
+    const result = await api.skills.getAll();
+    if (result.success && result.data && result.data.length > 0) {
+      console.log('从后端加载技能:', result.data.length, '个');
+      renderSkillsFromApi(result.data);
+    }
+  } catch (error) {
+    console.error('加载技能失败:', error);
+  }
+}
+
+/**
+ * 渲染后端项目数据（示例）
+ */
+function renderProjectsFromApi(projects) {
+  const projectSection = document.getElementById('projects');
+  if (!projectSection) return;
+  
+  const projectGrid = projectSection.querySelector('.project-grid');
+  if (!projectGrid) return;
+  
+  console.log('项目数据示例:', projects[0]);
+}
+
+/**
+ * 渲染后端博客数据（示例）
+ */
+function renderBlogsFromApi(blogs) {
+  const blogSection = document.getElementById('blog');
+  if (!blogSection) return;
+  
+  console.log('博客数据示例:', blogs[0]);
+}
+
+/**
+ * 渲染后端语录数据（示例）
+ */
+function renderQuotesFromApi(quotes) {
+  const quoteSection = document.getElementById('quotes');
+  if (!quoteSection) return;
+  
+  console.log('语录数据示例:', quotes[0]);
+}
+
+/**
+ * 渲染后端技能数据（示例）
+ */
+function renderSkillsFromApi(skills) {
+  const skillContainer = document.querySelector('.tech-stack-container');
+  if (!skillContainer) return;
+  
+  console.log('技能数据示例:', skills[0]);
+}
 
 /**
  * 初始化技能标签样式（浅色/暗色主题适配）

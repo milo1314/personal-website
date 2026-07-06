@@ -10,6 +10,11 @@
 let currentSection = 'home';
 
 /**
+ * 当前风格 (style1: 默认风格, style2: 新风格)
+ */
+let currentStyle = 'style1';
+
+/**
  * 显示指定模块
  * @param {string} sectionId - 模块ID（home/projects/blog/toolbox/contact/snippets/resources）
  */
@@ -217,6 +222,47 @@ function toggleTheme() {
 }
 
 /**
+ * 切换风格
+ */
+function toggleStyle() {
+  const html = document.documentElement;
+  const styleToggle = document.getElementById('styleToggle');
+  
+  if (currentStyle === 'style1') {
+    currentStyle = 'style2';
+    html.setAttribute('data-style', 'style2');
+    localStorage.setItem('style', 'style2');
+    styleToggle.innerHTML = '<i class="fas fa-home"></i>';
+    showToast('已切换到新风格', 'info');
+  } else {
+    currentStyle = 'style1';
+    html.removeAttribute('data-style');
+    localStorage.setItem('style', 'style1');
+    styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
+    showToast('已切换到默认风格', 'info');
+  }
+}
+
+/**
+ * 初始化风格
+ */
+function initStyle() {
+  const html = document.documentElement;
+  const savedStyle = localStorage.getItem('style');
+  const styleToggle = document.getElementById('styleToggle');
+  
+  if (savedStyle === 'style2') {
+    currentStyle = 'style2';
+    html.setAttribute('data-style', 'style2');
+    styleToggle.innerHTML = '<i class="fas fa-home"></i>';
+  } else {
+    currentStyle = 'style1';
+    html.removeAttribute('data-style');
+    styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
+  }
+}
+
+/**
  * 初始化主题
  */
 function initTheme() {
@@ -286,6 +332,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // 初始化主题
   initTheme();
   
+  // 初始化风格
+  initStyle();
+  
   // 初始化版权年份
   initCopyrightYear();
   
@@ -311,6 +360,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('themeToggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
+  }
+  
+  // 绑定风格切换按钮
+  const styleToggle = document.getElementById('styleToggle');
+  if (styleToggle) {
+    styleToggle.addEventListener('click', toggleStyle);
   }
 });
 

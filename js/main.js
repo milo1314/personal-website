@@ -314,31 +314,13 @@ function toggleStyle() {
       percentText.textContent = '100%';
       
       setTimeout(() => {
-        if (currentStyle === 'style1') {
-          currentStyle = 'style2';
-          html.setAttribute('data-style', 'style2');
-          localStorage.setItem('style', 'style2');
-          styleToggle.innerHTML = '<i class="fas fa-home"></i>';
+        const isStyle2Page = window.location.pathname.includes('style2.html');
+        
+        if (isStyle2Page) {
+          window.location.href = 'index.html';
         } else {
-          currentStyle = 'style1';
-          html.removeAttribute('data-style');
-          localStorage.setItem('style', 'style1');
-          styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
+          window.location.href = 'style2.html';
         }
-        
-        updateHomeLayout();
-        
-        setTimeout(() => {
-          mainContent.style.opacity = '1';
-          mainContent.style.transform = 'scale(1)';
-          overlay.classList.add('fade-out');
-          
-          setTimeout(() => {
-            document.body.removeChild(overlay);
-            styleToggle.disabled = false;
-            showToast(currentStyle === 'style2' ? '已切换到苹果风格' : '已切换到默认风格', 'info');
-          }, 500);
-        }, 200);
       }, 300);
     }
   };

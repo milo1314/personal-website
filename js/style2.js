@@ -9,12 +9,12 @@ function showSection(sectionId) {
   currentSection = sectionId;
   
   document.querySelectorAll('.section').forEach(section => {
-    section.style.display = 'none';
+    section.classList.remove('active');
   });
   
   const targetSection = document.getElementById(sectionId);
   if (targetSection) {
-    targetSection.style.display = 'block';
+    targetSection.classList.add('active');
   }
   
   document.querySelectorAll('.nav-item a').forEach(link => {

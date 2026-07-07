@@ -1456,6 +1456,7 @@ section {
   gap: 12px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .quotes-author-tab-wrapper {
@@ -1521,6 +1522,7 @@ section {
   gap: 8px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .quotes-book-tab {
@@ -1553,6 +1555,7 @@ section {
   gap: 8px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .quotes-theme-tag {
@@ -1714,9 +1717,10 @@ section {
 
 .quotes-toolbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 16px;
+  gap: 20px;
 }
 
 .quotes-toolbar-actions {

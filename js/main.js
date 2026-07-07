@@ -271,7 +271,8 @@ function toggleStyle() {
   
   if (!styleToggle || !mainContent) return;
   
-  styleToggle.disabled = true;
+  if (styleToggle.classList.contains('transitioning')) return;
+  styleToggle.classList.add('transitioning');
   
   const overlay = document.createElement('div');
   overlay.className = 'style-transition-overlay';
@@ -298,7 +299,7 @@ function toggleStyle() {
   const progressBar = overlay.querySelector('.style-transition-progress-bar');
   const percentText = overlay.querySelector('.style-transition-percent');
   let progress = 0;
-  const minDuration = 5000;
+  const minDuration = 3000;
   const startTime = Date.now();
   
   const animateProgress = () => {

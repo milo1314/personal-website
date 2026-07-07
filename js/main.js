@@ -43,8 +43,8 @@ function showSection(sectionId) {
   } else {
     // 离开首页时，临时切换到默认风格（不改变localStorage）
     if (currentStyle === 'style2') {
+      currentStyle = 'style1';
       document.documentElement.removeAttribute('data-style');
-      updateHomeLayout();
     }
   }
   

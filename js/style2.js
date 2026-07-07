@@ -217,11 +217,15 @@ function renderQuotes() {
     const color = colors[index % colors.length];
     return `
       <div class="quotes-card ${color}">
-        <div class="quotes-content">"${quote.content}"</div>
-        <div class="quotes-author-name">${quote.author}</div>
-        <div class="quotes-book-name">《${quote.book}》</div>
-        <div class="quotes-theme-tags">
-          <span class="quotes-theme-tag">${quote.theme}</span>
+        <div class="quotes-content">${quote.content}</div>
+        <div class="quotes-footer">
+          <div class="quotes-theme-tags">
+            <span class="quotes-theme-tag">${quote.theme}</span>
+          </div>
+          <div class="quotes-author-info">
+            <span class="quotes-author-name">${quote.author}</span>
+            <span class="quotes-book-name">《${quote.book}》</span>
+          </div>
         </div>
       </div>
     `;

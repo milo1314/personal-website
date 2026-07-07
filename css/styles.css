@@ -1456,7 +1456,6 @@ section {
   gap: 12px;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .quotes-author-tab-wrapper {
@@ -1522,7 +1521,6 @@ section {
   gap: 8px;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .quotes-book-tab {
@@ -1555,7 +1553,6 @@ section {
   gap: 8px;
   margin-bottom: 20px;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 .quotes-theme-tag {
@@ -1583,8 +1580,8 @@ section {
 .quotes-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 1000px;
+  gap: 20px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -1592,11 +1589,10 @@ section {
   background: var(--bg-card);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-xl);
-  padding: 24px;
+  padding: 28px;
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
-  margin: 0 auto;
 }
 
 .quote-card::before {
@@ -1624,7 +1620,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .quote-num {
@@ -1635,33 +1631,57 @@ section {
 
 .quote-theme {
   padding: 4px 12px;
-  background: var(--bg-secondary);
+  background: var(--accent-primary-light);
   border-radius: 100px;
   font-size: 11px;
-  color: var(--text-secondary);
+  color: var(--accent-primary);
+  font-weight: 500;
 }
 
 .quote-text {
   font-size: 16px;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--text-primary);
-  margin-bottom: 16px;
-  padding-left: 36px;
-  border-left: 2px solid var(--border-color);
+  margin-bottom: 20px;
+  padding-left: 32px;
+  border-left: 3px solid var(--border-color);
   font-family: var(--font-serif, serif);
   position: relative;
+  text-align: left;
 }
 
 .quote-text::before {
   content: '\f10d';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
-  font-size: 20px;
+  font-size: 24px;
   color: var(--accent-primary);
-  opacity: 0.15;
+  opacity: 0.12;
   position: absolute;
-  left: 8px;
-  top: 0;
+  left: 4px;
+  top: -4px;
+}
+
+.quote-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quote-author-info {
+  text-align: right;
+}
+
+.quote-author {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.quote-book {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-left: 8px;
 }
 
 .quote-actions {
@@ -1717,10 +1737,13 @@ section {
 
 .quotes-toolbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
   gap: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quotes-toolbar-actions {

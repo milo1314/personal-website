@@ -1673,17 +1673,23 @@ function renderQuotes() {
     return `
       <div class="quote-card" data-index="${index}" style="background: ${bgColor};">
         <div class="quote-header">
-          <span class="quote-num">#${item.num} · ${item.bookName}</span>
+          <span class="quote-num">#${item.num}</span>
           <span class="quote-theme">${item.theme}</span>
         </div>
         <div class="quote-text">${item.text}</div>
-        <div class="quote-actions">
-          <button class="quote-btn" onclick="copyQuote(${index})">
-            <i class="fas fa-copy"></i> 复制
-          </button>
-          <button class="quote-btn quote-delete-btn" onclick="deleteQuote('${item.bookKey}', ${item.quoteIndex})">
-            <i class="fas fa-trash"></i> 删除
-          </button>
+        <div class="quote-footer">
+          <div class="quote-author-info">
+            <span class="quote-author">${item.author}</span>
+            <span class="quote-book">《${item.bookName}》</span>
+          </div>
+          <div class="quote-actions">
+            <button class="quote-btn" onclick="copyQuote(${index})">
+              <i class="fas fa-copy"></i> 复制
+            </button>
+            <button class="quote-btn quote-delete-btn" onclick="deleteQuote('${item.bookKey}', ${item.quoteIndex})">
+              <i class="fas fa-trash"></i> 删除
+            </button>
+          </div>
         </div>
       </div>
     `;

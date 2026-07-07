@@ -2,43 +2,28 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 9090;
-const BASE_DIR = path.join(__dirname);
-
-const mimeTypes = {
-  '.html': 'text/html',
-  '.css': 'text/css',
-  '.js': 'text/javascript',
-  '.json': 'application/json',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.gif': 'image/gif',
-  '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon',
-  '.woff': 'application/font-woff',
-  '.woff2': 'application/font-woff2',
-  '.ttf': 'application/font-ttf'
-};
-
 const server = http.createServer((req, res) => {
-  let filePath = path.join(BASE_DIR, req.url);
+  let filePath = '.' + req.url;
+  if (filePath === './') filePath = './index.html';
   
-  if (filePath === path.join(BASE_DIR, '/')) {
-    filePath = path.join(BASE_DIR, 'index.html');
+  const extname = path.extname(filePath);
+  let contentType = 'text/html';
+  
+  switch (extname) {
+    case '.js': contentType = 'text/javascript'; break;
+    case '.css': contentType = 'text/css'; break;
+    case '.json': contentType = 'application/json'; break;
+    case '.png': contentType = 'image/png'; break;
+    case '.jpg': contentType = 'image/jpeg'; break;
+    case '.gif': contentType = 'image/gif'; break;
+    case '.svg': contentType = 'image/svg+xml'; break;
+    case '.ico': contentType = 'image/x-icon'; break;
   }
-  
-  const extname = String(path.extname(filePath)).toLowerCase();
-  const contentType = mimeTypes[extname] || 'application/octet-stream';
   
   fs.readFile(filePath, (error, content) => {
     if (error) {
-      if (error.code === 'ENOENT') {
-        res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.end('<h1>404 Not Found</h1>', 'utf-8');
-      } else {
-        res.writeHead(500);
-        res.end('Server Error: ' + error.code, 'utf-8');
-      }
+      res.writeHead(404);
+      res.end('File not found');
     } else {
       res.writeHead(200, { 'Content-Type': contentType });
       res.end(content, 'utf-8');
@@ -46,6 +31,7 @@ const server = http.createServer((req, res) => {
   });
 });
 
+const PORT = 8080;
 server.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 });

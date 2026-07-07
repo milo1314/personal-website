@@ -321,6 +321,8 @@ section {
   padding: 24px;
   transition: all var(--transition-normal);
   box-shadow: var(--shadow-sm);
+  max-width: 900px;
+  margin: 0 auto 24px;
 }
 
 .card:hover {
@@ -1576,6 +1578,8 @@ section {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .quote-card {
@@ -1586,6 +1590,7 @@ section {
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .quote-card::before {
@@ -1896,6 +1901,9 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   margin-bottom: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .recommendation-card {

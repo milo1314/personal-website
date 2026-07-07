@@ -10,14 +10,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@6.4.0/css/all.min.css" integrity="sha384-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB4" crossorigin="anonymous">
   
   <!-- 全局样式 -->
-  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/style2.css">
 </head>
 <body>
   <!-- 导航栏 -->
   <nav class="navbar">
     <div class="navbar-content">
       <!-- Logo -->
-      <a href="#" class="navbar-logo" onclick="showSection('home')">
+      <a href="style2.html" class="navbar-logo">
         <div class="logo-icon">
           <span class="logo-m">M</span>
           <span class="logo-ring"></span>
@@ -28,33 +28,57 @@
       <!-- 导航链接 -->
       <ul class="navbar-center">
         <li class="nav-item">
-          <a href="#" class="active" onclick="showSection('home')">
+          <a href="style2.html" class="active">
             <i class="fas fa-home"></i>
             首页
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" onclick="showSection('toolbox')">
+          <a href="style2.html#toolbox">
             <i class="fas fa-wrench"></i>
             工具箱
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" onclick="showSection('projects')">
+          <a href="style2.html#projects">
             <i class="fas fa-project-diagram"></i>
             项目
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" onclick="showSection('blog')">
+          <a href="style2.html#blog">
             <i class="fas fa-book"></i>
             博客
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" onclick="showSection('quotes')">
+          <a href="style2.html#quotes">
             <i class="fas fa-quote-right"></i>
             语录
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="style2.html#notes">
+            <i class="fas fa-pen-fancy"></i>
+            记事本
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="style2.html#travel">
+            <i class="fas fa-map-marked-alt"></i>
+            旅游攻略
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="style2.html#recommendations">
+            <i class="fas fa-star"></i>
+            好物推荐
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="style2.html#contact">
+            <i class="fas fa-envelope"></i>
+            联系我
           </a>
         </li>
       </ul>
@@ -62,7 +86,7 @@
       <!-- 右侧按钮区 -->
       <div class="navbar-right">
         <!-- 风格切换按钮 -->
-        <button class="style-toggle" id="styleToggle" aria-label="切换风格" title="切换主页风格" onclick="location.href='style2.html'">
+        <button class="style-toggle" id="styleToggle" aria-label="切换风格" title="切换主页风格" onclick="location.href='index.html'">
           <i class="fas fa-palette"></i>
         </button>
         <!-- 主题切换按钮 -->
@@ -79,349 +103,128 @@
       
       <!-- ========== Home 首页模块 ========== -->
       <section id="home" class="section">
-        <!-- Hero卡片 -->
-        <div class="card hero-card mb-8">
-          <div class="hero-avatar">
-            <div class="avatar-circle">
-              <i class="fas fa-user"></i>
-            </div>
-          </div>
-          <div class="hero-content">
-            <h1>你好，我是 <span>Milo</span></h1>
-            <p>
-              全栈开发者，热爱技术，专注于构建高质量的Web应用。
-              熟悉多种编程语言和框架，致力于创造优雅的代码和用户体验。
-            </p>
-            
-            <!-- 标签信息 -->
-            <div class="hero-tags">
-              <div class="hero-tag">
-                <span class="hero-tag-label">📍</span>
-                <span class="hero-tag-value">Shanghai, China</span>
-              </div>
-              <div class="hero-tag">
-                <span class="hero-tag-label">💼</span>
-                <span class="hero-tag-value">Full Stack Engineer</span>
-              </div>
-              <div class="hero-tag">
-                <span class="hero-tag-label">📧</span>
-                <div class="hero-tag-values">
-                  <span class="hero-tag-value">zhang.miao@sjtu.edu.cn</span>
-                  <span class="hero-tag-value">jensonzhang@126.com</span>
-                </div>
-              </div>
-            </div>
-            
-            <!-- CTA按钮 -->
-            <div class="hero-actions">
-              <button class="btn btn-primary" onclick="showSection('toolbox')">
-                <i class="fas fa-wrench"></i>
-                打开工具箱
-              </button>
-              <button class="btn btn-secondary" onclick="showSection('projects')">
-                <i class="fas fa-project-diagram"></i>
-                查看项目
-              </button>
-              <button class="btn btn-outline" onclick="showSection('contact')">
-                <i class="fas fa-envelope"></i>
-                联系我
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Tech Stack 驼峰波浪布局 -->
-        <h2 class="section-title"><i class="fas fa-cpu"></i> Tech Stack</h2>
-        <div class="tech-stack-container">
-          <div class="tech-stack-row">
-            <div class="tech-stack-node js"><i class="fab fa-js"></i><span>JS</span></div>
-            <div class="tech-stack-node ts"><i class="fab fa-typescript"></i><span>TS</span></div>
-            <div class="tech-stack-node vue"><i class="fab fa-vuejs"></i><span>Vue</span></div>
-            <div class="tech-stack-node react"><i class="fab fa-react"></i><span>React</span></div>
-          </div>
-          <div class="tech-stack-row">
-            <div class="tech-stack-node node"><i class="fab fa-node-js"></i><span>Node</span></div>
-            <div class="tech-stack-node py"><i class="fab fa-python"></i><span>Py</span></div>
-            <div class="tech-stack-node go"><i class="fab fa-golang"></i><span>Go</span></div>
-          </div>
-          <div class="tech-stack-row">
-            <div class="tech-stack-node docker"><i class="fab fa-docker"></i><span>Docker</span></div>
-            <div class="tech-stack-node k8s"><i class="fab fa-kubernetes"></i><span>K8s</span></div>
-            <div class="tech-stack-node aws"><i class="fab fa-aws"></i><span>AWS</span></div>
-            <div class="tech-stack-node linux"><i class="fab fa-linux"></i><span>Linux</span></div>
-            <div class="tech-stack-node git"><i class="fab fa-git"></i><span>Git</span></div>
-          </div>
-        </div>
-        
-        <!-- Modules 模块入口 (Bento Grid) -->
-        <h2 class="section-title">Modules</h2>
-        <div class="bento-grid">
-          <!-- 工具箱 (大卡片) -->
-          <div class="bento-card large blue" onclick="showSection('toolbox')">
-            <div class="bento-card-icon blue">
-              <i class="fas fa-wrench"></i>
-            </div>
-            <div class="bento-card-title">工具箱</div>
-            <div class="bento-card-desc">
-              实用工具集合，包括JSON转换、Base64编解码、Token生成、Hash计算、UUID生成器等。
-            </div>
-            <span class="bento-card-link">
-              探索工具 <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-          
-          <!-- 项目展示 -->
-          <div class="bento-card green" onclick="showSection('projects')">
-            <div class="bento-card-icon green">
-              <i class="fas fa-project-diagram"></i>
-            </div>
-            <div class="bento-card-title">项目展示</div>
-            <div class="bento-card-desc">
-              开源项目与个人作品展示。
-            </div>
-            <span class="bento-card-link">
-              查看项目 <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-          
-          <!-- 技术博客 -->
-          <div class="bento-card orange" onclick="showSection('blog')">
-            <div class="bento-card-icon orange">
-              <i class="fas fa-book"></i>
-            </div>
-            <div class="bento-card-title">技术博客</div>
-            <div class="bento-card-desc">
-              技术文章、学习笔记与心得分享。
-            </div>
-            <span class="bento-card-link">
-              阅读文章 <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-          
-          <!-- 名人经典语录 -->
-          <div class="bento-card orange" onclick="showSection('quotes')">
-            <div class="bento-card-icon orange">
-              <i class="fas fa-quote-right"></i>
-            </div>
-            <div class="bento-card-title">名人语录</div>
-            <div class="bento-card-desc">
-              收藏名人智慧，感悟人生哲理。
-            </div>
-            <span class="bento-card-link">
-              浏览语录 <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-          
-          <!-- 代码片段 (预留) -->
-          <div class="bento-card cyan" onclick="showSection('snippets')">
-            <div class="bento-card-icon cyan">
+        <!-- Apple风格 Hero 区域 -->
+        <div class="apple-hero">
+          <div class="apple-hero-content">
+            <div class="apple-hero-icon">
               <i class="fas fa-code"></i>
             </div>
-            <div class="bento-card-title">代码片段</div>
-            <div class="bento-card-desc">
-              常用代码片段库，方便快速开发。
+            <h1 class="apple-hero-title">MiloLab</h1>
+            <p class="apple-hero-subtitle">全栈开发者 · 创造优雅的用户体验</p>
+            <p class="apple-hero-description">
+              专注于构建高质量的 Web 应用，熟悉多种编程语言和框架，致力于创造优雅的代码和用户体验。
+            </p>
+            <div class="apple-hero-links">
+              <a href="style2.html#projects" class="apple-link">
+                查看项目
+                <i class="fas fa-chevron-right"></i>
+              </a>
+              <a href="style2.html#contact" class="apple-link">
+                联系我
+                <i class="fas fa-chevron-right"></i>
+              </a>
             </div>
-            <span class="bento-card-link">
-              浏览片段 <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-          
-          <!-- 学习资源 (预留) -->
-          <div class="bento-card gray" onclick="showSection('resources')">
-            <div class="bento-card-icon gray">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="bento-card-title">学习资源</div>
-            <div class="bento-card-desc">
-              精选技术学习资料与教程。
-            </div>
-            <span class="bento-card-link">
-              探索资源 <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-          
-          <!-- 文案记事本 -->
-          <div class="bento-card pink" onclick="showSection('notes')">
-            <div class="bento-card-icon pink">
-              <i class="fas fa-pen-fancy"></i>
-            </div>
-            <div class="bento-card-title">文案记事本</div>
-            <div class="bento-card-desc">
-              收藏那些触动人心的句子与文案。
-            </div>
-            <span class="bento-card-link">
-              记录灵感 <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-          
-          <!-- 素材库 (预留) -->
-          <div class="bento-card yellow" onclick="showSection('materials')">
-            <div class="bento-card-icon yellow">
-              <i class="fas fa-images"></i>
-            </div>
-            <div class="bento-card-title">素材库</div>
-            <div class="bento-card-desc">
-              精选设计素材与资源集合。
-            </div>
-            <span class="bento-card-link">
-              浏览素材 <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-          
-          <!-- 好物推荐 -->
-          <div class="bento-card purple" onclick="showSection('recommendations')">
-            <div class="bento-card-icon purple">
-              <i class="fas fa-star"></i>
-            </div>
-            <div class="bento-card-title">好物推荐</div>
-            <div class="bento-card-desc">
-              精心挑选的优质好物与实用工具推荐。
-            </div>
-            <span class="bento-card-link">
-              发现好物 <i class="fas fa-arrow-right"></i>
-            </span>
-          </div>
-          
-          <!-- 旅游攻略 -->
-          <div class="bento-card blue" onclick="showSection('travel')">
-            <div class="bento-card-icon blue">
-              <i class="fas fa-map-marked-alt"></i>
-            </div>
-            <div class="bento-card-title">旅游攻略</div>
-            <div class="bento-card-desc">
-              按城市分类的旅行攻略与导航路线规划。
-            </div>
-            <span class="bento-card-link">
-              探索世界 <i class="fas fa-arrow-right"></i>
-            </span>
           </div>
         </div>
-
-        <!-- Style2 苹果风格布局 -->
-        <div class="style2-home" style="display: none;">
-          <!-- Apple风格 Hero 区域 -->
-          <div class="apple-hero">
-            <div class="apple-hero-content">
-              <div class="apple-hero-icon">
-                <i class="fas fa-code"></i>
+        
+        <!-- Apple风格产品卡片区域 -->
+        <div class="apple-section">
+          <div class="apple-card" onclick="showSection('toolbox')">
+            <div class="apple-card-bg" style="background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 100%);"></div>
+            <div class="apple-card-content">
+              <div class="apple-card-icon">
+                <i class="fas fa-wrench"></i>
               </div>
-              <h1 class="apple-hero-title">MiloLab</h1>
-              <p class="apple-hero-subtitle">全栈开发者 · 创造优雅的用户体验</p>
-              <p class="apple-hero-description">
-                专注于构建高质量的 Web 应用，熟悉多种编程语言和框架，致力于创造优雅的代码和用户体验。
-              </p>
-              <div class="apple-hero-links">
-                <a href="#" onclick="showSection('projects')" class="apple-link">
-                  查看项目
-                  <i class="fas fa-chevron-right"></i>
-                </a>
-                <a href="#" onclick="showSection('contact')" class="apple-link">
-                  联系我
-                  <i class="fas fa-chevron-right"></i>
-                </a>
+              <h3 class="apple-card-title">工具箱</h3>
+              <p class="apple-card-desc">实用工具集合</p>
+              <div class="apple-card-link">
+                探索工具
+                <i class="fas fa-arrow-right"></i>
               </div>
             </div>
           </div>
           
-          <!-- Apple风格产品卡片区域 -->
-          <div class="apple-section">
-            <div class="apple-card" onclick="showSection('toolbox')">
-              <div class="apple-card-bg" style="background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 100%);"></div>
-              <div class="apple-card-content">
-                <div class="apple-card-icon">
-                  <i class="fas fa-wrench"></i>
-                </div>
-                <h3 class="apple-card-title">工具箱</h3>
-                <p class="apple-card-desc">实用工具集合</p>
-                <div class="apple-card-link">
-                  探索工具
-                  <i class="fas fa-arrow-right"></i>
-                </div>
+          <div class="apple-card" onclick="showSection('projects')">
+            <div class="apple-card-bg" style="background: linear-gradient(180deg, #000000 0%, #1c1c1e 100%);"></div>
+            <div class="apple-card-content">
+              <div class="apple-card-icon light">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <h3 class="apple-card-title">项目</h3>
+              <p class="apple-card-desc">开源作品展示</p>
+              <div class="apple-card-link light">
+                查看项目
+                <i class="fas fa-arrow-right"></i>
               </div>
             </div>
-            
-            <div class="apple-card" onclick="showSection('projects')">
-              <div class="apple-card-bg" style="background: linear-gradient(180deg, #000000 0%, #1c1c1e 100%);"></div>
-              <div class="apple-card-content">
-                <div class="apple-card-icon light">
-                  <i class="fas fa-project-diagram"></i>
-                </div>
-                <h3 class="apple-card-title">项目</h3>
-                <p class="apple-card-desc">开源作品展示</p>
-                <div class="apple-card-link light">
-                  查看项目
-                  <i class="fas fa-arrow-right"></i>
-                </div>
+          </div>
+        </div>
+        
+        <!-- Apple风格双栏区域 -->
+        <div class="apple-section">
+          <div class="apple-card-large" onclick="showSection('blog')">
+            <div class="apple-card-large-bg" style="background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 100%);"></div>
+            <div class="apple-card-large-content">
+              <div class="apple-card-large-icon">
+                <i class="fas fa-book"></i>
+              </div>
+              <h3 class="apple-card-large-title">技术博客</h3>
+              <p class="apple-card-large-desc">技术文章、学习笔记与心得分享</p>
+              <div class="apple-card-large-link">
+                阅读文章
+                <i class="fas fa-arrow-right"></i>
               </div>
             </div>
           </div>
           
-          <!-- Apple风格双栏区域 -->
-          <div class="apple-section">
-            <div class="apple-card-large" onclick="showSection('blog')">
-              <div class="apple-card-large-bg" style="background: linear-gradient(180deg, #f5f5f7 0%, #e8e8ed 100%);"></div>
-              <div class="apple-card-large-content">
-                <div class="apple-card-large-icon">
-                  <i class="fas fa-book"></i>
-                </div>
-                <h3 class="apple-card-large-title">技术博客</h3>
-                <p class="apple-card-large-desc">技术文章、学习笔记与心得分享</p>
-                <div class="apple-card-large-link">
-                  阅读文章
-                  <i class="fas fa-arrow-right"></i>
-                </div>
+          <div class="apple-card-large" onclick="showSection('quotes')">
+            <div class="apple-card-large-bg" style="background: linear-gradient(180deg, #000000 0%, #1c1c1e 100%);"></div>
+            <div class="apple-card-large-content">
+              <div class="apple-card-large-icon light">
+                <i class="fas fa-quote-right"></i>
               </div>
-            </div>
-            
-            <div class="apple-card-large" onclick="showSection('quotes')">
-              <div class="apple-card-large-bg" style="background: linear-gradient(180deg, #000000 0%, #1c1c1e 100%);"></div>
-              <div class="apple-card-large-content">
-                <div class="apple-card-large-icon light">
-                  <i class="fas fa-quote-right"></i>
-                </div>
-                <h3 class="apple-card-large-title">名人语录</h3>
-                <p class="apple-card-large-desc">收藏名人智慧，感悟人生哲理</p>
-                <div class="apple-card-large-link light">
-                  浏览语录
-                  <i class="fas fa-arrow-right"></i>
-                </div>
+              <h3 class="apple-card-large-title">名人语录</h3>
+              <p class="apple-card-large-desc">收藏名人智慧，感悟人生哲理</p>
+              <div class="apple-card-large-link light">
+                浏览语录
+                <i class="fas fa-arrow-right"></i>
               </div>
             </div>
           </div>
+        </div>
+        
+        <!-- Apple风格多卡片区域 -->
+        <div class="apple-grid">
+          <div class="apple-grid-item" onclick="showSection('notes')">
+            <div class="apple-grid-icon">
+              <i class="fas fa-pen-fancy"></i>
+            </div>
+            <h4 class="apple-grid-title">文案记事本</h4>
+            <p class="apple-grid-desc">记录灵感与文案</p>
+          </div>
           
-          <!-- Apple风格多卡片区域 -->
-          <div class="apple-grid">
-            <div class="apple-grid-item" onclick="showSection('notes')">
-              <div class="apple-grid-icon">
-                <i class="fas fa-pen-fancy"></i>
-              </div>
-              <h4 class="apple-grid-title">文案记事本</h4>
-              <p class="apple-grid-desc">记录灵感与文案</p>
+          <div class="apple-grid-item" onclick="showSection('travel')">
+            <div class="apple-grid-icon">
+              <i class="fas fa-map-marked-alt"></i>
             </div>
-            
-            <div class="apple-grid-item" onclick="showSection('travel')">
-              <div class="apple-grid-icon">
-                <i class="fas fa-map-marked-alt"></i>
-              </div>
-              <h4 class="apple-grid-title">旅游攻略</h4>
-              <p class="apple-grid-desc">探索世界美景</p>
+            <h4 class="apple-grid-title">旅游攻略</h4>
+            <p class="apple-grid-desc">探索世界美景</p>
+          </div>
+          
+          <div class="apple-grid-item" onclick="showSection('recommendations')">
+            <div class="apple-grid-icon">
+              <i class="fas fa-star"></i>
             </div>
-            
-            <div class="apple-grid-item" onclick="showSection('recommendations')">
-              <div class="apple-grid-icon">
-                <i class="fas fa-star"></i>
-              </div>
-              <h4 class="apple-grid-title">好物推荐</h4>
-              <p class="apple-grid-desc">精选优质好物</p>
+            <h4 class="apple-grid-title">好物推荐</h4>
+            <p class="apple-grid-desc">精选优质好物</p>
+          </div>
+          
+          <div class="apple-grid-item" onclick="showSection('snippets')">
+            <div class="apple-grid-icon">
+              <i class="fas fa-code"></i>
             </div>
-            
-            <div class="apple-grid-item" onclick="showSection('snippets')">
-              <div class="apple-grid-icon">
-                <i class="fas fa-code"></i>
-              </div>
-              <h4 class="apple-grid-title">代码片段</h4>
-              <p class="apple-grid-desc">快速开发利器</p>
-            </div>
+            <h4 class="apple-grid-title">代码片段</h4>
+            <p class="apple-grid-desc">快速开发利器</p>
           </div>
         </div>
       </section>
@@ -1099,7 +902,7 @@
     <div class="footer-content">
       <div class="footer-bottom">
         <div class="footer-copyright">
-          © <span id="currentYear">2024</span> <a href="#">MiloLab</a>. All rights reserved.
+          © <span id="currentYear">2024</span> <a href="style2.html">MiloLab</a>. All rights reserved.
         </div>
         <div class="footer-icp">
           <i class="fas fa-shield-alt"></i> 京ICP备000000001号
@@ -1111,7 +914,7 @@
   <!-- API 接口封装 -->
   <script src="./js/api.js"></script>
   <!-- 主脚本 -->
-  <script src="./js/main.js"></script>
+  <script src="./js/style2.js"></script>
   <script src="./js/tools/json2yaml.js"></script>
   <script src="./js/tools/base64.js"></script>
   <script src="./js/tools/token.js"></script>
@@ -1148,9 +951,13 @@
           <label for="author-book">关联书籍（可选，用逗号分隔）</label>
           <input type="text" id="author-book" class="form-input" placeholder="例如：活着,许三观卖血记">
         </div>
+        <div class="form-group">
+          <label for="author-desc">简介（可选）</label>
+          <textarea id="author-desc" class="form-textarea" placeholder="简要介绍这位名人..." rows="3"></textarea>
+        </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" onclick="closeAddAuthorModal()">取消</button>
+        <button class="btn btn-outline" onclick="closeAddAuthorModal()">取消</button>
         <button class="btn btn-primary" onclick="addAuthor()">确认添加</button>
       </div>
     </div>
@@ -1168,41 +975,27 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label for="quote-book">选择书籍</label>
-          <select id="quote-book" class="form-input" required></select>
+          <label for="quote-author">选择名人</label>
+          <select id="quote-author" class="form-input" required>
+            <!-- 选项由JS动态生成 -->
+          </select>
         </div>
         <div class="form-group">
-          <label for="quote-text">语录内容</label>
-          <textarea id="quote-text" class="form-textarea" placeholder="请输入语录内容..." rows="3" required></textarea>
+          <label for="quote-content">语录内容</label>
+          <textarea id="quote-content" class="form-textarea" placeholder="输入语录内容..." rows="4" required></textarea>
         </div>
         <div class="form-group">
-          <label for="quote-theme">主题标签</label>
-          <input type="text" id="quote-theme" class="form-input" placeholder="例如：人生感悟">
+          <label for="quote-book">来源书籍（可选）</label>
+          <input type="text" id="quote-book" class="form-input" placeholder="如：活着">
+        </div>
+        <div class="form-group">
+          <label for="quote-theme">主题标签（可选，用逗号分隔）</label>
+          <input type="text" id="quote-theme" class="form-input" placeholder="如：人生,哲理,感悟">
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" onclick="closeAddQuoteModal()">取消</button>
+        <button class="btn btn-outline" onclick="closeAddQuoteModal()">取消</button>
         <button class="btn btn-primary" onclick="addQuote()">确认添加</button>
-      </div>
-    </div>
-  </div>
-  
-  <!-- 删除确认弹窗 -->
-  <div id="confirm-modal" class="modal" style="display: none;">
-    <div class="modal-overlay" onclick="closeConfirmModal()"></div>
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3><i class="fas fa-exclamation-triangle"></i> 确认删除</h3>
-        <button class="modal-close" onclick="closeConfirmModal()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p id="confirm-message">确定要删除吗？</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-secondary" onclick="closeConfirmModal()">取消</button>
-        <button class="btn btn-danger" onclick="confirmDelete()">确认删除</button>
       </div>
     </div>
   </div>

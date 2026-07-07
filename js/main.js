@@ -698,6 +698,11 @@ function initSkillTags() {
       box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
     }
     
+    #project-list, #blog-list {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
     .project-card {
       padding: 20px;
       background: var(--bg-card);

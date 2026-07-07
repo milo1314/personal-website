@@ -28,55 +28,55 @@
       <!-- 导航链接 -->
       <ul class="navbar-center">
         <li class="nav-item">
-          <a href="style2.html" class="active">
+          <a href="#" onclick="showSection('home'); return false;" class="active">
             <i class="fas fa-home"></i>
             首页
           </a>
         </li>
         <li class="nav-item">
-          <a href="style2.html#toolbox">
+          <a href="#" onclick="showSection('toolbox'); return false;">
             <i class="fas fa-wrench"></i>
             工具箱
           </a>
         </li>
         <li class="nav-item">
-          <a href="style2.html#projects">
+          <a href="#" onclick="showSection('projects'); return false;">
             <i class="fas fa-project-diagram"></i>
             项目
           </a>
         </li>
         <li class="nav-item">
-          <a href="style2.html#blog">
+          <a href="#" onclick="showSection('blog'); return false;">
             <i class="fas fa-book"></i>
             博客
           </a>
         </li>
         <li class="nav-item">
-          <a href="style2.html#quotes">
+          <a href="#" onclick="showSection('quotes'); return false;">
             <i class="fas fa-quote-right"></i>
             语录
           </a>
         </li>
         <li class="nav-item">
-          <a href="style2.html#notes">
+          <a href="#" onclick="showSection('notes'); return false;">
             <i class="fas fa-pen-fancy"></i>
             记事本
           </a>
         </li>
         <li class="nav-item">
-          <a href="style2.html#travel">
+          <a href="#" onclick="showSection('travel'); return false;">
             <i class="fas fa-map-marked-alt"></i>
             旅游攻略
           </a>
         </li>
         <li class="nav-item">
-          <a href="style2.html#recommendations">
+          <a href="#" onclick="showSection('recommendations'); return false;">
             <i class="fas fa-star"></i>
             好物推荐
           </a>
         </li>
         <li class="nav-item">
-          <a href="style2.html#contact">
+          <a href="#" onclick="showSection('contact'); return false;">
             <i class="fas fa-envelope"></i>
             联系我
           </a>
@@ -231,13 +231,14 @@
 
       <!-- ========== Toolbox 工具箱模块 ========== -->
       <section id="toolbox" class="section" style="display: none;">
-        <h2 class="section-title"><i class="fas fa-toolbox"></i> 工具箱</h2>
-        
-        <button class="mobile-tool-toggle" id="mobileToolToggle" onclick="toggleMobileToolMenu()">
-          <i class="fas fa-bars"></i> 选择工具
-        </button>
-        
-        <div class="tool-container">
+        <div class="section-content">
+          <h2 class="section-title"><i class="fas fa-toolbox"></i> 工具箱</h2>
+          
+          <button class="mobile-tool-toggle" id="mobileToolToggle" onclick="toggleMobileToolMenu()">
+            <i class="fas fa-bars"></i> 选择工具
+          </button>
+          
+          <div class="tool-container">
           <!-- 工具导航 -->
           <div class="tool-sidebar" id="toolSidebar">
             <div class="tool-nav-wrapper">
@@ -535,88 +536,95 @@
             
           </div>
         </div>
-      </div>
+        </div>
       </section>
 
       <!-- ========== Projects 项目模块 ========== -->
       <section id="projects" class="section" style="display: none;">
-        <h2 class="section-title"><i class="fas fa-folder-open"></i> 项目展示</h2>
-        <div class="card mb-6">
-          <div class="card-title">📁 项目列表</div>
-          <div class="card-description">
-            这里展示我的开源项目和个人作品。
-          </div>
-          <div id="project-list" style="margin-top: 20px;">
-            <!-- 项目卡片由JS动态生成 -->
+        <div class="section-content">
+          <h2 class="section-title"><i class="fas fa-folder-open"></i> 项目展示</h2>
+          <div class="card mb-6">
+            <div class="card-title">📁 项目列表</div>
+            <div class="card-description">
+              这里展示我的开源项目和个人作品。
+            </div>
+            <div id="project-list" style="margin-top: 20px;">
+              <!-- 项目卡片由JS动态生成 -->
+            </div>
           </div>
         </div>
       </section>
 
       <!-- ========== Blog 博客模块 ========== -->
       <section id="blog" class="section" style="display: none;">
-        <h2 class="section-title"><i class="fas fa-blog"></i> 技术博客</h2>
-        <div class="card mb-6">
-          <div class="card-title">📚 文章列表</div>
-          <div class="card-description">
-            技术文章、学习笔记与心得分享。
-          </div>
-          <div id="blog-list" style="margin-top: 20px;">
-            <!-- 博客卡片由JS动态生成 -->
+        <div class="section-content">
+          <h2 class="section-title"><i class="fas fa-blog"></i> 技术博客</h2>
+          <div class="card mb-6">
+            <div class="card-title">📚 文章列表</div>
+            <div class="card-description">
+              技术文章、学习笔记与心得分享。
+            </div>
+            <div id="blog-list" style="margin-top: 20px;">
+              <!-- 博客卡片由JS动态生成 -->
+            </div>
           </div>
         </div>
       </section>
 
       <!-- ========== Quotes 名人语录模块 ========== -->
       <section id="quotes" class="section" style="display: none;">
-        <h2 class="section-title"><i class="fas fa-quote-left"></i> 名人语录</h2>
-        <p class="section-subtitle">收藏名人智慧，感悟人生哲理</p>
-        
-        <div class="quotes-author-tabs" id="quotes-author-tabs">
-          <!-- 名人标签由JS动态生成 -->
-        </div>
-        
-        <div class="quotes-toolbar">
-          <div class="quotes-stats">
-            <span class="quotes-count"><i class="fas fa-quote-left"></i> 共 <span id="quotes-count">0</span> 条语录</span>
+        <div class="section-content">
+          <h2 class="section-title"><i class="fas fa-quote-left"></i> 名人语录</h2>
+          <p class="section-subtitle">收藏名人智慧，感悟人生哲理</p>
+          
+          <div class="quotes-author-tabs" id="quotes-author-tabs">
+            <!-- 名人标签由JS动态生成 -->
           </div>
-          <div class="quotes-toolbar-actions">
-            <button class="btn btn-outline btn-sm" onclick="openAddAuthorModal()">
-              <i class="fas fa-user-plus"></i> 新增名人
+          
+          <div class="quotes-toolbar">
+            <div class="quotes-stats">
+              <span class="quotes-count"><i class="fas fa-quote-left"></i> 共 <span id="quotes-count">0</span> 条语录</span>
+            </div>
+            <div class="quotes-toolbar-actions">
+              <button class="btn btn-outline btn-sm" onclick="openAddAuthorModal()">
+                <i class="fas fa-user-plus"></i> 新增名人
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="openAddQuoteModal()">
+                <i class="fas fa-plus"></i> 新增语录
+              </button>
+            </div>
+          </div>
+          
+          <div class="quotes-book-tabs" id="quotes-book-tabs">
+            <!-- 书籍标签由JS动态生成 -->
+          </div>
+          
+          <div class="quotes-theme-filter" id="quotes-theme-filter">
+            <!-- 主题筛选由JS动态生成 -->
+          </div>
+          
+          <div id="quotes-list" class="quotes-list">
+            <!-- 语录卡片由JS动态生成 -->
+          </div>
+          
+          <div class="quotes-batch-actions">
+            <button class="btn btn-primary" onclick="copyAllQuotes()">
+              <i class="fas fa-copy"></i> 复制全部显示
             </button>
-            <button class="btn btn-outline btn-sm" onclick="openAddQuoteModal()">
-              <i class="fas fa-plus"></i> 新增语录
+            <button class="btn btn-secondary" onclick="exportQuotes()">
+              <i class="fas fa-download"></i> 导出文本
             </button>
           </div>
-        </div>
-        
-        <div class="quotes-book-tabs" id="quotes-book-tabs">
-          <!-- 书籍标签由JS动态生成 -->
-        </div>
-        
-        <div class="quotes-theme-filter" id="quotes-theme-filter">
-          <!-- 主题筛选由JS动态生成 -->
-        </div>
-        
-        <div id="quotes-list" class="quotes-list">
-          <!-- 语录卡片由JS动态生成 -->
-        </div>
-        
-        <div class="quotes-batch-actions">
-          <button class="btn btn-primary" onclick="copyAllQuotes()">
-            <i class="fas fa-copy"></i> 复制全部显示
-          </button>
-          <button class="btn btn-secondary" onclick="exportQuotes()">
-            <i class="fas fa-download"></i> 导出文本
-          </button>
         </div>
       </section>
 
       <!-- ========== Contact 联系模块 ========== -->
       <section id="contact" class="section" style="display: none;">
-        <h2 class="section-title"><i class="fas fa-envelope"></i> 联系我</h2>
-        <p class="section-subtitle">欢迎通过以下方式联系我</p>
-        
-        <div class="contact-grid">
+        <div class="section-content">
+          <h2 class="section-title"><i class="fas fa-envelope"></i> 联系我</h2>
+          <p class="section-subtitle">欢迎通过以下方式联系我</p>
+          
+          <div class="contact-grid">
           <div class="contact-card">
             <div class="contact-icon email">
               <i class="fas fa-envelope"></i>
@@ -680,6 +688,7 @@
             </button>
           </form>
         </div>
+        </div>
       </section>
 
       <!-- ========== Snippets 代码片段模块 (预留) ========== -->
@@ -706,38 +715,40 @@
       
       <!-- ========== Notes 文案记事本模块 ========== -->
       <section id="notes" class="section" style="display: none;">
-        <h2 class="section-title"><i class="fas fa-pen-fancy"></i> 文案记事本</h2>
-        <p class="section-subtitle">收藏那些触动人心的句子与文案</p>
-        
-        <!-- 添加文案区域 -->
-        <div class="notes-add-section">
-          <div class="notes-input-card">
-            <textarea id="note-input" class="notes-textarea" placeholder="写下你喜欢的句子或文案..."></textarea>
-            <div class="notes-input-actions">
-              <button class="btn btn-primary notes-add-btn" onclick="addNote()">
-                <i class="fas fa-plus"></i> 添加到记事本
-              </button>
+        <div class="section-content">
+          <h2 class="section-title"><i class="fas fa-pen-fancy"></i> 文案记事本</h2>
+          <p class="section-subtitle">收藏那些触动人心的句子与文案</p>
+          
+          <!-- 添加文案区域 -->
+          <div class="notes-add-section">
+            <div class="notes-input-card">
+              <textarea id="note-input" class="notes-textarea" placeholder="写下你喜欢的句子或文案..."></textarea>
+              <div class="notes-input-actions">
+                <button class="btn btn-primary notes-add-btn" onclick="addNote()">
+                  <i class="fas fa-plus"></i> 添加到记事本
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <!-- 文案列表 -->
-        <div class="notes-stats">
-          <span class="notes-count"><i class="fas fa-bookmark"></i> 共 <span id="notes-count">0</span> 条文案</span>
-          <button class="notes-sort-btn" onclick="toggleSortNotes()">
-            <i class="fas fa-sort"></i> <span id="sort-label">按时间排序</span>
-          </button>
-        </div>
-        
-        <div id="notes-list" class="notes-grid">
-          <!-- 文案卡片将动态生成 -->
-        </div>
-        
-        <!-- 空状态 -->
-        <div id="notes-empty" class="notes-empty" style="display: none;">
-          <div class="notes-empty-icon"><i class="fas fa-pen-fancy"></i></div>
-          <div class="notes-empty-title">还没有收藏任何文案</div>
-          <div class="notes-empty-desc">写下你喜欢的句子，记录生活中的灵感</div>
+          
+          <!-- 文案列表 -->
+          <div class="notes-stats">
+            <span class="notes-count"><i class="fas fa-bookmark"></i> 共 <span id="notes-count">0</span> 条文案</span>
+            <button class="notes-sort-btn" onclick="toggleSortNotes()">
+              <i class="fas fa-sort"></i> <span id="sort-label">按时间排序</span>
+            </button>
+          </div>
+          
+          <div id="notes-list" class="notes-grid">
+            <!-- 文案卡片将动态生成 -->
+          </div>
+          
+          <!-- 空状态 -->
+          <div id="notes-empty" class="notes-empty" style="display: none;">
+            <div class="notes-empty-icon"><i class="fas fa-pen-fancy"></i></div>
+            <div class="notes-empty-title">还没有收藏任何文案</div>
+            <div class="notes-empty-desc">写下你喜欢的句子，记录生活中的灵感</div>
+          </div>
         </div>
       </section>
       
@@ -755,63 +766,66 @@
       
       <!-- ========== Recommendations 好物推荐模块 ========== -->
       <section id="recommendations" class="section" style="display: none;">
-        <h2 class="section-title"><i class="fas fa-star"></i> 好物推荐</h2>
-        <p class="section-subtitle">精心挑选的优质好物与实用工具推荐</p>
-        
-        <div class="recommendations-grid" id="recommendations-list">
-          <!-- 推荐卡片将动态生成 -->
-        </div>
-        
-        <div class="card mt-8">
-          <div class="card-title">📝 添加推荐</div>
-          <div class="card-description">分享你觉得好用的产品或工具</div>
-          <form class="recommendation-form" onsubmit="handleRecommendationSubmit(event)">
-            <div class="form-group">
-              <label for="rec-title">名称</label>
-              <input type="text" id="rec-title" class="form-input" placeholder="好物名称" required>
-            </div>
-            <div class="form-group">
-              <label for="rec-category">分类</label>
-              <select id="rec-category" class="form-input">
-                <option value="tech">数码科技</option>
-                <option value="book">书籍阅读</option>
-                <option value="life">生活家居</option>
-                <option value="tool">效率工具</option>
-                <option value="other">其他</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="rec-image">图片（可选）</label>
-              <div style="display: flex; gap: 12px;">
-                <input type="text" id="rec-image-url" class="form-input" placeholder="图片URL地址">
-                <label for="rec-image-file" class="btn btn-outline" style="padding: 10px 20px; cursor: pointer;">
-                  <i class="fas fa-upload"></i> 上传图片
-                </label>
-                <input type="file" id="rec-image-file" class="form-input" accept="image/*" style="display: none;" onchange="handleImageUpload(this)">
+        <div class="section-content">
+          <h2 class="section-title"><i class="fas fa-star"></i> 好物推荐</h2>
+          <p class="section-subtitle">精心挑选的优质好物与实用工具推荐</p>
+          
+          <div class="recommendations-grid" id="recommendations-list">
+            <!-- 推荐卡片将动态生成 -->
+          </div>
+          
+          <div class="card mt-8">
+            <div class="card-title">📝 添加推荐</div>
+            <div class="card-description">分享你觉得好用的产品或工具</div>
+            <form class="recommendation-form" onsubmit="handleRecommendationSubmit(event)">
+              <div class="form-group">
+                <label for="rec-title">名称</label>
+                <input type="text" id="rec-title" class="form-input" placeholder="好物名称" required>
               </div>
-              <div id="rec-image-preview" class="rec-image-preview" style="display: none; margin-top: 12px;"></div>
-            </div>
-            <div class="form-group">
-              <label for="rec-url">链接（可选）</label>
-              <input type="url" id="rec-url" class="form-input" placeholder="产品链接">
-            </div>
-            <div class="form-group">
-              <label for="rec-desc">推荐理由</label>
-              <textarea id="rec-desc" class="form-textarea" placeholder="说说你为什么推荐它..." rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary mt-4">
-              <i class="fas fa-plus"></i> 添加推荐
-            </button>
-          </form>
+              <div class="form-group">
+                <label for="rec-category">分类</label>
+                <select id="rec-category" class="form-input">
+                  <option value="tech">数码科技</option>
+                  <option value="book">书籍阅读</option>
+                  <option value="life">生活家居</option>
+                  <option value="tool">效率工具</option>
+                  <option value="other">其他</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="rec-image">图片（可选）</label>
+                <div style="display: flex; gap: 12px;">
+                  <input type="text" id="rec-image-url" class="form-input" placeholder="图片URL地址">
+                  <label for="rec-image-file" class="btn btn-outline" style="padding: 10px 20px; cursor: pointer;">
+                    <i class="fas fa-upload"></i> 上传图片
+                  </label>
+                  <input type="file" id="rec-image-file" class="form-input" accept="image/*" style="display: none;" onchange="handleImageUpload(this)">
+                </div>
+                <div id="rec-image-preview" class="rec-image-preview" style="display: none; margin-top: 12px;"></div>
+              </div>
+              <div class="form-group">
+                <label for="rec-url">链接（可选）</label>
+                <input type="url" id="rec-url" class="form-input" placeholder="产品链接">
+              </div>
+              <div class="form-group">
+                <label for="rec-desc">推荐理由</label>
+                <textarea id="rec-desc" class="form-textarea" placeholder="说说你为什么推荐它..." rows="3" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary mt-4">
+                <i class="fas fa-plus"></i> 添加推荐
+              </button>
+            </form>
+          </div>
         </div>
       </section>
       
       <!-- ========== Travel 旅游攻略模块 ========== -->
       <section id="travel" class="section" style="display: none;">
-        <h2 class="section-title"><i class="fas fa-plane"></i> 旅游攻略</h2>
-        <p class="section-subtitle">按城市分类的旅行攻略与导航路线规划</p>
-        
-        <div class="travel-city-tabs">
+        <div class="section-content">
+          <h2 class="section-title"><i class="fas fa-plane"></i> 旅游攻略</h2>
+          <p class="section-subtitle">按城市分类的旅行攻略与导航路线规划</p>
+          
+          <div class="travel-city-tabs">
           <button class="travel-city-tab active" onclick="switchTravelCity('all')">
             <i class="fas fa-globe"></i> 全部城市
           </button>
@@ -891,6 +905,7 @@
               </button>
             </form>
           </div>
+        </div>
         </div>
       </section>
       

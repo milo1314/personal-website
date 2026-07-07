@@ -276,6 +276,9 @@ section {
   padding-bottom: 12px;
   border-bottom: 2px solid var(--border-color);
   position: relative;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-title i {
@@ -299,6 +302,15 @@ section {
   font-size: 15px;
   color: var(--text-secondary);
   margin-bottom: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===== 模块内容容器 ===== */
+.section-content {
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 /* ===== 卡片样式 ===== */

@@ -699,7 +699,7 @@ function initSkillTags() {
     }
     
     #project-list, #blog-list {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     

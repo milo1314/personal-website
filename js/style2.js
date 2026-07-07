@@ -24,7 +24,7 @@ function showSection(sectionId) {
   const navItems = document.querySelectorAll('.nav-item');
   navItems.forEach(item => {
     const link = item.querySelector('a');
-    if (link && (link.getAttribute('href') === `style2.html#${sectionId}` || link.getAttribute('onclick')?.includes(sectionId))) {
+    if (link && link.getAttribute('onclick')?.includes(sectionId)) {
       link.classList.add('active');
     }
   });

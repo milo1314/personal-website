@@ -294,6 +294,9 @@ section {
   padding-bottom: 12px;
   border-bottom: 2px solid var(--border-color);
   position: relative;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-title i {
@@ -321,7 +324,7 @@ section {
   padding: 24px;
   transition: all var(--transition-normal);
   box-shadow: var(--shadow-sm);
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto 24px;
 }
 
@@ -1578,7 +1581,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -1901,7 +1904,7 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   margin-bottom: 24px;
-  max-width: 900px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
 }

@@ -22,17 +22,21 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(0, 113, 227, 0.1), rgba(90, 200, 250, 0.1));
+  background: rgba(255, 255, 255, 0.95);
   opacity: 0;
   pointer-events: none;
   z-index: 9999;
   backdrop-filter: blur(0px);
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .style-transition-overlay.active {
   opacity: 1;
   backdrop-filter: blur(20px);
+  pointer-events: auto;
 }
 
 .style-transition-overlay.fade-out {
@@ -40,14 +44,79 @@
   backdrop-filter: blur(0px);
 }
 
-.style-transition-fade {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.style-transition-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 50px 80px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 113, 227, 0.15);
+}
+
+.style-transition-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #0071e3, #5ac8fa);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.style-transition-icon i {
+  font-size: 36px;
+  color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.style-transition-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1d1d1f;
+}
+
+.style-transition-progress-container {
+  width: 300px;
+  height: 8px;
+  background: rgba(0, 113, 227, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.style-transition-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #0071e3, #5ac8fa);
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
+.style-transition-percent {
+  font-size: 16px;
+  color: #0071e3;
+  font-weight: 500;
 }
 
 .main-content {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===== 全局变量（苹果风格）===== */
@@ -223,7 +292,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
+  padding: 8px 12px;
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 14px;
@@ -232,14 +301,35 @@ body {
   transition: all var(--transition-fast);
 }
 
+.nav-item a i {
+  font-size: 18px;
+}
+
+.nav-item a .nav-text {
+  display: none;
+}
+
 .nav-item a:hover {
   color: var(--accent-primary);
   background-color: var(--accent-primary-light);
+  padding: 8px 16px;
+}
+
+.nav-item a:hover .nav-text {
+  display: inline-block;
+}
+
+.nav-item a:hover i {
+  font-size: 20px;
 }
 
 .nav-item a.active {
   color: var(--accent-primary);
   font-weight: 600;
+}
+
+.nav-item a.active .nav-text {
+  display: inline-block;
 }
 
 .nav-item a.active::after {
@@ -370,6 +460,9 @@ section {
   padding: 24px;
   margin-bottom: 24px;
   transition: all var(--transition-normal);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card:hover {
@@ -806,6 +899,9 @@ section {
 .tool-container {
   display: flex;
   gap: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tool-sidebar {
@@ -1273,6 +1369,9 @@ section {
 /* ===== 文案记事本模块样式 ===== */
 .notes-add-section {
   margin-bottom: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .notes-input-card {
@@ -1318,6 +1417,9 @@ section {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .notes-count {
@@ -1351,6 +1453,9 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .notes-card {
@@ -1435,6 +1540,9 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .recommendation-card {
@@ -1541,6 +1649,9 @@ section {
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .travel-city-tab {
@@ -1572,6 +1683,9 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .travel-card {
@@ -1753,6 +1867,9 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin-bottom: 40px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact-card {
@@ -2219,6 +2336,9 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .note-card {

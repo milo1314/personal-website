@@ -23,7 +23,6 @@ function showSection(sectionId) {
   currentSection = sectionId;
   
   if (sectionId === 'home') {
-    // 回到首页时，从localStorage恢复之前选择的风格
     const savedStyle = localStorage.getItem('style');
     const styleToggle = document.getElementById('styleToggle');
     if (savedStyle === 'style2') {
@@ -40,6 +39,10 @@ function showSection(sectionId) {
       }
     }
     updateHomeLayout();
+  } else {
+    document.querySelectorAll('.section-title').forEach(title => {
+      title.style.display = '';
+    });
   }
   
   // 隐藏所有模块
@@ -271,40 +274,75 @@ function toggleStyle() {
   
   const overlay = document.createElement('div');
   overlay.className = 'style-transition-overlay';
+  overlay.innerHTML = `
+    <div class="style-transition-content">
+      <div class="style-transition-icon">
+        <i class="fas fa-spinner"></i>
+      </div>
+      <div class="style-transition-title">正在切换风格</div>
+      <div class="style-transition-progress-container">
+        <div class="style-transition-progress-bar"></div>
+      </div>
+      <div class="style-transition-percent">0%</div>
+    </div>
+  `;
   document.body.appendChild(overlay);
   
   setTimeout(() => {
     overlay.classList.add('active');
-    mainContent.classList.add('style-transition-fade');
+    mainContent.style.opacity = '0';
+    mainContent.style.transform = 'scale(0.95)';
   }, 50);
   
-  setTimeout(() => {
-    if (currentStyle === 'style1') {
-      currentStyle = 'style2';
-      html.setAttribute('data-style', 'style2');
-      localStorage.setItem('style', 'style2');
-      styleToggle.innerHTML = '<i class="fas fa-home"></i>';
-      showToast('已切换到苹果风格', 'info');
+  const progressBar = overlay.querySelector('.style-transition-progress-bar');
+  const percentText = overlay.querySelector('.style-transition-percent');
+  let progress = 0;
+  const minDuration = 2000;
+  const startTime = Date.now();
+  
+  const animateProgress = () => {
+    const elapsed = Date.now() - startTime;
+    progress = Math.min(90, Math.floor((elapsed / minDuration) * 90));
+    progressBar.style.width = progress + '%';
+    percentText.textContent = progress + '%';
+    
+    if (elapsed < minDuration) {
+      requestAnimationFrame(animateProgress);
     } else {
-      currentStyle = 'style1';
-      html.removeAttribute('data-style');
-      localStorage.setItem('style', 'style1');
-      styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
-      showToast('已切换到默认风格', 'info');
-    }
-    
-    updateHomeLayout();
-    
-    setTimeout(() => {
-      mainContent.classList.remove('style-transition-fade');
-      overlay.classList.add('fade-out');
+      progressBar.style.width = '100%';
+      percentText.textContent = '100%';
       
       setTimeout(() => {
-        document.body.removeChild(overlay);
-        styleToggle.disabled = false;
-      }, 400);
-    }, 100);
-  }, 400);
+        if (currentStyle === 'style1') {
+          currentStyle = 'style2';
+          html.setAttribute('data-style', 'style2');
+          localStorage.setItem('style', 'style2');
+          styleToggle.innerHTML = '<i class="fas fa-home"></i>';
+        } else {
+          currentStyle = 'style1';
+          html.removeAttribute('data-style');
+          localStorage.setItem('style', 'style1');
+          styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
+        }
+        
+        updateHomeLayout();
+        
+        setTimeout(() => {
+          mainContent.style.opacity = '1';
+          mainContent.style.transform = 'scale(1)';
+          overlay.classList.add('fade-out');
+          
+          setTimeout(() => {
+            document.body.removeChild(overlay);
+            styleToggle.disabled = false;
+            showToast(currentStyle === 'style2' ? '已切换到苹果风格' : '已切换到默认风格', 'info');
+          }, 500);
+        }, 200);
+      }, 300);
+    }
+  };
+  
+  requestAnimationFrame(animateProgress);
 }
 
 /**

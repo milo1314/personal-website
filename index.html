@@ -430,10 +430,14 @@
       <section id="toolbox" class="section" style="display: none;">
         <h2 class="section-title"><i class="fas fa-toolbox"></i> 工具箱</h2>
         
-        <div style="display: flex; gap: 20px;">
+        <button class="mobile-tool-toggle" id="mobileToolToggle" onclick="toggleMobileToolMenu()">
+          <i class="fas fa-bars"></i> 选择工具
+        </button>
+        
+        <div class="tool-container">
           <!-- 工具导航 -->
-          <div class="tool-sidebar" style="width: 200px; flex-shrink: 0;">
-            <div style="position: sticky; top: 100px;">
+          <div class="tool-sidebar" id="toolSidebar">
+            <div class="tool-nav-wrapper">
               <button class="tool-nav-btn active" onclick="selectTool('json2yaml')">
                 <i class="fas fa-file-code"></i> JSON/YAML
               </button>
@@ -728,6 +732,7 @@
             
           </div>
         </div>
+      </div>
       </section>
 
       <!-- ========== Projects 项目模块 ========== -->

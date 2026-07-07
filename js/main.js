@@ -115,6 +115,22 @@ function selectTool(toolId) {
       btn.classList.add('active');
     }
   });
+  
+  // 移动端：选择工具后关闭工具菜单
+  const toolSidebar = document.getElementById('toolSidebar');
+  if (toolSidebar) {
+    toolSidebar.classList.remove('active');
+  }
+}
+
+/**
+ * 切换移动端工具菜单显示/隐藏
+ */
+function toggleMobileToolMenu() {
+  const toolSidebar = document.getElementById('toolSidebar');
+  if (toolSidebar) {
+    toolSidebar.classList.toggle('active');
+  }
 }
 
 /**
@@ -259,7 +275,7 @@ function toggleStyle() {
     html.setAttribute('data-style', 'style2');
     localStorage.setItem('style', 'style2');
     styleToggle.innerHTML = '<i class="fas fa-home"></i>';
-    showToast('已切换到档案索引风格', 'info');
+    showToast('已切换到苹果风格', 'info');
   } else {
     currentStyle = 'style1';
     html.removeAttribute('data-style');
@@ -268,9 +284,7 @@ function toggleStyle() {
     showToast('已切换到默认风格', 'info');
   }
   
-  if (currentSection === 'home') {
-    updateHomeLayout();
-  }
+  updateHomeLayout();
 }
 
 /**

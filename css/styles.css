@@ -578,6 +578,22 @@ section {
 .tech-stack-node.linux::before { background: radial-gradient(circle, #fcc624 0%, transparent 70%); }
 .tech-stack-node.git { background: linear-gradient(135deg, rgba(240, 80, 50, 0.2) 0%, rgba(240, 80, 50, 0.05) 100%); color: #f05032; border-color: rgba(240, 80, 50, 0.5); }
 .tech-stack-node.git::before { background: radial-gradient(circle, #f05032 0%, transparent 70%); }
+.tech-stack-node.java { background: linear-gradient(135deg, rgba(235, 107, 23, 0.2) 0%, rgba(235, 107, 23, 0.05) 100%); color: #eb6b17; border-color: rgba(235, 107, 23, 0.5); }
+.tech-stack-node.java::before { background: radial-gradient(circle, #eb6b17 0%, transparent 70%); }
+.tech-stack-node.spring { background: linear-gradient(135deg, rgba(0, 173, 79, 0.2) 0%, rgba(0, 173, 79, 0.05) 100%); color: #00ad4f; border-color: rgba(0, 173, 79, 0.5); }
+.tech-stack-node.spring::before { background: radial-gradient(circle, #00ad4f 0%, transparent 70%); }
+.tech-stack-node.ai { background: linear-gradient(135deg, rgba(103, 58, 183, 0.2) 0%, rgba(103, 58, 183, 0.05) 100%); color: #673ab7; border-color: rgba(103, 58, 183, 0.5); }
+.tech-stack-node.ai::before { background: radial-gradient(circle, #673ab7 0%, transparent 70%); }
+.tech-stack-node.oracle { background: linear-gradient(135deg, rgba(255, 111, 0, 0.2) 0%, rgba(255, 111, 0, 0.05) 100%); color: #ff6f00; border-color: rgba(255, 111, 0, 0.5); }
+.tech-stack-node.oracle::before { background: radial-gradient(circle, #ff6f00 0%, transparent 70%); }
+.tech-stack-node.gauss { background: linear-gradient(135deg, rgba(0, 150, 215, 0.2) 0%, rgba(0, 150, 215, 0.05) 100%); color: #0096d7; border-color: rgba(0, 150, 215, 0.5); }
+.tech-stack-node.gauss::before { background: radial-gradient(circle, #0096d7 0%, transparent 70%); }
+.tech-stack-node.bes { background: linear-gradient(135deg, rgba(126, 199, 95, 0.2) 0%, rgba(126, 199, 95, 0.05) 100%); color: #7ec75f; border-color: rgba(126, 199, 95, 0.5); }
+.tech-stack-node.bes::before { background: radial-gradient(circle, #7ec75f 0%, transparent 70%); }
+.tech-stack-node.mysql { background: linear-gradient(135deg, rgba(250, 187, 10, 0.2) 0%, rgba(250, 187, 10, 0.05) 100%); color: #fabb0a; border-color: rgba(250, 187, 10, 0.5); }
+.tech-stack-node.mysql::before { background: radial-gradient(circle, #fabb0a 0%, transparent 70%); }
+.tech-stack-node.redis { background: linear-gradient(135deg, rgba(221, 76, 60, 0.2) 0%, rgba(221, 76, 60, 0.05) 100%); color: #dd4c3c; border-color: rgba(221, 76, 60, 0.5); }
+.tech-stack-node.redis::before { background: radial-gradient(circle, #dd4c3c 0%, transparent 70%); }
 
 /* ===== Bento Grid布局 ===== */
 .bento-grid {

@@ -168,6 +168,69 @@ function toggleTheme() {
   }
 }
 
+function toggleStyle() {
+  const styleToggle = document.getElementById('styleToggle');
+  const mainContent = document.querySelector('.main-content');
+  
+  if (!styleToggle || !mainContent) return;
+  
+  styleToggle.disabled = true;
+  
+  const overlay = document.createElement('div');
+  overlay.className = 'style-transition-overlay';
+  overlay.innerHTML = `
+    <div class="style-transition-content">
+      <div class="style-transition-icon">
+        <i class="fas fa-spinner"></i>
+      </div>
+      <div class="style-transition-title">正在切换风格</div>
+      <div class="style-transition-progress-container">
+        <div class="style-transition-progress-bar"></div>
+      </div>
+      <div class="style-transition-percent">0%</div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  
+  setTimeout(() => {
+    overlay.classList.add('active');
+    mainContent.style.opacity = '0';
+    mainContent.style.transform = 'scale(0.95)';
+  }, 50);
+  
+  const progressBar = overlay.querySelector('.style-transition-progress-bar');
+  const percentText = overlay.querySelector('.style-transition-percent');
+  let progress = 0;
+  const minDuration = 5000;
+  const startTime = Date.now();
+  
+  const animateProgress = () => {
+    const elapsed = Date.now() - startTime;
+    progress = Math.min(90, Math.floor((elapsed / minDuration) * 90));
+    progressBar.style.width = progress + '%';
+    percentText.textContent = progress + '%';
+    
+    if (elapsed < minDuration) {
+      requestAnimationFrame(animateProgress);
+    } else {
+      progressBar.style.width = '100%';
+      percentText.textContent = '100%';
+      
+      setTimeout(() => {
+        const isStyle2Page = window.location.pathname.includes('style2.html');
+        
+        if (isStyle2Page) {
+          window.location.href = 'index.html';
+        } else {
+          window.location.href = 'style2.html';
+        }
+      }, 300);
+    }
+  };
+  
+  requestAnimationFrame(animateProgress);
+}
+
 let quotesData = [];
 let currentAuthorFilter = 'all';
 let currentBookFilter = 'all';

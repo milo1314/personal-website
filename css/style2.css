@@ -15,6 +15,41 @@
   box-sizing: border-box;
 }
 
+/* ===== 风格切换过渡动画 ===== */
+.style-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.1), rgba(90, 200, 250, 0.1));
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  backdrop-filter: blur(0px);
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.style-transition-overlay.active {
+  opacity: 1;
+  backdrop-filter: blur(20px);
+}
+
+.style-transition-overlay.fade-out {
+  opacity: 0;
+  backdrop-filter: blur(0px);
+}
+
+.style-transition-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.main-content {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
 /* ===== 全局变量（苹果风格）===== */
 :root {
   --bg-primary: #ffffff;
@@ -1937,6 +1972,9 @@ section {
   gap: 12px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quotes-author-tab-wrapper {
@@ -1991,6 +2029,9 @@ section {
   margin-bottom: 20px;
   flex-wrap: wrap;
   gap: 12px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quotes-stats {
@@ -2014,6 +2055,9 @@ section {
   gap: 12px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quotes-theme-filter {
@@ -2021,12 +2065,18 @@ section {
   gap: 8px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quotes-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quote-card {

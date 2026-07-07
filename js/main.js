@@ -40,12 +40,6 @@ function showSection(sectionId) {
       }
     }
     updateHomeLayout();
-  } else {
-    // 离开首页时，临时切换到默认风格（不改变localStorage）
-    if (currentStyle === 'style2') {
-      currentStyle = 'style1';
-      document.documentElement.removeAttribute('data-style');
-    }
   }
   
   // 隐藏所有模块
@@ -269,22 +263,48 @@ function toggleTheme() {
 function toggleStyle() {
   const html = document.documentElement;
   const styleToggle = document.getElementById('styleToggle');
+  const mainContent = document.querySelector('.main-content');
   
-  if (currentStyle === 'style1') {
-    currentStyle = 'style2';
-    html.setAttribute('data-style', 'style2');
-    localStorage.setItem('style', 'style2');
-    styleToggle.innerHTML = '<i class="fas fa-home"></i>';
-    showToast('已切换到苹果风格', 'info');
-  } else {
-    currentStyle = 'style1';
-    html.removeAttribute('data-style');
-    localStorage.setItem('style', 'style1');
-    styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
-    showToast('已切换到默认风格', 'info');
-  }
+  if (!styleToggle || !mainContent) return;
   
-  updateHomeLayout();
+  styleToggle.disabled = true;
+  
+  const overlay = document.createElement('div');
+  overlay.className = 'style-transition-overlay';
+  document.body.appendChild(overlay);
+  
+  setTimeout(() => {
+    overlay.classList.add('active');
+    mainContent.classList.add('style-transition-fade');
+  }, 50);
+  
+  setTimeout(() => {
+    if (currentStyle === 'style1') {
+      currentStyle = 'style2';
+      html.setAttribute('data-style', 'style2');
+      localStorage.setItem('style', 'style2');
+      styleToggle.innerHTML = '<i class="fas fa-home"></i>';
+      showToast('已切换到苹果风格', 'info');
+    } else {
+      currentStyle = 'style1';
+      html.removeAttribute('data-style');
+      localStorage.setItem('style', 'style1');
+      styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
+      showToast('已切换到默认风格', 'info');
+    }
+    
+    updateHomeLayout();
+    
+    setTimeout(() => {
+      mainContent.classList.remove('style-transition-fade');
+      overlay.classList.add('fade-out');
+      
+      setTimeout(() => {
+        document.body.removeChild(overlay);
+        styleToggle.disabled = false;
+      }, 400);
+    }, 100);
+  }, 400);
 }
 
 /**
@@ -1670,6 +1690,7 @@ function renderQuotes() {
   
   container.innerHTML = data.map((item, index) => {
     const bgColor = cardColors[index % cardColors.length];
+    const authorName = quotesData[currentQuoteAuthor]?.name || '';
     return `
       <div class="quote-card" data-index="${index}" style="background: ${bgColor};">
         <div class="quote-header">
@@ -1679,7 +1700,7 @@ function renderQuotes() {
         <div class="quote-text">${item.text}</div>
         <div class="quote-footer">
           <div class="quote-author-info">
-            <span class="quote-author">${item.author}</span>
+            <span class="quote-author">${authorName}</span>
             <span class="quote-book">《${item.bookName}》</span>
           </div>
           <div class="quote-actions">

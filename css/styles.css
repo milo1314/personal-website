@@ -294,7 +294,7 @@ section {
   padding-bottom: 12px;
   border-bottom: 2px solid var(--border-color);
   position: relative;
-  max-width: 1000px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -940,6 +940,9 @@ section {
   color: var(--text-secondary);
   margin-bottom: 24px;
   font-weight: 400;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .notes-add-section {
@@ -1456,6 +1459,9 @@ section {
   gap: 12px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quotes-author-tab-wrapper {
@@ -1521,6 +1527,9 @@ section {
   gap: 8px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quotes-book-tab {
@@ -1553,6 +1562,9 @@ section {
   gap: 8px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .quotes-theme-tag {
@@ -2397,18 +2409,55 @@ section {
 }
 
 /* ==============================================
+   Style Transition Animation
+   ============================================== */
+.style-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 113, 227, 0.1), rgba(90, 200, 250, 0.1));
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  backdrop-filter: blur(0px);
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), backdrop-filter 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.style-transition-overlay.active {
+  opacity: 1;
+  backdrop-filter: blur(20px);
+}
+
+.style-transition-overlay.fade-out {
+  opacity: 0;
+  backdrop-filter: blur(0px);
+}
+
+.style-transition-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.main-content {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ==============================================
    Style2 - 现代深色风格（国外主流）
    ============================================== */
 [data-style="style2"] {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #12121a;
-  --bg-card: rgba(255, 255, 255, 0.04);
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.6);
-  --text-muted: rgba(255, 255, 255, 0.4);
-  --accent-primary: #60a5fa;
-  --accent-secondary: #a78bfa;
-  --border-color: rgba(255, 255, 255, 0.08);
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f7;
+  --bg-card: #ffffff;
+  --text-primary: #1d1d1f;
+  --text-secondary: #86868b;
+  --text-muted: #aeaeae;
+  --accent-primary: #0071e3;
+  --accent-secondary: #0077ed;
+  --border-color: #e5e5e5;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -2416,30 +2465,19 @@ section {
 }
 
 [data-style="style2"] body {
-  background: linear-gradient(180deg, #0a0a0f 0%, #12121a 50%, #1a1a25 100%);
+  background: var(--bg-primary);
   min-height: 100vh;
   position: relative;
 }
 
 [data-style="style2"] body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(ellipse at 20% 0%, rgba(96, 165, 250, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 100%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.03) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 [data-style="style2"] .navbar {
-  background: rgba(10, 10, 15, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 [data-style="style2"] .navbar-brand {
@@ -2447,12 +2485,11 @@ section {
 }
 
 [data-style="style2"] .navbar-brand i {
-  background: linear-gradient(135deg, #60a5fa, #a78bfa);
-  box-shadow: 0 0 20px rgba(96, 165, 250, 0.4);
+  background: var(--accent-primary);
 }
 
 [data-style="style2"] .navbar-links a {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
   position: relative;
   padding-bottom: 8px;
 }
@@ -2464,7 +2501,7 @@ section {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #60a5fa, #a78bfa);
+  background: var(--accent-primary);
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -2475,7 +2512,7 @@ section {
 
 [data-style="style2"] .navbar-links a:hover,
 [data-style="style2"] .navbar-links a.active {
-  color: var(--text-primary);
+  color: var(--accent-primary);
 }
 
 [data-style="style2"] .main-content {
@@ -2485,14 +2522,13 @@ section {
 }
 
 [data-style="style2"] .card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 [data-style="style2"] .card:hover {
-  border-color: rgba(96, 165, 250, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent-primary);
+  box-shadow: 0 4px 20px rgba(0, 113, 227, 0.1);
 }
 
 [data-style="style2"] .hero-card {
@@ -2690,8 +2726,8 @@ section {
 [data-style="style2"] .tech-stack-node {
   width: 72px;
   height: 72px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-secondary);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 50%;
   display: flex;
   flex-direction: column;
@@ -2701,14 +2737,14 @@ section {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
 }
 
 [data-style="style2"] .tech-stack-node:hover {
-  border-color: rgba(96, 165, 250, 0.4);
-  color: #60a5fa;
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
   transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 8px 24px rgba(96, 165, 250, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 113, 227, 0.15);
 }
 
 [data-style="style2"] .tech-stack-node i {
@@ -2723,9 +2759,8 @@ section {
 }
 
 [data-style="style2"] .bento-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   padding: 24px;
   border-radius: 16px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2733,9 +2768,9 @@ section {
 }
 
 [data-style="style2"] .bento-card:hover {
-  border-color: rgba(96, 165, 250, 0.2);
+  border-color: var(--accent-primary);
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 113, 227, 0.1);
 }
 
 [data-style="style2"] .bento-card.large {
@@ -2745,15 +2780,15 @@ section {
 [data-style="style2"] .bento-card-icon {
   width: 56px;
   height: 56px;
-  background: rgba(96, 165, 250, 0.1);
-  border: 1px solid rgba(96, 165, 250, 0.2);
+  background: rgba(0, 113, 227, 0.05);
+  border: 1px solid rgba(0, 113, 227, 0.1);
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 18px;
   font-size: 24px;
-  color: #60a5fa;
+  color: var(--accent-primary);
   transition: all 0.3s ease;
 }
 
@@ -2762,39 +2797,39 @@ section {
 }
 
 [data-style="style2"] .bento-card.blue .bento-card-icon {
-  background: rgba(59, 130, 246, 0.1);
-  border-color: rgba(59, 130, 246, 0.3);
-  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
 }
 
 [data-style="style2"] .bento-card.green .bento-card-icon {
-  background: rgba(34, 197, 94, 0.1);
-  border-color: rgba(34, 197, 94, 0.3);
-  color: #4ade80;
+  background: rgba(34, 197, 94, 0.08);
+  border-color: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
 }
 
 [data-style="style2"] .bento-card.orange .bento-card-icon {
-  background: rgba(249, 115, 22, 0.1);
-  border-color: rgba(249, 115, 22, 0.3);
-  color: #fb923c;
+  background: rgba(249, 115, 22, 0.08);
+  border-color: rgba(249, 115, 22, 0.15);
+  color: #f97316;
 }
 
 [data-style="style2"] .bento-card.purple .bento-card-icon {
-  background: rgba(168, 85, 247, 0.1);
-  border-color: rgba(168, 85, 247, 0.3);
-  color: #c084fc;
+  background: rgba(168, 85, 247, 0.08);
+  border-color: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
 }
 
 [data-style="style2"] .bento-card.pink .bento-card-icon {
-  background: rgba(236, 72, 153, 0.1);
-  border-color: rgba(236, 72, 153, 0.3);
-  color: #f472b6;
+  background: rgba(236, 72, 153, 0.08);
+  border-color: rgba(236, 72, 153, 0.15);
+  color: #ec4899;
 }
 
 [data-style="style2"] .bento-card.yellow .bento-card-icon {
-  background: rgba(234, 179, 8, 0.1);
-  border-color: rgba(234, 179, 8, 0.3);
-  color: #facc15;
+  background: rgba(234, 179, 8, 0.08);
+  border-color: rgba(234, 179, 8, 0.15);
+  color: #eab308;
 }
 
 [data-style="style2"] .bento-card-title {
@@ -2806,14 +2841,14 @@ section {
 
 [data-style="style2"] .bento-card-desc {
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 16px;
 }
 
 [data-style="style2"] .bento-card-link {
   font-size: 0.875rem;
-  color: #60a5fa;
+  color: var(--accent-primary);
   font-weight: 600;
   display: inline-flex;
   align-items: center;
@@ -2822,7 +2857,7 @@ section {
 }
 
 [data-style="style2"] .bento-card-link:hover {
-  color: #93c5fd;
+  color: var(--accent-secondary);
 }
 
 [data-style="style2"] .bento-card-link i {
@@ -3089,10 +3124,6 @@ section {
   padding-top: 60px;
 }
 
-[data-style="style2"] #toolbox {
-  display: block !important;
-}
-
 [data-style="style2"] #toolbox .section-title {
   display: block !important;
   text-align: left;
@@ -3206,8 +3237,9 @@ section {
   width: 80px;
   height: 80px;
   margin: 0 auto 32px;
-  background: #1d1d1f;
-  border-radius: 20px;
+  background: linear-gradient(135deg, #0071e3, #5ac8fa);
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0, 113, 227, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3306,8 +3338,9 @@ section {
 [data-style="style2"] .apple-card-icon {
   width: 56px;
   height: 56px;
-  background: #1d1d1f;
-  border-radius: 14px;
+  margin: 0 auto 20px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3316,12 +3349,13 @@ section {
 }
 
 [data-style="style2"] .apple-card-icon.light {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 [data-style="style2"] .apple-card-icon i {
-  font-size: 24px;
-  color: white;
+  font-size: 26px;
+  color: #1d1d1f;
 }
 
 [data-style="style2"] .apple-card-title {

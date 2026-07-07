@@ -23,9 +23,10 @@ function showSection(sectionId) {
   currentSection = sectionId;
   
   if (sectionId === 'home') {
-    const savedStyle = localStorage.getItem('style');
     const styleToggle = document.getElementById('styleToggle');
-    if (savedStyle === 'style2') {
+    const isStyle2Page = window.location.pathname.includes('style2.html');
+    
+    if (isStyle2Page) {
       currentStyle = 'style2';
       document.documentElement.setAttribute('data-style', 'style2');
       if (styleToggle) {
@@ -297,7 +298,7 @@ function toggleStyle() {
   const progressBar = overlay.querySelector('.style-transition-progress-bar');
   const percentText = overlay.querySelector('.style-transition-percent');
   let progress = 0;
-  const minDuration = 2000;
+  const minDuration = 5000;
   const startTime = Date.now();
   
   const animateProgress = () => {
@@ -375,17 +376,21 @@ function updateHomeLayout() {
  */
 function initStyle() {
   const html = document.documentElement;
-  const savedStyle = localStorage.getItem('style');
   const styleToggle = document.getElementById('styleToggle');
+  const isStyle2Page = window.location.pathname.includes('style2.html');
   
-  if (savedStyle === 'style2') {
+  if (isStyle2Page) {
     currentStyle = 'style2';
     html.setAttribute('data-style', 'style2');
-    styleToggle.innerHTML = '<i class="fas fa-home"></i>';
+    if (styleToggle) {
+      styleToggle.innerHTML = '<i class="fas fa-home"></i>';
+    }
   } else {
     currentStyle = 'style1';
     html.removeAttribute('data-style');
-    styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
+    if (styleToggle) {
+      styleToggle.innerHTML = '<i class="fas fa-palette"></i>';
+    }
   }
   
   updateHomeLayout();

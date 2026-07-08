@@ -412,7 +412,7 @@ section {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 28px;
-  padding: 0 10px 12px;
+  padding-bottom: 12px;
   border-bottom: 2px solid var(--border-color);
   position: relative;
   max-width: 900px;
@@ -450,7 +450,6 @@ section {
 .section-content {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 10px;
 }
 
 /* ===== 卡片样式 ===== */
@@ -662,7 +661,6 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 16px;
   margin-bottom: 16px;
-  padding: 0 16px;
 }
 
 .apple-card {
@@ -2485,23 +2483,6 @@ section {
   
   .container {
     padding: 0 16px;
-  }
-  
-  .section {
-    padding: 60px 32px;
-  }
-  
-  .section-content,
-  .apple-section,
-  .contact-grid,
-  .tool-container {
-    padding: 0 32px;
-  }
-  
-  .section-title,
-  .card {
-    padding-left: 32px;
-    padding-right: 32px;
   }
   
   .main-content {

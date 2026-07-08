@@ -1398,12 +1398,12 @@ section {
     align-items: flex-start;
   }
   
-  /* 默认风格移动端模块标题居中对齐（与苹果风格一致） */
-  .section-title {
+  /* 默认风格移动端非首页模块标题居中对齐（与苹果风格一致） */
+  section:not(#home) .section-title {
     text-align: center;
   }
   
-  .section-title::after {
+  section:not(#home) .section-title::after {
     left: 50%;
     transform: translateX(-50%);
   }

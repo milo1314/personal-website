@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MiloLab - Mobile</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <nav class="mobile-navbar">
+    <div class="mobile-navbar-content">
+      <a href="#" class="mobile-navbar-logo" onclick="showSection('home')">
+        <div class="mobile-logo-icon">
+          <span>M</span>
+        </div>
+        <span>MiloLab</span>
+      </a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleFabMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+
+
+  <main class="mobile-main">
+    <div class="mobile-container">
+      <section id="home" class="mobile-section active">
+        <div class="mobile-hero">
+          <div class="mobile-hero-avatar">
+            <div class="mobile-avatar-circle">
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+          <h1>你好，我是 <span>Milo</span></h1>
+          <p>全栈开发者，热爱技术，专注于构建高质量的Web应用。</p>
+          <div class="mobile-hero-tags">
+            <div class="mobile-hero-tag">📍 Shanghai, China</div>
+            <div class="mobile-hero-tag">💼 Full Stack Engineer</div>
+          </div>
+          <div class="mobile-hero-actions">
+            <button class="mobile-btn mobile-btn-primary" onclick="showSection('toolbox')">
+              <i class="fas fa-wrench"></i> 打开工具箱
+            </button>
+            <button class="mobile-btn mobile-btn-outline" onclick="showSection('projects')">
+              <i class="fas fa-project-diagram"></i> 查看项目
+            </button>
+          </div>
+        </div>
+
+        <div class="mobile-section-title">Tech Stack</div>
+        <div class="mobile-tech-stack">
+          <div class="mobile-tech-row">
+            <div class="mobile-tech-node js"><i class="fab fa-js"></i><span>JS</span></div>
+            <div class="mobile-tech-node ts"><i class="fab fa-typescript"></i><span>TS</span></div>
+            <div class="mobile-tech-node vue"><i class="fab fa-vuejs"></i><span>Vue</span></div>
+            <div class="mobile-tech-node react"><i class="fab fa-react"></i><span>React</span></div>
+            <div class="mobile-tech-node java"><i class="fab fa-java"></i><span>Java</span></div>
+          </div>
+          <div class="mobile-tech-row">
+            <div class="mobile-tech-node node"><i class="fab fa-node-js"></i><span>Node</span></div>
+            <div class="mobile-tech-node py"><i class="fab fa-python"></i><span>Py</span></div>
+            <div class="mobile-tech-node go"><i class="fab fa-golang"></i><span>Go</span></div>
+            <div class="mobile-tech-node spring"><i class="fas fa-leaf"></i><span>Spring</span></div>
+            <div class="mobile-tech-node ai"><i class="fas fa-brain"></i><span>AI</span></div>
+          </div>
+          <div class="mobile-tech-row">
+            <div class="mobile-tech-node docker"><i class="fab fa-docker"></i><span>Docker</span></div>
+            <div class="mobile-tech-node k8s"><i class="fab fa-kubernetes"></i><span>K8s</span></div>
+            <div class="mobile-tech-node aws"><i class="fab fa-aws"></i><span>AWS</span></div>
+            <div class="mobile-tech-node linux"><i class="fab fa-linux"></i><span>Linux</span></div>
+            <div class="mobile-tech-node git"><i class="fab fa-git"></i><span>Git</span></div>
+          </div>
+          <div class="mobile-tech-row">
+            <div class="mobile-tech-node oracle"><i class="fas fa-database"></i><span>Oracle</span></div>
+            <div class="mobile-tech-node gauss"><i class="fas fa-database"></i><span>Gauss</span></div>
+            <div class="mobile-tech-node bes"><i class="fas fa-cloud"></i><span>BES</span></div>
+            <div class="mobile-tech-node mysql"><i class="fas fa-database"></i><span>MySQL</span></div>
+            <div class="mobile-tech-node redis"><i class="fas fa-database"></i><span>Redis</span></div>
+          </div>
+        </div>
+
+        <div class="mobile-section-title">Modules</div>
+        <div class="mobile-modules-grid">
+          <div class="mobile-module-card" onclick="showSection('toolbox')">
+            <div class="mobile-module-icon blue"><i class="fas fa-wrench"></i></div>
+            <div class="mobile-module-title">工具箱</div>
+            <div class="mobile-module-desc">实用工具集合</div>
+          </div>
+          <div class="mobile-module-card" onclick="showSection('projects')">
+            <div class="mobile-module-icon green"><i class="fas fa-project-diagram"></i></div>
+            <div class="mobile-module-title">项目展示</div>
+            <div class="mobile-module-desc">开源项目与作品</div>
+          </div>
+          <div class="mobile-module-card" onclick="showSection('blog')">
+            <div class="mobile-module-icon orange"><i class="fas fa-book"></i></div>
+            <div class="mobile-module-title">技术博客</div>
+            <div class="mobile-module-desc">技术文章与笔记</div>
+          </div>
+          <div class="mobile-module-card" onclick="showSection('quotes')">
+            <div class="mobile-module-icon purple"><i class="fas fa-quote-right"></i></div>
+            <div class="mobile-module-title">名人语录</div>
+            <div class="mobile-module-desc">收藏智慧哲理</div>
+          </div>
+          <div class="mobile-module-card" onclick="showSection('notes')">
+            <div class="mobile-module-icon pink"><i class="fas fa-pen-fancy"></i></div>
+            <div class="mobile-module-title">文案记事本</div>
+            <div class="mobile-module-desc">记录灵感与文案</div>
+          </div>
+          <div class="mobile-module-card" onclick="showSection('recommendations')">
+            <div class="mobile-module-icon yellow"><i class="fas fa-star"></i></div>
+            <div class="mobile-module-title">好物推荐</div>
+            <div class="mobile-module-desc">精选优质好物</div>
+          </div>
+          <div class="mobile-module-card" onclick="showSection('travel')">
+            <div class="mobile-module-icon cyan"><i class="fas fa-map-marked-alt"></i></div>
+            <div class="mobile-module-title">旅游攻略</div>
+            <div class="mobile-module-desc">探索世界美景</div>
+          </div>
+          <div class="mobile-module-card" onclick="showSection('contact')">
+            <div class="mobile-module-icon gray"><i class="fas fa-envelope"></i></div>
+            <div class="mobile-module-title">联系我</div>
+            <div class="mobile-module-desc">欢迎交流合作</div>
+          </div>
+          <div class="mobile-module-card" onclick="showSection('snippets')">
+            <div class="mobile-module-icon indigo"><i class="fas fa-code"></i></div>
+            <div class="mobile-module-title">代码片段</div>
+            <div class="mobile-module-desc">常用代码集合</div>
+          </div>
+          <div class="mobile-module-card" onclick="showSection('resources')">
+            <div class="mobile-module-icon teal"><i class="fas fa-book-open"></i></div>
+            <div class="mobile-module-title">学习资源</div>
+            <div class="mobile-module-desc">教程与资料</div>
+          </div>
+          <div class="mobile-module-card" onclick="showSection('materials')">
+            <div class="mobile-module-icon rose"><i class="fas fa-images"></i></div>
+            <div class="mobile-module-title">素材库</div>
+            <div class="mobile-module-desc">设计素材集合</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="toolbox" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">工具箱</h2>
+        </div>
+
+        <div class="mobile-tool-tabs">
+          <button class="mobile-tool-tab active" onclick="selectTool('json2yaml')">JSON/YAML</button>
+          <button class="mobile-tool-tab" onclick="selectTool('base64')">Base64</button>
+          <button class="mobile-tool-tab" onclick="selectTool('token')">Token</button>
+          <button class="mobile-tool-tab" onclick="selectTool('hash')">Hash</button>
+          <button class="mobile-tool-tab" onclick="selectTool('uuid')">UUID</button>
+          <button class="mobile-tool-tab" onclick="selectTool('time')">时间</button>
+        </div>
+
+        <div class="mobile-tool-panel" id="tool-json2yaml">
+          <div class="mobile-card">
+            <div class="mobile-card-title">JSON ↔ YAML 转换</div>
+            <div class="mobile-form-group">
+              <label>JSON 输入</label>
+              <textarea id="json-input" class="mobile-textarea" placeholder='{"name": "test", "value": 123}'></textarea>
+              <button class="mobile-btn mobile-btn-primary" onclick="convertJson2Yaml()">JSON → YAML</button>
+            </div>
+            <div class="mobile-form-group">
+              <label>YAML 输出</label>
+              <textarea id="yaml-output" class="mobile-textarea" placeholder="name: test&#10;value: 123"></textarea>
+              <button class="mobile-btn mobile-btn-secondary" onclick="convertYaml2Json()">YAML → JSON</button>
+            </div>
+            <div class="mobile-tool-actions">
+              <button class="mobile-btn mobile-btn-outline" onclick="copyToClipboard('yaml-output')">复制结果</button>
+              <button class="mobile-btn mobile-btn-outline" onclick="clearTool('json2yaml')">清空</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-tool-panel" id="tool-base64" style="display: none;">
+          <div class="mobile-card">
+            <div class="mobile-card-title">Base64 编解码</div>
+            <div class="mobile-form-group">
+              <label>原始文本</label>
+              <textarea id="base64-input" class="mobile-textarea" placeholder="输入需要编码的文本..."></textarea>
+              <button class="mobile-btn mobile-btn-primary" onclick="encodeBase64()">编码为 Base64</button>
+            </div>
+            <div class="mobile-form-group">
+              <label>Base64 结果</label>
+              <textarea id="base64-output" class="mobile-textarea" placeholder="Base64编码结果..."></textarea>
+              <button class="mobile-btn mobile-btn-secondary" onclick="decodeBase64()">解码 Base64</button>
+            </div>
+            <div class="mobile-tool-actions">
+              <button class="mobile-btn mobile-btn-outline" onclick="copyToClipboard('base64-output')">复制结果</button>
+              <button class="mobile-btn mobile-btn-outline" onclick="clearTool('base64')">清空</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-tool-panel" id="tool-token" style="display: none;">
+          <div class="mobile-card">
+            <div class="mobile-card-title">Token 生成器</div>
+            <div class="mobile-form-row">
+              <div class="mobile-form-group">
+                <label>Token长度</label>
+                <input type="number" id="token-length" class="mobile-input" value="32" min="8" max="256">
+              </div>
+              <div class="mobile-form-group">
+                <label>字符类型</label>
+                <select id="token-type" class="mobile-input">
+                  <option value="alphanumeric">字母+数字</option>
+                  <option value="alpha">仅字母</option>
+                  <option value="numeric">仅数字</option>
+                  <option value="hex">十六进制</option>
+                  <option value="base64">Base64字符</option>
+                </select>
+              </div>
+            </div>
+            <div class="mobile-form-group">
+              <label>生成的Token</label>
+              <textarea id="token-output" class="mobile-textarea" placeholder="点击生成按钮获取Token"></textarea>
+            </div>
+            <div class="mobile-tool-actions">
+              <button class="mobile-btn mobile-btn-primary" onclick="generateToken()">生成Token</button>
+              <button class="mobile-btn mobile-btn-outline" onclick="copyToClipboard('token-output')">复制Token</button>
+              <button class="mobile-btn mobile-btn-outline" onclick="clearTool('token')">清空</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-tool-panel" id="tool-hash" style="display: none;">
+          <div class="mobile-card">
+            <div class="mobile-card-title">Hash 计算器</div>
+            <div class="mobile-form-group">
+              <label>输入字符串</label>
+              <textarea id="hash-input" class="mobile-textarea" placeholder="输入需要计算哈希的字符串..."></textarea>
+            </div>
+            <div class="mobile-form-group">
+              <label>选择算法</label>
+              <div class="mobile-hash-algos">
+                <button class="mobile-hash-algo active" onclick="selectHashAlgo('md5')">MD5</button>
+                <button class="mobile-hash-algo" onclick="selectHashAlgo('sha1')">SHA-1</button>
+                <button class="mobile-hash-algo" onclick="selectHashAlgo('sha256')">SHA-256</button>
+                <button class="mobile-hash-algo" onclick="selectHashAlgo('sha512')">SHA-512</button>
+              </div>
+            </div>
+            <div class="mobile-form-group">
+              <label>Hash结果</label>
+              <textarea id="hash-output" class="mobile-textarea" placeholder="计算结果将显示在这里"></textarea>
+            </div>
+            <div class="mobile-tool-actions">
+              <button class="mobile-btn mobile-btn-primary" onclick="calculateHash()">计算Hash</button>
+              <button class="mobile-btn mobile-btn-outline" onclick="copyToClipboard('hash-output')">复制结果</button>
+              <button class="mobile-btn mobile-btn-outline" onclick="clearTool('hash')">清空</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-tool-panel" id="tool-uuid" style="display: none;">
+          <div class="mobile-card">
+            <div class="mobile-card-title">UUID 生成器</div>
+            <div class="mobile-form-row">
+              <div class="mobile-form-group">
+                <label>生成数量</label>
+                <input type="number" id="uuid-count" class="mobile-input" value="1" min="1" max="50">
+              </div>
+              <div class="mobile-form-group">
+                <label>格式</label>
+                <select id="uuid-format" class="mobile-input">
+                  <option value="standard">标准格式</option>
+                  <option value="no-hyphen">无连字符</option>
+                  <option value="uppercase">大写</option>
+                  <option value="lowercase">小写</option>
+                </select>
+              </div>
+            </div>
+            <div class="mobile-form-group">
+              <label>生成的UUID</label>
+              <textarea id="uuid-output" class="mobile-textarea" placeholder="点击生成按钮获取UUID"></textarea>
+            </div>
+            <div class="mobile-tool-actions">
+              <button class="mobile-btn mobile-btn-primary" onclick="generateUUID()">生成UUID</button>
+              <button class="mobile-btn mobile-btn-outline" onclick="copyToClipboard('uuid-output')">复制UUID</button>
+              <button class="mobile-btn mobile-btn-outline" onclick="clearTool('uuid')">清空</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-tool-panel" id="tool-time" style="display: none;">
+          <div class="mobile-card">
+            <div class="mobile-card-title">时间转换器</div>
+            <div class="mobile-form-group">
+              <label>时间戳 (秒)</label>
+              <input type="number" id="timestamp-input" class="mobile-input" placeholder="输入时间戳">
+              <button class="mobile-btn mobile-btn-primary" onclick="convertTimestamp()">时间戳 → 日期</button>
+            </div>
+            <div class="mobile-form-group">
+              <label>日期时间</label>
+              <input type="datetime-local" id="datetime-input" class="mobile-input">
+              <button class="mobile-btn mobile-btn-secondary" onclick="convertDatetime()">日期 → 时间戳</button>
+            </div>
+            <div class="mobile-form-group">
+              <label>转换结果</label>
+              <textarea id="time-output" class="mobile-textarea" placeholder="转换结果将显示在这里"></textarea>
+            </div>
+            <div class="mobile-tool-actions">
+              <button class="mobile-btn mobile-btn-secondary" onclick="getCurrentTime()">获取当前时间</button>
+              <button class="mobile-btn mobile-btn-outline" onclick="copyToClipboard('time-output')">复制结果</button>
+              <button class="mobile-btn mobile-btn-outline" onclick="clearTool('time')">清空</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="snippets" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">代码片段</h2>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">🔧 代码片段库</div>
+          <div style="color: var(--text-secondary); font-size: 14px; line-height: 1.6;">
+            此模块预留，用于展示常用代码片段。
+          </div>
+        </div>
+      </section>
+
+      <section id="resources" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">学习资源</h2>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">📚 学习资源</div>
+          <div style="color: var(--text-secondary); font-size: 14px; line-height: 1.6;">
+            此模块预留，用于分享学习资料和教程。
+          </div>
+        </div>
+      </section>
+
+      <section id="materials" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">素材库</h2>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">🎨 素材库</div>
+          <div style="color: var(--text-secondary); font-size: 14px; line-height: 1.6;">
+            此模块预留，用于展示精选设计素材与资源。
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">项目展示</h2>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">项目列表</div>
+          <div id="project-list" class="mobile-project-list"></div>
+        </div>
+      </section>
+
+      <section id="blog" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">技术博客</h2>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">文章列表</div>
+          <div id="blog-list" class="mobile-blog-list"></div>
+        </div>
+      </section>
+
+      <section id="quotes" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">名人语录</h2>
+        </div>
+        <div class="mobile-quotes-stats">
+          <span>共 <span id="quotes-count">0</span> 条语录</span>
+          <div class="mobile-quotes-actions">
+            <button class="mobile-btn mobile-btn-outline" onclick="openAddQuoteModal()">
+              <i class="fas fa-plus"></i> 新增语录
+            </button>
+          </div>
+        </div>
+        <div class="mobile-quotes-author-tabs" id="quotes-author-tabs"></div>
+        <div class="mobile-quotes-book-tabs" id="quotes-book-tabs"></div>
+        <div id="quotes-list" class="mobile-quotes-list"></div>
+        <div class="mobile-quotes-batch">
+          <button class="mobile-btn mobile-btn-primary" onclick="copyAllQuotes()">
+            <i class="fas fa-copy"></i> 复制全部
+          </button>
+        </div>
+      </section>
+
+      <section id="notes" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">文案记事本</h2>
+        </div>
+        <div class="mobile-card">
+          <textarea id="note-input" class="mobile-textarea" placeholder="写下你喜欢的句子或文案..."></textarea>
+          <button class="mobile-btn mobile-btn-primary" onclick="addNote()">添加到记事本</button>
+        </div>
+        <div class="mobile-notes-stats">
+          <span>共 <span id="notes-count">0</span> 条文案</span>
+          <button class="mobile-notes-sort-btn" onclick="toggleSortNotes()" title="切换排序">
+            <i class="fas fa-arrow-down" id="notes-sort-icon"></i>
+          </button>
+        </div>
+        <div id="notes-list" class="mobile-notes-list"></div>
+        <div id="notes-empty" class="mobile-notes-empty">
+          <div><i class="fas fa-pen-fancy"></i></div>
+          <div>还没有收藏任何文案</div>
+          <div>写下你喜欢的句子，记录生活中的灵感</div>
+        </div>
+      </section>
+
+      <section id="recommendations" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">好物推荐</h2>
+        </div>
+        <div id="recommendations-list" class="mobile-recommendations-list"></div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">添加推荐</div>
+          <form class="mobile-form" onsubmit="handleRecommendationSubmit(event)">
+            <div class="mobile-form-group">
+              <label>名称</label>
+              <input type="text" id="rec-title" class="mobile-input" placeholder="好物名称" required>
+            </div>
+            <div class="mobile-form-group">
+              <label>分类</label>
+              <select id="rec-category" class="mobile-input">
+                <option value="tech">数码科技</option>
+                <option value="book">书籍阅读</option>
+                <option value="life">生活家居</option>
+                <option value="tool">效率工具</option>
+                <option value="other">其他</option>
+              </select>
+            </div>
+            <div class="mobile-form-group">
+              <label>推荐理由</label>
+              <textarea id="rec-desc" class="mobile-textarea" placeholder="说说你为什么推荐它..." rows="3" required></textarea>
+            </div>
+            <button type="submit" class="mobile-btn mobile-btn-primary">添加推荐</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="travel" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">旅游攻略</h2>
+        </div>
+        <div class="mobile-travel-tabs">
+          <button class="mobile-travel-tab active" onclick="switchTravelCity('all')">全部</button>
+          <button class="mobile-travel-tab" onclick="switchTravelCity('beijing')">北京</button>
+          <button class="mobile-travel-tab" onclick="switchTravelCity('shanghai')">上海</button>
+          <button class="mobile-travel-tab" onclick="switchTravelCity('chengdu')">成都</button>
+          <button class="mobile-travel-tab" onclick="switchTravelCity('hangzhou')">杭州</button>
+        </div>
+        <div id="travel-list" class="mobile-travel-list"></div>
+        
+        <div class="mobile-card" style="margin-top: 16px;">
+          <div class="mobile-travel-add-toggle" onclick="toggleTravelAddForm()">
+            <div>
+              <div class="mobile-card-title">📝 添加攻略</div>
+              <div style="color: var(--text-secondary); font-size: 13px;">分享你的旅行攻略与路线规划</div>
+            </div>
+            <i class="fas fa-chevron-down" id="travel-add-toggle-icon"></i>
+          </div>
+          <div class="mobile-travel-add-form" id="travel-add-form">
+            <form class="mobile-form" onsubmit="handleTravelSubmit(event)">
+              <div class="mobile-form-group">
+                <label>攻略标题</label>
+                <input type="text" id="travel-title" class="mobile-input" placeholder="如：北京三日游详细攻略" required>
+              </div>
+              <div class="mobile-form-group">
+                <label>目的地城市</label>
+                <select id="travel-city" class="mobile-input">
+                  <option value="beijing">北京</option>
+                  <option value="shanghai">上海</option>
+                  <option value="chengdu">成都</option>
+                  <option value="hangzhou">杭州</option>
+                  <option value="other">其他</option>
+                </select>
+              </div>
+              <div class="mobile-form-group">
+                <label>封面图片（可选）</label>
+                <input type="text" id="travel-image-url" class="mobile-input" placeholder="图片URL地址">
+              </div>
+              <div class="mobile-form-group">
+                <label>游玩天数</label>
+                <input type="number" id="travel-days" class="mobile-input" placeholder="游玩天数" min="1" max="30">
+              </div>
+              <div class="mobile-form-group">
+                <label>导航路线（核心）</label>
+                <textarea id="travel-route" class="mobile-textarea" placeholder="按天规划路线，如：&#10;Day1: 天安门 → 故宫 → 景山公园&#10;Day2: 颐和园 → 圆明园&#10;Day3: 八达岭长城" rows="4" required></textarea>
+              </div>
+              <div class="mobile-form-group">
+                <label>详细攻略</label>
+                <textarea id="travel-desc" class="mobile-textarea" placeholder="景点介绍、美食推荐、住宿建议等..." rows="3"></textarea>
+              </div>
+              <div class="mobile-form-group">
+                <label>注意事项</label>
+                <textarea id="travel-tips" class="mobile-textarea" placeholder="出行提示、避坑指南等..." rows="2"></textarea>
+              </div>
+              <button type="submit" id="travel-submit" class="mobile-btn mobile-btn-primary">
+                <i class="fas fa-plus"></i> 添加攻略
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="mobile-section">
+        <div class="mobile-header">
+          <h2 class="mobile-page-title">联系我</h2>
+        </div>
+        <div class="mobile-contact-grid">
+          <div class="mobile-contact-card">
+            <div class="mobile-contact-icon email"><i class="fas fa-envelope"></i></div>
+            <div class="mobile-contact-info">
+              <div class="mobile-contact-label">邮箱</div>
+              <div class="mobile-contact-value">zhang.miao@sjtu.edu.cn</div>
+              <div class="mobile-contact-value">jensonzhang@126.com</div>
+            </div>
+          </div>
+          <div class="mobile-contact-card">
+            <div class="mobile-contact-icon github"><i class="fab fa-github"></i></div>
+            <div class="mobile-contact-info">
+              <div class="mobile-contact-label">GitHub</div>
+              <div class="mobile-contact-value">github.com/jensonzhang</div>
+            </div>
+          </div>
+          <div class="mobile-contact-card">
+            <div class="mobile-contact-icon wechat"><i class="fab fa-weixin"></i></div>
+            <div class="mobile-contact-info">
+              <div class="mobile-contact-label">微信</div>
+              <div class="mobile-contact-value">JensonZhang_Miao</div>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-card">
+          <div class="mobile-card-title">留言</div>
+          <form class="mobile-form" onsubmit="handleContactSubmit(event)">
+            <div class="mobile-form-group">
+              <label>您的姓名</label>
+              <input type="text" id="contact-name" class="mobile-input" placeholder="请输入您的姓名" required>
+            </div>
+            <div class="mobile-form-group">
+              <label>邮箱地址</label>
+              <input type="email" id="contact-email" class="mobile-input" placeholder="请输入您的邮箱" required>
+            </div>
+            <div class="mobile-form-group">
+              <label>留言内容</label>
+              <textarea id="contact-message" class="mobile-textarea" placeholder="请输入您想说的内容..." rows="4" required></textarea>
+            </div>
+            <button type="submit" class="mobile-btn mobile-btn-primary">发送留言</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div class="mobile-modal" id="add-quote-modal">
+    <div class="mobile-modal-overlay" onclick="closeAddQuoteModal()"></div>
+    <div class="mobile-modal-content">
+      <div class="mobile-modal-header">
+        <h3><i class="fas fa-plus"></i> 新增语录</h3>
+        <button class="mobile-modal-close" onclick="closeAddQuoteModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="mobile-modal-body">
+        <div class="mobile-form-group">
+          <label>选择名人</label>
+          <select id="add-quote-author" class="mobile-input" onchange="updateQuoteBooks()">
+          </select>
+        </div>
+        <div class="mobile-form-group">
+          <label>选择书籍</label>
+          <select id="add-quote-book" class="mobile-input">
+          </select>
+        </div>
+        <div class="mobile-form-group">
+          <label>语录内容</label>
+          <textarea id="add-quote-text" class="mobile-textarea" placeholder="输入语录内容..." rows="4" required></textarea>
+        </div>
+        <div class="mobile-form-group">
+          <label>主题（可选）</label>
+          <input type="text" id="add-quote-theme" class="mobile-input" placeholder="如：人生哲理">
+        </div>
+      </div>
+      <div class="mobile-modal-footer">
+        <button class="mobile-btn mobile-btn-outline" onclick="closeAddQuoteModal()">取消</button>
+        <button class="mobile-btn mobile-btn-primary" onclick="addQuote()">确认添加</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-fab-menu" id="mobileFabMenu">
+    <button class="mobile-fab-toggle" id="mobileFabToggle" onclick="toggleFabMenu()">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="mobile-fab-items" id="mobileFabItems">
+      <button class="mobile-fab-item" onclick="showSection('home'); toggleFabMenu()">
+        <i class="fas fa-home"></i>
+        <span>首页</span>
+      </button>
+      <button class="mobile-fab-item" onclick="showSection('toolbox'); toggleFabMenu()">
+        <i class="fas fa-wrench"></i>
+        <span>工具箱</span>
+      </button>
+      <button class="mobile-fab-item" onclick="showSection('projects'); toggleFabMenu()">
+        <i class="fas fa-project-diagram"></i>
+        <span>项目</span>
+      </button>
+      <button class="mobile-fab-item" onclick="showSection('blog'); toggleFabMenu()">
+        <i class="fas fa-book"></i>
+        <span>博客</span>
+      </button>
+      <button class="mobile-fab-item" onclick="showSection('quotes'); toggleFabMenu()">
+        <i class="fas fa-quote-right"></i>
+        <span>语录</span>
+      </button>
+      <button class="mobile-fab-item" onclick="showSection('notes'); toggleFabMenu()">
+        <i class="fas fa-pen-fancy"></i>
+        <span>记事本</span>
+      </button>
+      <button class="mobile-fab-item" onclick="showSection('recommendations'); toggleFabMenu()">
+        <i class="fas fa-star"></i>
+        <span>推荐</span>
+      </button>
+      <button class="mobile-fab-item" onclick="showSection('travel'); toggleFabMenu()">
+        <i class="fas fa-map-marked-alt"></i>
+        <span>旅游</span>
+      </button>
+      <button class="mobile-fab-item" onclick="showSection('contact'); toggleFabMenu()">
+        <i class="fas fa-envelope"></i>
+        <span>联系</span>
+      </button>
+    </div>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

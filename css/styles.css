@@ -321,7 +321,7 @@ section {
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 28px;
-  padding-bottom: 12px;
+  padding: 0 10px 12px;
   border-bottom: 2px solid var(--border-color);
   position: relative;
   max-width: 900px;
@@ -344,6 +344,13 @@ section {
   height: 2px;
   background-color: var(--accent-primary);
   border-radius: 2px;
+}
+
+/* ===== 模块内容容器 ===== */
+.section-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
 /* ===== 卡片样式 ===== */
@@ -1249,13 +1256,13 @@ section {
   .apple-section,
   .contact-grid,
   .tool-container {
-    padding: 0 16px;
+    padding: 0 32px;
   }
   
   .section-title,
   .card {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
   
   .navbar-content {
@@ -3713,6 +3720,18 @@ section {
 }
 
 @media (max-width: 768px) {
+  [data-style="style2"] .section {
+    padding: 60px 32px;
+  }
+  
+  [data-style="style2"] .section-content {
+    padding: 0 32px;
+  }
+  
+  [data-style="style2"] .section-title {
+    padding: 0 32px 12px;
+  }
+  
   [data-style="style2"] .apple-hero {
     padding: 80px 0 60px;
   }

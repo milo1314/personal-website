@@ -2485,6 +2485,19 @@ section {
     padding: 0 16px;
   }
   
+  .section-content,
+  .apple-section,
+  .contact-grid,
+  .tool-container {
+    padding: 0 16px;
+  }
+  
+  .section-title,
+  .card {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
   .main-content {
     padding-top: 64px;
   }

@@ -346,6 +346,30 @@ section {
   border-radius: 2px;
 }
 
+/* ===== 默认风格主页对齐样式 ===== */
+#home .section-title {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#home .card {
+  max-width: 1200px;
+  width: 100%;
+}
+
+#home .tech-stack-container {
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+}
+
+#home .bento-grid {
+  max-width: 1200px;
+  width: 100%;
+}
+
 
 
 /* ===== 卡片样式 ===== */
@@ -479,14 +503,14 @@ section {
   font-size: 14px;
 }
 
-/* ===== Tech Stack 驼峰波浪布局 ===== */
+/* ===== Tech Stack 波浪线布局 ===== */
 .tech-stack-container {
   margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 20px;
+  gap: 8px;
+  padding: 20px 0;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
@@ -495,20 +519,16 @@ section {
 .tech-stack-row {
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  gap: 40px;
 }
 
-.tech-stack-row:nth-child(1) {
-  margin-bottom: 8px;
+.tech-stack-row:nth-child(odd) {
+  transform: translateX(28px);
 }
 
-.tech-stack-row:nth-child(2) {
-  margin-top: -8px;
-  margin-bottom: 8px;
-}
-
-.tech-stack-row:nth-child(3) {
-  margin-top: -8px;
+.tech-stack-row:nth-child(even) {
+  transform: translateX(-28px);
 }
 
 .tech-stack-node {
